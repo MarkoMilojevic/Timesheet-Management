@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Busines
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data", "TimesheetManagement.Data\TimesheetManagement.Data.csproj", "{566450BB-65AF-40CD-8654-E525C16B2408}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.EntityFramework", "TimesheetManagement.Data.EntityFramework\TimesheetManagement.Data.EntityFramework.csproj", "{0CDD347D-C11B-435C-B0D9-BF82E5245503}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{566450BB-65AF-40CD-8654-E525C16B2408}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{566450BB-65AF-40CD-8654-E525C16B2408}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{566450BB-65AF-40CD-8654-E525C16B2408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CDD347D-C11B-435C-B0D9-BF82E5245503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDD347D-C11B-435C-B0D9-BF82E5245503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDD347D-C11B-435C-B0D9-BF82E5245503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDD347D-C11B-435C-B0D9-BF82E5245503}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

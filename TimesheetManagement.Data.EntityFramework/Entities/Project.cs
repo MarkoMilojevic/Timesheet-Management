@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TimesheetManagement.Data.EntityFramework.Entities
 {
@@ -19,9 +16,9 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 
         public string TaxpayerIdentificationNumber { get; set; }
 
-        [ForeignKey("TaxpayerIdentificationNumber")]
+        [ForeignKey(nameof(TaxpayerIdentificationNumber))]
         public virtual Client Client { get; set; }
 
-        public virtual ICollection<Activity> Activities { get; set; } 
+        public virtual ICollection<Activity> Activities { get; set; }
     }
 }

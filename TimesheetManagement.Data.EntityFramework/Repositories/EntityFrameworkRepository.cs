@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using TimesheetManagement.Data.EntityFramework.Common;
 using TimesheetManagement.Data.EntityFramework.Entities;
 using TimesheetManagement.Data.Repositories;
-using ActivityDTO = TimesheetManagement.Data.DataContracts.Activity;
-using ClientDTO = TimesheetManagement.Data.DataContracts.Client;
-using EmployeeDTO = TimesheetManagement.Data.DataContracts.Employee;
-using EmployeeActivityDTO = TimesheetManagement.Data.DataContracts.EmployeeActivity;
-using ProjectDTO = TimesheetManagement.Data.DataContracts.Project;
+using ActivityDTO = TimesheetManagement.Business.DataContracts.Activity;
+using ClientDTO = TimesheetManagement.Business.DataContracts.Client;
+using EmployeeDTO = TimesheetManagement.Business.DataContracts.Employee;
+using EmployeeActivityDTO = TimesheetManagement.Business.DataContracts.EmployeeActivity;
+using ProjectDTO = TimesheetManagement.Business.DataContracts.Project;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
     public class EntityFrameworkRepository : IRepository
     {
-        private TimesheetContext _context = null;
+        private readonly TimesheetContext _context;
 
         public EntityFrameworkRepository()
         {
@@ -33,7 +33,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public ICollection<ClientDTO> GetClients()
         {
             List<Client> clients = _context.Clients.ToList();
-            
+
             return clients.Select(EntityFrameworkAutoMapper.CreateClient).ToList();
         }
 
@@ -88,8 +88,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public ICollection<EmployeeActivityDTO> GetEmployeeActivities(int employeeId)
         {
-            List<EmployeeActivity> employeeActivities =
-                _context.EmployeeActivities.Where(ea => ea.EmployeeId == employeeId).ToList();
+            List<EmployeeActivity> employeeActivities = _context.EmployeeActivities.Where(ea => ea.EmployeeId == employeeId).ToList();
 
             return employeeActivities.Select(EntityFrameworkAutoMapper.CreateEmployeeActivity).ToList();
         }

@@ -96,6 +96,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+      <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
+      <Name>TimesheetManagement.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
       <Name>TimesheetManagement.Data</Name>

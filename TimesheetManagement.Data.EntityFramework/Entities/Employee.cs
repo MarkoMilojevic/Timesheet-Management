@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TimesheetManagement.Data.EntityFramework.Entities
 {
@@ -17,9 +11,8 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 
         public string LastName { get; set; }
 
-        [DataType(DataType.EmailAddress)]
         [Index(IsUnique = true)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-
     }
 }

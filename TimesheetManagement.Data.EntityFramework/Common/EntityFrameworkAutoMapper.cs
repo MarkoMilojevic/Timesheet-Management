@@ -1,47 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using TimesheetManagement.Data.EntityFramework.Entities;
-using ActivityDTO = TimesheetManagement.Data.DataContracts.Activity;
-using ClientDTO = TimesheetManagement.Data.DataContracts.Client;
-using EmployeeDTO = TimesheetManagement.Data.DataContracts.Employee;
-using EmployeeActivityDTO = TimesheetManagement.Data.DataContracts.EmployeeActivity;
-using ProjectDTO = TimesheetManagement.Data.DataContracts.Project;
+using ActivityDTO = TimesheetManagement.Business.DataContracts.Activity;
+using ClientDTO = TimesheetManagement.Business.DataContracts.Client;
+using EmployeeDTO = TimesheetManagement.Business.DataContracts.Employee;
+using EmployeeActivityDTO = TimesheetManagement.Business.DataContracts.EmployeeActivity;
+using ProjectDTO = TimesheetManagement.Business.DataContracts.Project;
 
 namespace TimesheetManagement.Data.EntityFramework.Common
 {
     public static class EntityFrameworkAutoMapper
     {
         static EntityFrameworkAutoMapper()
-        {          
+        {
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<Client, ClientDTO>();
+                config.CreateMap<Project, ProjectDTO>();
+                config.CreateMap<Activity, ActivityDTO>();
+                config.CreateMap<Employee, EmployeeDTO>();
+                config.CreateMap<EmployeeActivity, EmployeeActivityDTO>();
+            });
         }
 
         public static ClientDTO CreateClient(Client client)
         {
-            return null;
+            return Mapper.Map<ClientDTO>(client);
         }
 
         public static ProjectDTO CreateProject(Project project)
         {
-            return null;
+            return Mapper.Map<ProjectDTO>(project);
         }
 
         public static ActivityDTO CreateActivity(Activity activity)
         {
-            return null;
+            return Mapper.Map<ActivityDTO>(activity);
         }
 
         public static EmployeeDTO CreateEmployee(Employee employee)
         {
-            return null;
+            return Mapper.Map<EmployeeDTO>(employee);
         }
 
         public static EmployeeActivityDTO CreateEmployeeActivity(EmployeeActivity employeeActivity)
         {
-            return null;
+            return Mapper.Map<EmployeeActivityDTO>(employeeActivity);
         }
-
     }
 }

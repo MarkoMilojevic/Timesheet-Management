@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimesheetManagement.Data.EntityFramework.Entities
 {
@@ -13,13 +8,10 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 
         public int ActivityId { get; set; }
 
-        public string Description { get; set; }
-
-        [ForeignKey("ActivityId")]
+        [ForeignKey(nameof(ActivityId))]
         public virtual Activity Activity { get; set; }
 
-        [ForeignKey("EmployeeId")]
+        [ForeignKey(nameof(EmployeeId))]
         public virtual Employee Employee { get; set; }
-
     }
 }

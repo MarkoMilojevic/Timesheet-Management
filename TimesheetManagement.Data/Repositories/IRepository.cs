@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimesheetManagement.Data.DataContracts;
+using TimesheetManagement.Business.DataContracts;
 
 namespace TimesheetManagement.Data.Repositories
 {

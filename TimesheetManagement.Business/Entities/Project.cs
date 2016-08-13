@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TimesheetManagement.Business.DataContracts
+namespace TimesheetManagement.Business.Entities
 {
     public class Project
     {

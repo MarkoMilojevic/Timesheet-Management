@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimesheetManagement.Business.DataContracts;
+﻿using System.Collections.Generic;
+using TimesheetManagement.Business.Entities;
 
 namespace TimesheetManagement.Data.Repositories
 {

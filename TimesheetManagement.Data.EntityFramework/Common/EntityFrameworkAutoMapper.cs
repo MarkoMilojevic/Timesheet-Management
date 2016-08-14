@@ -8,43 +8,43 @@ using ProjectBO = TimesheetManagement.Business.Entities.Project;
 
 namespace TimesheetManagement.Data.EntityFramework.Common
 {
-    public static class EntityFrameworkAutoMapper
-    {
-        static EntityFrameworkAutoMapper()
-        {
-            Mapper.Initialize(config =>
-            {
-                config.CreateMap<Client, ClientBO>();
-                config.CreateMap<Project, ProjectBO>();
-                config.CreateMap<Activity, ActivityBO>();
-                config.CreateMap<Employee, EmployeeBO>();
-                config.CreateMap<EmployeeActivity, EmployeeActivityBO>();
-            });
-        }
+	public static class EntityFrameworkAutoMapper
+	{
+		static EntityFrameworkAutoMapper()
+		{
+			Mapper.Initialize(config =>
+			{
+				config.CreateMap<Client, ClientBO>();
+				config.CreateMap<Project, ProjectBO>();
+				config.CreateMap<Activity, ActivityBO>();
+				config.CreateMap<Employee, EmployeeBO>();
+				config.CreateMap<EmployeeActivity, EmployeeActivityBO>();
+			});
+		}
 
-        public static ClientBO CreateClient(Client client)
-        {
-            return Mapper.Map<ClientBO>(client);
-        }
+		public static ClientBO CreateClient(Client client)
+		{
+			return Mapper.Map<ClientBO>(client);
+		}
 
-        public static ProjectBO CreateProject(Project project)
-        {
-            return Mapper.Map<ProjectBO>(project);
-        }
+		public static ProjectBO CreateProject(Project project)
+		{
+			return Mapper.Map<ProjectBO>(project);
+		}
 
-        public static ActivityBO CreateActivity(Activity activity)
-        {
-            return Mapper.Map<ActivityBO>(activity);
-        }
+		public static ActivityBO CreateActivity(Activity activity)
+		{
+			return Mapper.Map<ActivityBO>(activity);
+		}
 
-        public static EmployeeBO CreateEmployee(Employee employee)
-        {
-            return Mapper.Map<EmployeeBO>(employee);
-        }
+		public static EmployeeBO CreateEmployee(Employee employee)
+		{
+			return Mapper.Map<EmployeeBO>(employee);
+		}
 
-        public static EmployeeActivityBO CreateEmployeeActivity(EmployeeActivity employeeActivity)
-        {
-            return Mapper.Map<EmployeeActivityBO>(employeeActivity);
-        }
-    }
+		public static EmployeeActivityBO CreateEmployeeActivity(EmployeeActivity employeeActivity)
+		{
+			return Mapper.Map<EmployeeActivityBO>(employeeActivity);
+		}
+	}
 }

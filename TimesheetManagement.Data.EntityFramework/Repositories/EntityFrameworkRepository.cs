@@ -11,83 +11,83 @@ using ProjectBO = TimesheetManagement.Business.Entities.Project;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
-    public class EntityFrameworkRepository : IRepository
-    {
-        private readonly TimesheetContext _context;
+	public class EntityFrameworkRepository : IRepository
+	{
+		private readonly TimesheetContext context;
 
-        public EntityFrameworkRepository()
-        {
-            _context = new TimesheetContext();
-        }
+		public EntityFrameworkRepository()
+		{
+			this.context = new TimesheetContext();
+		}
 
-        public ClientBO GetClient(string tin)
-        {
-            Client client = _context.Clients.Find(tin);
+		public ClientBO GetClient(string tin)
+		{
+			Client client = this.context.Clients.Find(tin);
 
-            return EntityFrameworkAutoMapper.CreateClient(client);
-        }
+			return EntityFrameworkAutoMapper.CreateClient(client);
+		}
 
-        public ICollection<ClientBO> GetClients()
-        {
-            List<Client> clients = _context.Clients.ToList();
+		public ICollection<ClientBO> GetClients()
+		{
+			List<Client> clients = this.context.Clients.ToList();
 
-            return clients.Select(EntityFrameworkAutoMapper.CreateClient).ToList();
-        }
+			return clients.Select(EntityFrameworkAutoMapper.CreateClient).ToList();
+		}
 
-        public ProjectBO GetProject(int id)
-        {
-            Project project = _context.Projects.Find(id);
+		public ProjectBO GetProject(int id)
+		{
+			Project project = this.context.Projects.Find(id);
 
-            return EntityFrameworkAutoMapper.CreateProject(project);
-        }
+			return EntityFrameworkAutoMapper.CreateProject(project);
+		}
 
-        public ICollection<ProjectBO> GetProjects()
-        {
-            List<Project> projects = _context.Projects.ToList();
+		public ICollection<ProjectBO> GetProjects()
+		{
+			List<Project> projects = this.context.Projects.ToList();
 
-            return projects.Select(EntityFrameworkAutoMapper.CreateProject).ToList();
-        }
+			return projects.Select(EntityFrameworkAutoMapper.CreateProject).ToList();
+		}
 
-        public ActivityBO GetActivity(int id)
-        {
-            Activity activity = _context.Activities.Find(id);
+		public ActivityBO GetActivity(int id)
+		{
+			Activity activity = this.context.Activities.Find(id);
 
-            return EntityFrameworkAutoMapper.CreateActivity(activity);
-        }
+			return EntityFrameworkAutoMapper.CreateActivity(activity);
+		}
 
-        public ICollection<ActivityBO> GetActivities(int projectId)
-        {
-            List<Activity> activities = _context.Activities.ToList();
+		public ICollection<ActivityBO> GetActivities(int projectId)
+		{
+			List<Activity> activities = this.context.Activities.ToList();
 
-            return activities.Select(EntityFrameworkAutoMapper.CreateActivity).ToList();
-        }
+			return activities.Select(EntityFrameworkAutoMapper.CreateActivity).ToList();
+		}
 
-        public EmployeeBO GetEmployee(int id)
-        {
-            Employee employee = _context.Employees.Find(id);
+		public EmployeeBO GetEmployee(int id)
+		{
+			Employee employee = this.context.Employees.Find(id);
 
-            return EntityFrameworkAutoMapper.CreateEmployee(employee);
-        }
+			return EntityFrameworkAutoMapper.CreateEmployee(employee);
+		}
 
-        public EmployeeBO GetEmployee(string email)
-        {
-            Employee employee = _context.Employees.FirstOrDefault(e => e.Email == email);
+		public EmployeeBO GetEmployee(string email)
+		{
+			Employee employee = this.context.Employees.FirstOrDefault(e => e.Email == email);
 
-            return EntityFrameworkAutoMapper.CreateEmployee(employee);
-        }
+			return EntityFrameworkAutoMapper.CreateEmployee(employee);
+		}
 
-        public ICollection<EmployeeBO> GetEmployees()
-        {
-            List<Employee> employees = _context.Employees.ToList();
+		public ICollection<EmployeeBO> GetEmployees()
+		{
+			List<Employee> employees = this.context.Employees.ToList();
 
-            return employees.Select(EntityFrameworkAutoMapper.CreateEmployee).ToList();
-        }
+			return employees.Select(EntityFrameworkAutoMapper.CreateEmployee).ToList();
+		}
 
-        public ICollection<EmployeeActivityBO> GetEmployeeActivities(int employeeId)
-        {
-            List<EmployeeActivity> employeeActivities = _context.EmployeeActivities.Where(ea => ea.EmployeeId == employeeId).ToList();
+		public ICollection<EmployeeActivityBO> GetEmployeeActivities(int employeeId)
+		{
+			List<EmployeeActivity> employeeActivities = this.context.EmployeeActivities.Where(ea => ea.EmployeeId == employeeId).ToList();
 
-            return employeeActivities.Select(EntityFrameworkAutoMapper.CreateEmployeeActivity).ToList();
-        }
-    }
+			return employeeActivities.Select(EntityFrameworkAutoMapper.CreateEmployeeActivity).ToList();
+		}
+	}
 }

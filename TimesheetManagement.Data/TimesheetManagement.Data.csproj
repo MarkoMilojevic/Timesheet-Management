@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
-      <Project>{740E193C-C000-407D-88EB-AB6492874554}</Project>
+      <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
       <Name>TimesheetManagement.Business</Name>
     </ProjectReference>
   </ItemGroup>

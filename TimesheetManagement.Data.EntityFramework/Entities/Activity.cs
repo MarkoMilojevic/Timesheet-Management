@@ -1,14 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimesheetManagement.Data.EntityFramework.Entities
 {
-	public class Activity
-	{
-		public int ActivityId { get; set; }
+    public class Activity
+    {
+        public int ActivityId { get; set; }
 
-		public string Name { get; set; }
+        [StringLength(100)]
+        public string Name { get; set; }
 
-		public int ClientId { get; set; }
+        public string ClientId { get; set; }
 
 		[ForeignKey(nameof(Activity.ClientId))]
 		public virtual Client Client { get; set; }

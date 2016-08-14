@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimesheetManagement.Data.EntityFramework.Entities
@@ -8,7 +9,8 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 	{
 		public int ProjectId { get; set; }
 
-		public string Name { get; set; }
+        [StringLength(100)]
+        public string Name { get; set; }
 
 		public DateTime StartDate { get; set; }
 

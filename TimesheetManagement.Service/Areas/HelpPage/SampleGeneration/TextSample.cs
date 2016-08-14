@@ -2,36 +2,38 @@ using System;
 
 namespace TimesheetManagement.Service.Areas.HelpPage
 {
-    /// <summary>
-    /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
-    /// </summary>
-    public class TextSample
-    {
-        public TextSample(string text)
-        {
-            if (text == null)
-            {
-                throw new ArgumentNullException("text");
-            }
-            Text = text;
-        }
+	/// <summary>
+	///     This represents a preformatted text sample on the help page. There's a display template named TextSample associated
+	///     with this class.
+	/// </summary>
+	public class TextSample
+	{
+		public string Text { get; }
 
-        public string Text { get; private set; }
+		public TextSample(string text)
+		{
+			if (text == null)
+			{
+				throw new ArgumentNullException("text");
+			}
 
-        public override bool Equals(object obj)
-        {
-            TextSample other = obj as TextSample;
-            return other != null && Text == other.Text;
-        }
+			this.Text = text;
+		}
 
-        public override int GetHashCode()
-        {
-            return Text.GetHashCode();
-        }
+		public override bool Equals(object obj)
+		{
+			TextSample other = obj as TextSample;
+			return (other != null) && (this.Text == other.Text);
+		}
 
-        public override string ToString()
-        {
-            return Text;
-        }
-    }
+		public override int GetHashCode()
+		{
+			return this.Text.GetHashCode();
+		}
+
+		public override string ToString()
+		{
+			return this.Text;
+		}
+	}
 }

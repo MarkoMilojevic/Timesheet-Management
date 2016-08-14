@@ -88,6 +88,11 @@
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\TimesheetContext.cs" />
+    <Compile Include="Migrations\201608142147215_Initial Migration.cs" />
+    <Compile Include="Migrations\201608142147215_Initial Migration.Designer.cs">
+      <DependentUpon>201608142147215_Initial Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityFrameworkRepository.cs" />
   </ItemGroup>
@@ -104,6 +109,11 @@
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
       <Name>TimesheetManagement.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608142147215_Initial Migration.resx">
+      <DependentUpon>201608142147215_Initial Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

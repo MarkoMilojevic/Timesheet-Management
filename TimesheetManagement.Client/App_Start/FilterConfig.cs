@@ -1,13 +1,12 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Timesheet_Management.Client
+namespace TimesheetManagement.Client
 {
-    public class FilterConfig
-    {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-        {
-            filters.Add(new HandleErrorAttribute());
-        }
-    }
+	public class FilterConfig
+	{
+		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+		{
+			filters.Add(new HandleErrorAttribute());
+		}
+	}
 }

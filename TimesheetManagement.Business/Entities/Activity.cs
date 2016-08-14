@@ -2,9 +2,9 @@
 {
 	public class Activity
 	{
-        public int ActivityId { get; set; }
+		public int ActivityId { get; set; }
 
-        public string Name { get; set; }
+		public string Name { get; set; }
 
 		public Client Client { get; set; }
 

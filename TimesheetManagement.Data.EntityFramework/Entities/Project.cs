@@ -19,7 +19,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 		public string TaxpayerIdentificationNumber { get; set; }
 
 		[ForeignKey(nameof(Project.TaxpayerIdentificationNumber))]
-		public virtual Client Client { get; set; }
+		public virtual Account Account { get; set; }
 
 		public virtual ICollection<Activity> Activities { get; set; }
 	}

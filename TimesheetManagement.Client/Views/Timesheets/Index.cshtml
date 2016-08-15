@@ -1,5 +1,5 @@
 ﻿@using PagedList.Mvc
-@using TimesheetManagement.Business.Entities
+@using TimesheetManagement.Business.Tasks.Entities
 @model TimesheetManagement.Client.Models.TimesheetViewModel
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css"/>
@@ -17,7 +17,7 @@
 <table class="table">
 	<tr>
 		<th>
-			Client
+			Account
 		</th>
 		<th>
 			Project
@@ -31,7 +31,7 @@
 	{
 		<tr>
 			<td>
-				@Html.DisplayFor(modelItem => ea.Activity.Client.Name)
+				@Html.DisplayFor(modelItem => ea.Activity.Account.Name)
 			</td>
 			<td>
 				@Html.DisplayFor(modelItem => ea.Activity.Project.Name)

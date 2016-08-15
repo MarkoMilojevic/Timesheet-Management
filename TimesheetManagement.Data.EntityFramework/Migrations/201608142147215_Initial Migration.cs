@@ -18,12 +18,12 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
                     })
                 .PrimaryKey(t => t.ActivityId)
                 .ForeignKey("dbo.Project", t => t.ProjectId, cascadeDelete: true)
-                .ForeignKey("dbo.Client", t => t.ClientId)
+                .ForeignKey("dbo.Account", t => t.ClientId)
                 .Index(t => t.ClientId)
                 .Index(t => t.ProjectId);
             
             CreateTable(
-                "dbo.Client",
+                "dbo.Account",
                 c => new
                     {
                         TaxpayerIdentificationNumber = c.String(nullable: false, maxLength: 9),
@@ -43,7 +43,7 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
                         TaxpayerIdentificationNumber = c.String(maxLength: 9),
                     })
                 .PrimaryKey(t => t.ProjectId)
-                .ForeignKey("dbo.Client", t => t.TaxpayerIdentificationNumber)
+                .ForeignKey("dbo.Account", t => t.TaxpayerIdentificationNumber)
                 .Index(t => t.TaxpayerIdentificationNumber);
             
             CreateTable(
@@ -77,19 +77,19 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
         {
             DropForeignKey("dbo.EmployeeActivity", "EmployeeId", "dbo.Employee");
             DropForeignKey("dbo.EmployeeActivity", "ActivityId", "dbo.Activity");
-            DropForeignKey("dbo.Activity", "ClientId", "dbo.Client");
-            DropForeignKey("dbo.Project", "TaxpayerIdentificationNumber", "dbo.Client");
+            DropForeignKey("dbo.Activity", "AccountId", "dbo.Account");
+            DropForeignKey("dbo.Project", "TaxpayerIdentificationNumber", "dbo.Account");
             DropForeignKey("dbo.Activity", "ProjectId", "dbo.Project");
             DropIndex("dbo.Employee", new[] { "Email" });
             DropIndex("dbo.EmployeeActivity", new[] { "ActivityId" });
             DropIndex("dbo.EmployeeActivity", new[] { "EmployeeId" });
             DropIndex("dbo.Project", new[] { "TaxpayerIdentificationNumber" });
             DropIndex("dbo.Activity", new[] { "ProjectId" });
-            DropIndex("dbo.Activity", new[] { "ClientId" });
+            DropIndex("dbo.Activity", new[] { "AccountId" });
             DropTable("dbo.Employee");
             DropTable("dbo.EmployeeActivity");
             DropTable("dbo.Project");
-            DropTable("dbo.Client");
+            DropTable("dbo.Account");
             DropTable("dbo.Activity");
         }
     }

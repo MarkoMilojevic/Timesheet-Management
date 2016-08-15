@@ -5,7 +5,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 {
 	public class TimesheetContext : DbContext
 	{
-		public DbSet<Client> Clients { get; set; }
+		public DbSet<Account> Accounts { get; set; }
 
 		public DbSet<Project> Projects { get; set; }
 

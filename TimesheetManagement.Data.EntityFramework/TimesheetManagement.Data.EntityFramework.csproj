@@ -94,7 +94,7 @@
     <Compile Include="Common\EntityFrameworkAutoMapper.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\EmployeeActivity.cs" />
-    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\TimesheetContext.cs" />
@@ -111,9 +111,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj">
       <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
-      <Name>TimesheetManagement.Business</Name>
+      <Name>TimesheetManagement.Business.Tasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>

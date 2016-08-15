@@ -15,9 +15,9 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
 
         protected override void Seed(TimesheetManagement.Data.EntityFramework.Entities.TimesheetContext context)
         {
-            context.Clients.AddOrUpdate(cl => cl.Name,
-                new Client { Name = "Microsoft", TaxpayerIdentificationNumber = "123456789", RegisterNumber = "12345678" },
-                new Client { Name = "Coca Cola", TaxpayerIdentificationNumber = "987654321", RegisterNumber = "87654321" });
+            context.Accounts.AddOrUpdate(cl => cl.Name,
+                new Account { Name = "Microsoft", TaxpayerIdentificationNumber = "123456789", RegisterNumber = "12345678" },
+                new Account { Name = "Coca Cola", TaxpayerIdentificationNumber = "987654321", RegisterNumber = "87654321" });
 
             context.Employees.AddOrUpdate(em => em.FirstName,
                 new Employee { Email = "marko@gmail.com", FirstName = "Marko", LastName = "Milojevic" },
@@ -36,13 +36,13 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
                 context.Activities.AddOrUpdate(a => a.Name,
                     new Activity
                     {
-                        ClientId = "987654321",
+                        AccountId = "987654321",
                         Name = "Shooting Commercial",
                         ProjectId = firstOrDefault.ProjectId
                     },
                     new Activity
                     {
-                        ClientId = "987654321",
+                        AccountId = "987654321",
                         Name = "Making flyers",
                         ProjectId = firstOrDefault.ProjectId
                     });
@@ -54,25 +54,25 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
                 context.Activities.AddOrUpdate(a => a.Name,
                     new Activity
                     {
-                        ClientId = "123456789",
+                        AccountId = "123456789",
                         Name = "Gathering Requirements",
                         ProjectId = firstOrDefault.ProjectId
                     },
                     new Activity
                     {
-                        ClientId = "123456789",
+                        AccountId = "123456789",
                         Name = "Creating UML",
                         ProjectId = firstOrDefault.ProjectId
                     },
                     new Activity
                     {
-                        ClientId = "123456789",
+                        AccountId = "123456789",
                         Name = "Developing solution",
                         ProjectId = firstOrDefault.ProjectId
                     },
                     new Activity
                     {
-                        ClientId = "123456789",
+                        AccountId = "123456789",
                         Name = "Testing",
                         ProjectId = firstOrDefault.ProjectId
                     });

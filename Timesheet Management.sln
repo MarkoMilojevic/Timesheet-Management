@@ -5,13 +5,25 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client", "TimesheetManagement.Client\TimesheetManagement.Client.csproj", "{85EB28F6-03E2-474D-8023-EE8FD95F75F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service", "TimesheetManagement.Service\TimesheetManagement.Service.csproj", "{CB45067C-A9D3-4758-9FFD-ADD9F280EA4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service.Api", "TimesheetManagement.Service.Api\TimesheetManagement.Service.Api.csproj", "{CB45067C-A9D3-4758-9FFD-ADD9F280EA4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business", "TimesheetManagement.Business\TimesheetManagement.Business.csproj", "{740E193C-C000-407D-88EB-AB6492874554}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks", "TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj", "{740E193C-C000-407D-88EB-AB6492874554}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data", "TimesheetManagement.Data\TimesheetManagement.Data.csproj", "{566450BB-65AF-40CD-8654-E525C16B2408}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.EntityFramework", "TimesheetManagement.Data.EntityFramework\TimesheetManagement.Data.EntityFramework.csproj", "{0CDD347D-C11B-435C-B0D9-BF82E5245503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business", "TimesheetManagement.Business\TimesheetManagement.Business.csproj", "{8720F651-01D3-4659-8EE8-4FD933DAEE94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service", "TimesheetManagement.Service\TimesheetManagement.Service.csproj", "{42ABF962-0B51-41B0-92B3-98C7A2B2B171}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{6D3B8C16-186F-4585-B673-FCD2944F38B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D6343D97-C1C2-414A-93BA-99AE80D004DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E9819B3C-B622-47ED-AD82-DE8CB100BD2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +51,25 @@ Global
 		{0CDD347D-C11B-435C-B0D9-BF82E5245503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CDD347D-C11B-435C-B0D9-BF82E5245503}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CDD347D-C11B-435C-B0D9-BF82E5245503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8720F651-01D3-4659-8EE8-4FD933DAEE94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8720F651-01D3-4659-8EE8-4FD933DAEE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8720F651-01D3-4659-8EE8-4FD933DAEE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8720F651-01D3-4659-8EE8-4FD933DAEE94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42ABF962-0B51-41B0-92B3-98C7A2B2B171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42ABF962-0B51-41B0-92B3-98C7A2B2B171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42ABF962-0B51-41B0-92B3-98C7A2B2B171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42ABF962-0B51-41B0-92B3-98C7A2B2B171}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85EB28F6-03E2-474D-8023-EE8FD95F75F2} = {6D3B8C16-186F-4585-B673-FCD2944F38B3}
+		{CB45067C-A9D3-4758-9FFD-ADD9F280EA4D} = {E9819B3C-B622-47ED-AD82-DE8CB100BD2B}
+		{740E193C-C000-407D-88EB-AB6492874554} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
+		{566450BB-65AF-40CD-8654-E525C16B2408} = {D6343D97-C1C2-414A-93BA-99AE80D004DB}
+		{0CDD347D-C11B-435C-B0D9-BF82E5245503} = {D6343D97-C1C2-414A-93BA-99AE80D004DB}
+		{8720F651-01D3-4659-8EE8-4FD933DAEE94} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
+		{42ABF962-0B51-41B0-92B3-98C7A2B2B171} = {E9819B3C-B622-47ED-AD82-DE8CB100BD2B}
 	EndGlobalSection
 EndGlobal

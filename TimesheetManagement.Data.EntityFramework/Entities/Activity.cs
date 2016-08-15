@@ -10,10 +10,10 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
         [StringLength(100)]
         public string Name { get; set; }
 
-        public string ClientId { get; set; }
+        public string AccountId { get; set; }
 
-		[ForeignKey(nameof(Activity.ClientId))]
-		public virtual Client Client { get; set; }
+		[ForeignKey(nameof(Activity.AccountId))]
+		public virtual Account Account { get; set; }
 
 		public int ProjectId { get; set; }
 

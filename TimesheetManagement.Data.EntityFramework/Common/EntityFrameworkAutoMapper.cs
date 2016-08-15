@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using TimesheetManagement.Data.EntityFramework.Entities;
-using ActivityBO = TimesheetManagement.Business.Entities.Activity;
-using ClientBO = TimesheetManagement.Business.Entities.Client;
-using EmployeeBO = TimesheetManagement.Business.Entities.Employee;
-using EmployeeActivityBO = TimesheetManagement.Business.Entities.EmployeeActivity;
-using ProjectBO = TimesheetManagement.Business.Entities.Project;
+using ActivityBO = TimesheetManagement.Business.Tasks.Entities.Activity;
+using AccountBO = TimesheetManagement.Business.Tasks.Entities.Account;
+using EmployeeBO = TimesheetManagement.Business.Tasks.Entities.Employee;
+using EmployeeActivityBO = TimesheetManagement.Business.Tasks.Entities.EmployeeActivity;
+using ProjectBO = TimesheetManagement.Business.Tasks.Entities.Project;
 
 namespace TimesheetManagement.Data.EntityFramework.Common
 {
@@ -14,7 +14,7 @@ namespace TimesheetManagement.Data.EntityFramework.Common
 		{
 			Mapper.Initialize(config =>
 			{
-				config.CreateMap<Client, ClientBO>();
+				config.CreateMap<Account, AccountBO>();
 				config.CreateMap<Project, ProjectBO>();
 				config.CreateMap<Activity, ActivityBO>();
 				config.CreateMap<Employee, EmployeeBO>();
@@ -22,9 +22,9 @@ namespace TimesheetManagement.Data.EntityFramework.Common
 			});
 		}
 
-		public static ClientBO CreateClient(Client client)
+		public static AccountBO CreateClient(Account client)
 		{
-			return Mapper.Map<ClientBO>(client);
+			return Mapper.Map<AccountBO>(client);
 		}
 
 		public static ProjectBO CreateProject(Project project)

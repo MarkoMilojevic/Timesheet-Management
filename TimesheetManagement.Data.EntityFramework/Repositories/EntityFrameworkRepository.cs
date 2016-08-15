@@ -3,11 +3,11 @@ using System.Linq;
 using TimesheetManagement.Data.EntityFramework.Common;
 using TimesheetManagement.Data.EntityFramework.Entities;
 using TimesheetManagement.Data.Repositories;
-using ActivityBO = TimesheetManagement.Business.Entities.Activity;
-using ClientBO = TimesheetManagement.Business.Entities.Client;
-using EmployeeBO = TimesheetManagement.Business.Entities.Employee;
-using EmployeeActivityBO = TimesheetManagement.Business.Entities.EmployeeActivity;
-using ProjectBO = TimesheetManagement.Business.Entities.Project;
+using ActivityBO = TimesheetManagement.Business.Tasks.Entities.Activity;
+using AccountBO = TimesheetManagement.Business.Tasks.Entities.Account;
+using EmployeeBO = TimesheetManagement.Business.Tasks.Entities.Employee;
+using EmployeeActivityBO = TimesheetManagement.Business.Tasks.Entities.EmployeeActivity;
+using ProjectBO = TimesheetManagement.Business.Tasks.Entities.Project;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
@@ -20,16 +20,16 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 			this.context = new TimesheetContext();
 		}
 
-		public ClientBO GetClient(string tin)
+		public AccountBO GetAccount(string tin)
 		{
-			Client client = this.context.Clients.Find(tin);
+			Account client = this.context.Accounts.Find(tin);
 
 			return EntityFrameworkAutoMapper.CreateClient(client);
 		}
 
-		public ICollection<ClientBO> GetClients()
+		public ICollection<AccountBO> GetAccounts()
 		{
-			List<Client> clients = this.context.Clients.ToList();
+			List<Account> clients = this.context.Accounts.ToList();
 
 			return clients.Select(EntityFrameworkAutoMapper.CreateClient).ToList();
 		}

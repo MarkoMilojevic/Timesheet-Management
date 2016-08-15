@@ -1,28 +1,24 @@
 @using TimesheetManagement.Service.Areas.HelpPage.ModelDescriptions
-@model TimesheetManagement.Service.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription
+@model EnumTypeModelDescription
 
 <p>Possible enumeration values:</p>
 
 <table class="help-page-table">
-	<thead>
-	<tr>
-		<th>Name</th><th>Value</th><th>Description</th>
-	</tr>
-	</thead>
-	<tbody>
-	@foreach (EnumValueDescription value in Model.Values)
-	{
-		_Page_Areas_HelpPage_Views_Help_DisplayTemplates_EnumTypeModelDescription_cshtml.<tr>
-			<td class="enum-name">
-				<b>@value.Name</b>
-			</td>
-			<td class="enum-value">
-				<p>@value.Value</p>
-			</td>
-			<td class="enum-description">
-				<p>@value.Documentation</p>
-			</td>
-		</tr>
-	}
-	</tbody>
+    <thead>
+        <tr><th>Name</th><th>Value</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        @foreach (EnumValueDescription value in Model.Values)
+        {
+            <tr>
+                <td class="enum-name"><b>@value.Name</b></td>
+                <td class="enum-value">
+                    <p>@value.Value</p>
+                </td>
+                <td class="enum-description">
+                    <p>@value.Documentation</p>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

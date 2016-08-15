@@ -1,12 +1,13 @@
-@model TimesheetManagement.Service.Areas.HelpPage.InvalidSample
+@using TimesheetManagement.Service.Areas.HelpPage
+@model InvalidSample
 
 @if (HttpContext.Current.IsDebuggingEnabled)
 {
-	_Page_Areas_HelpPage_Views_Help_DisplayTemplates_InvalidSample_cshtml.<div class="warning-message-container">
-		<p>@Model.ErrorMessage</p>
-	</div>
+    <div class="warning-message-container">
+        <p>@Model.ErrorMessage</p>
+    </div>
 }
 else
 {
-	_Page_Areas_HelpPage_Views_Help_DisplayTemplates_InvalidSample_cshtml.<p>Sample not available.</p>
+    <p>Sample not available.</p>
 }

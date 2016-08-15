@@ -136,7 +136,7 @@
     <Compile Include="Helpers\HttpClientExtensions.cs" />
     <Compile Include="Helpers\PagingInfo.cs" />
     <Compile Include="Helpers\TimesheetHttpClient.cs" />
-    <Compile Include="Managers\WebApiTimesheetManager.cs" />
+    <Compile Include="Services\ApiTimesheetService.cs" />
     <Compile Include="Models\TimesheetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

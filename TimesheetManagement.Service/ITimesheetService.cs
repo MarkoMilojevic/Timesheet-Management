@@ -1,28 +1,29 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TimesheetManagement.Business.Tasks.Entities;
 
 namespace TimesheetManagement.Service
 {
 	public interface ITimesheetService
 	{
-		Account GetClient(string tin);
+		Task<Account> GetAccountAsync(string tin);
 
-		ICollection<Account> GetClients();
+        Task<ICollection<Account>> GetAccountsAsync();
 
-		Project GetProject(int id);
+        Task<Project> GetProjectAsync(int id);
 
-		ICollection<Project> GetProjects();
+        Task<ICollection<Project>> GetProjectsAsync();
 
-		Activity GetActivity(int id);
+        Task<Activity> GetActivityAsync(int id);
 
-		ICollection<Activity> GetActivities(int projectId);
+        Task<ICollection<Activity>> GetActivitiesAsync(int projectId);
 
-		Employee GetEmployee(int id);
+        Task<Employee> GetEmployeeAsync(int id);
 
-		Employee GetEmployee(string email);
+        Task<Employee> GetEmployeeAsync(string email);
 
-		ICollection<Employee> GetEmployees();
+        Task<ICollection<Employee>> GetEmployeesAsync();
 
-		ICollection<EmployeeActivity> GetEmployeeActivities(int employeeId);
+        Task<ICollection<EmployeeActivity>> GetEmployeeActivitiesAsync(int employeeId);
 	}
 }

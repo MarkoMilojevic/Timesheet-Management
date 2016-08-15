@@ -7,7 +7,7 @@ namespace TimesheetManagement.Client.Helpers
     public static class TimesheetHttpClient
     {
 
-        public static HttpClient GetClient(string requestedVersion = null)
+        public static HttpClient GetHttpClient(string requestedVersion = null)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("");

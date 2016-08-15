@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Business.Tasks.Entities;
 
 namespace TimesheetManagement.Data.Repositories
 {
 	public interface IRepository
 	{
-		Client GetClient(string tin);
+		Account GetAccount(string tin);
 
-		ICollection<Client> GetClients();
+		ICollection<Account> GetAccounts();
 
 		Project GetProject(int id);
 

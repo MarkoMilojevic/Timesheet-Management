@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Business.Tasks.Entities;
 using System;
 using System.Linq;
 using PagedList;
-using TimesheetManagement.Business.Helpers;
-using TimesheetManagement.Business.Services;
+using TimesheetManagement.Client.Helpers;
 using TimesheetManagement.Client.Models;
+using TimesheetManagement.Service;
 
 namespace TimesheetManagement.Client.Controllers
 {

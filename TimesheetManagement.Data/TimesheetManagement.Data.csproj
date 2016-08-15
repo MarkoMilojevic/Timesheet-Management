@@ -45,9 +45,9 @@
     <Compile Include="Repositories\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj">
       <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
-      <Name>TimesheetManagement.Business</Name>
+      <Name>TimesheetManagement.Business.Tasks</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

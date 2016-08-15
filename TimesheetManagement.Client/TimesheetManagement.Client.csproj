@@ -132,6 +132,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HeaderParser.cs" />
+    <Compile Include="Helpers\HttpClientExtensions.cs" />
+    <Compile Include="Helpers\PagingInfo.cs" />
+    <Compile Include="Helpers\TimesheetHttpClient.cs" />
+    <Compile Include="Services\ApiTimesheetService.cs" />
     <Compile Include="Models\TimesheetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,9 +189,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj">
       <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
-      <Name>TimesheetManagement.Business</Name>
+      <Name>TimesheetManagement.Business.Tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Service\TimesheetManagement.Service.csproj">
+      <Project>{42abf962-0b51-41b0-92b3-98c7a2b2b171}</Project>
+      <Name>TimesheetManagement.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

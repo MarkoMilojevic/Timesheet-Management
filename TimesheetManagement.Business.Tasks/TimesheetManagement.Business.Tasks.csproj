@@ -48,6 +48,7 @@
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Task.cs" />
+    <Compile Include="Entities\TaskActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

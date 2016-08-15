@@ -15,5 +15,7 @@ namespace TimesheetManagement.Business.Entities
 		public string Description { get; set; }
 
 		public bool IsApproved { get; set; }
+
+		public Employee Employee { get; set; }
 	}
 }

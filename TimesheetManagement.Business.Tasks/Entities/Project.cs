@@ -15,6 +15,6 @@ namespace TimesheetManagement.Business.Tasks.Entities
 
 		public Account Account { get; set; }
 
-		public ICollection<Activity> Activities { get; set; }
+		public ICollection<Task> Tasks { get; set; }
 	}
 }

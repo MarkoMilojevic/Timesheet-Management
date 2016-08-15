@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using System.Web.Mvc;
-using TimesheetManagement.Business.Tasks.Entities;
-using System;
+﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 using PagedList;
+using TimesheetManagement.Business.Tasks.Entities;
 using TimesheetManagement.Client.Helpers;
 using TimesheetManagement.Client.Models;
 using TimesheetManagement.Service;
@@ -22,11 +22,11 @@ namespace TimesheetManagement.Client.Controllers
 		public ActionResult Index()
 		{
 			TimesheetViewModel model = new TimesheetViewModel();
-			model.EmployeeActivities = new StaticPagedList<EmployeeActivity>(Enumerable.Empty<EmployeeActivity>(), 1, 10, 0);
+			model.TaskActivities = new StaticPagedList<TaskActivity>(Enumerable.Empty<TaskActivity>(), 1, 10, 0);
 			model.PagingInfo = new PagingInfo(0, 1, 1, 10, "", "");
 			return this.View(model);
 		}
-		
+
 		public async Task<ActionResult> Create()
 		{
 			throw new NotImplementedException();
@@ -36,7 +36,7 @@ namespace TimesheetManagement.Client.Controllers
 		{
 			throw new NotImplementedException();
 		}
-		
+
 		public async Task<ActionResult> Edit()
 		{
 			throw new NotImplementedException();

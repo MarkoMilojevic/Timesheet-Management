@@ -17,6 +17,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 		[StringLength(50)]
 		public string Name { get; set; }
 
+		[Required]
 		[Display(Name = "RN")]
 		[MinLength(8, ErrorMessage = "RN must have 8 characters")]
 		[MaxLength(8, ErrorMessage = "RN must have 8 characters")]

@@ -1,51 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TimesheetManagement.Data.EntityFramework.Common;
 using TimesheetManagement.Data.EntityFramework.Entities;
 using TimesheetManagement.Data.Repositories;
-using ActivityBO = TimesheetManagement.Business.Tasks.Entities.Activity;
+using EmployeeBO = TimesheetManagement.Business.Entities.Employee;
+using ActivityBO = TimesheetManagement.Business.Entities.Activity;
 using AccountBO = TimesheetManagement.Business.Tasks.Entities.Account;
-using EmployeeBO = TimesheetManagement.Business.Tasks.Entities.Employee;
-using EmployeeActivityBO = TimesheetManagement.Business.Tasks.Entities.EmployeeActivity;
 using ProjectBO = TimesheetManagement.Business.Tasks.Entities.Project;
+using TaskBO = TimesheetManagement.Business.Tasks.Entities.Task;
+using TaskActivityBO = TimesheetManagement.Business.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
-	public class EntityFrameworkRepository : IRepository
+	public class EntityFrameworkRepository : ITaskRepository, IActivityRepository, IEmployeeRepository
 	{
 		private readonly TimesheetContext context;
 
 		public EntityFrameworkRepository()
 		{
 			this.context = new TimesheetContext();
-		}
-
-		public AccountBO GetAccount(string tin)
-		{
-			Account client = this.context.Accounts.Find(tin);
-
-			return EntityFrameworkAutoMapper.CreateClient(client);
-		}
-
-		public ICollection<AccountBO> GetAccounts()
-		{
-			List<Account> clients = this.context.Accounts.ToList();
-
-			return clients.Select(EntityFrameworkAutoMapper.CreateClient).ToList();
-		}
-
-		public ProjectBO GetProject(int id)
-		{
-			Project project = this.context.Projects.Find(id);
-
-			return EntityFrameworkAutoMapper.CreateProject(project);
-		}
-
-		public ICollection<ProjectBO> GetProjects()
-		{
-			List<Project> projects = this.context.Projects.ToList();
-
-			return projects.Select(EntityFrameworkAutoMapper.CreateProject).ToList();
 		}
 
 		public ActivityBO GetActivity(int id)
@@ -55,9 +29,9 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 			return EntityFrameworkAutoMapper.CreateActivity(activity);
 		}
 
-		public ICollection<ActivityBO> GetActivities(int projectId)
+		public ICollection<ActivityBO> GetActivities(int employeeId)
 		{
-			List<Activity> activities = this.context.Activities.ToList();
+			List<Activity> activities = this.context.Activities.Where(a => a.EmployeeId == employeeId).ToList();
 
 			return activities.Select(EntityFrameworkAutoMapper.CreateActivity).ToList();
 		}
@@ -83,11 +57,58 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 			return employees.Select(EntityFrameworkAutoMapper.CreateEmployee).ToList();
 		}
 
-		public ICollection<EmployeeActivityBO> GetEmployeeActivities(int employeeId)
+		public AccountBO GetAccount(string tin)
 		{
-			List<EmployeeActivity> employeeActivities = this.context.EmployeeActivities.Where(ea => ea.EmployeeId == employeeId).ToList();
+			Account client = this.context.Accounts.Find(tin);
 
-			return employeeActivities.Select(EntityFrameworkAutoMapper.CreateEmployeeActivity).ToList();
+			return EntityFrameworkAutoMapper.CreateAccount(client);
+		}
+
+		public ICollection<AccountBO> GetAccounts()
+		{
+			List<Account> clients = this.context.Accounts.ToList();
+
+			return clients.Select(EntityFrameworkAutoMapper.CreateAccount).ToList();
+		}
+
+		public ProjectBO GetProject(int projectId)
+		{
+			Project project = this.context.Projects.Find(projectId);
+
+			return EntityFrameworkAutoMapper.CreateProject(project);
+		}
+
+		public ICollection<ProjectBO> GetProjects(string accountTin)
+		{
+			List<Project> projects = this.context.Projects.Where(p => p.TaxpayerIdentificationNumber == accountTin).ToList();
+
+			return projects.Select(EntityFrameworkAutoMapper.CreateProject).ToList();
+		}
+
+		public TaskBO GetTask(int taskId)
+		{
+			Task task = this.context.Tasks.Find(taskId);
+
+			return EntityFrameworkAutoMapper.CreateTask(task);
+		}
+
+		ICollection<TaskBO> ITaskRepository.GetTasks(int projectId)
+		{
+			List<Task> tasks = this.context.Tasks.Where(p => p.ProjectId == projectId).ToList();
+
+			return tasks.Select(EntityFrameworkAutoMapper.CreateTask).ToList();
+		}
+
+		public ICollection<TaskActivityBO> GetTaskActivities(int taskId)
+		{
+			List<TaskActivity> taskActivities = this.context.TaskActivities.Where(ta => ta.TaskId == taskId).ToList();
+
+			return taskActivities.Select(EntityFrameworkAutoMapper.CreateTaskActivity).ToList();
+		}
+
+		public ICollection<TaskActivityBO> GetTaskActivities(int taskId, int employeeId)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

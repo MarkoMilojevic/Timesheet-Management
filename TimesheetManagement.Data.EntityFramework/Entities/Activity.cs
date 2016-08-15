@@ -1,23 +1,34 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimesheetManagement.Data.EntityFramework.Entities
 {
-    public class Activity
-    {
-        public int ActivityId { get; set; }
+	public class Activity
+	{
+		public int ActivityId { get; set; }
 
-        [StringLength(100)]
-        public string Name { get; set; }
+		[Required]
+		[Display(Name = "Start Date")]
+		public DateTime StartDate { get; set; }
 
-        public string AccountId { get; set; }
+		[Required]
+		[Display(Name = "End Date")]
+		public DateTime EndDate { get; set; }
 
-		[ForeignKey(nameof(Activity.AccountId))]
-		public virtual Account Account { get; set; }
+		[Required]
+		[Display(Name = "Duration (hours)")]
+		public int DurationInHours { get; set; }
 
-		public int ProjectId { get; set; }
+		[StringLength(500)]
+		public string Description { get; set; }
 
-		[ForeignKey(nameof(Activity.ProjectId))]
-		public virtual Project Project { get; set; }
+		[Display(Name = "Is Approved")]
+		public bool IsApproved { get; set; }
+
+		public int EmployeeId { get; set; }
+
+		[ForeignKey(nameof(Activity.EmployeeId))]
+		public Employee Employee { get; set; }
 	}
 }

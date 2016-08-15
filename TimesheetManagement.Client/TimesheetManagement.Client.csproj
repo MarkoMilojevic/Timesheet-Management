@@ -193,6 +193,10 @@
       <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
       <Name>TimesheetManagement.Business.Tasks</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+      <Project>{8720f651-01d3-4659-8ee8-4fd933daee94}</Project>
+      <Name>TimesheetManagement.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Service\TimesheetManagement.Service.csproj">
       <Project>{42abf962-0b51-41b0-92b3-98c7a2b2b171}</Project>
       <Name>TimesheetManagement.Service</Name>

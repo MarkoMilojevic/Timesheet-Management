@@ -5,18 +5,19 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 {
 	public class TimesheetContext : DbContext
 	{
+		public DbSet<Employee> Employees { get; set; }
+
+		public DbSet<Activity> Activities { get; set; }
+
 		public DbSet<Account> Accounts { get; set; }
 
 		public DbSet<Project> Projects { get; set; }
 
-		public DbSet<Activity> Activities { get; set; }
+		public DbSet<Task> Tasks { get; set; }
 
-		public DbSet<Employee> Employees { get; set; }
+		public DbSet<TaskActivity> TaskActivities { get; set; }
 
-		public DbSet<EmployeeActivity> EmployeeActivities { get; set; }
-
-		public TimesheetContext()
-			: base("TimesheetConnection")
+		public TimesheetContext() : base("TimesheetConnection")
 		{
 		}
 

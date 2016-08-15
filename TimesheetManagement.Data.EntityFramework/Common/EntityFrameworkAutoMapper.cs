@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using TimesheetManagement.Data.EntityFramework.Entities;
-using ActivityBO = TimesheetManagement.Business.Tasks.Entities.Activity;
+using EmployeeBO = TimesheetManagement.Business.Entities.Employee;
+using ActivityBO = TimesheetManagement.Business.Entities.Activity;
 using AccountBO = TimesheetManagement.Business.Tasks.Entities.Account;
-using EmployeeBO = TimesheetManagement.Business.Tasks.Entities.Employee;
-using EmployeeActivityBO = TimesheetManagement.Business.Tasks.Entities.EmployeeActivity;
 using ProjectBO = TimesheetManagement.Business.Tasks.Entities.Project;
+using TaskBO = TimesheetManagement.Business.Tasks.Entities.Task;
+using TaskActivityBO = TimesheetManagement.Business.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Data.EntityFramework.Common
 {
@@ -14,15 +15,26 @@ namespace TimesheetManagement.Data.EntityFramework.Common
 		{
 			Mapper.Initialize(config =>
 			{
+				config.CreateMap<Employee, EmployeeBO>();
+				config.CreateMap<Activity, ActivityBO>();
 				config.CreateMap<Account, AccountBO>();
 				config.CreateMap<Project, ProjectBO>();
-				config.CreateMap<Activity, ActivityBO>();
-				config.CreateMap<Employee, EmployeeBO>();
-				config.CreateMap<EmployeeActivity, EmployeeActivityBO>();
+				config.CreateMap<Task, TaskBO>();
+				config.CreateMap<TaskActivity, TaskActivityBO>();
 			});
 		}
 
-		public static AccountBO CreateClient(Account client)
+		public static EmployeeBO CreateEmployee(Employee employee)
+		{
+			return Mapper.Map<EmployeeBO>(employee);
+		}
+
+		public static ActivityBO CreateActivity(Activity activity)
+		{
+			return Mapper.Map<ActivityBO>(activity);
+		}
+
+		public static AccountBO CreateAccount(Account client)
 		{
 			return Mapper.Map<AccountBO>(client);
 		}
@@ -32,19 +44,14 @@ namespace TimesheetManagement.Data.EntityFramework.Common
 			return Mapper.Map<ProjectBO>(project);
 		}
 
-		public static ActivityBO CreateActivity(Activity activity)
+		public static TaskBO CreateTask(Task task)
 		{
-			return Mapper.Map<ActivityBO>(activity);
+			return Mapper.Map<TaskBO>(task);
 		}
 
-		public static EmployeeBO CreateEmployee(Employee employee)
+		public static TaskActivityBO CreateTaskActivity(TaskActivity taskActivity)
 		{
-			return Mapper.Map<EmployeeBO>(employee);
-		}
-
-		public static EmployeeActivityBO CreateEmployeeActivity(EmployeeActivity employeeActivity)
-		{
-			return Mapper.Map<EmployeeActivityBO>(employeeActivity);
+			return Mapper.Map<TaskActivityBO>(taskActivity);
 		}
 	}
 }

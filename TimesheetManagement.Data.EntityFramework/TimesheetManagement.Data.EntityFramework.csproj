@@ -93,16 +93,12 @@
   <ItemGroup>
     <Compile Include="Common\EntityFrameworkAutoMapper.cs" />
     <Compile Include="Entities\Activity.cs" />
-    <Compile Include="Entities\EmployeeActivity.cs" />
+    <Compile Include="Entities\TaskActivity.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\Task.cs" />
     <Compile Include="Entities\TimesheetContext.cs" />
-    <Compile Include="Migrations\201608142147215_Initial Migration.cs" />
-    <Compile Include="Migrations\201608142147215_Initial Migration.Designer.cs">
-      <DependentUpon>201608142147215_Initial Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityFrameworkRepository.cs" />
   </ItemGroup>
@@ -115,15 +111,14 @@
       <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
       <Name>TimesheetManagement.Business.Tasks</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+      <Project>{8720f651-01d3-4659-8ee8-4fd933daee94}</Project>
+      <Name>TimesheetManagement.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
       <Name>TimesheetManagement.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608142147215_Initial Migration.resx">
-      <DependentUpon>201608142147215_Initial Migration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

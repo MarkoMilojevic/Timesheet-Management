@@ -1,5 +1,4 @@
 ﻿@using PagedList.Mvc
-@using TimesheetManagement.Business.Tasks.Entities
 @model TimesheetManagement.Client.Models.TimesheetViewModel
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css"/>
@@ -50,4 +49,4 @@
 
 Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
 
-@Html.PagedListPager(Model.EmployeeActivities, page => Url.Action("Index", new { page }))
+@Html.PagedListPager(Model.EmployeeActivities, page => Url.Action("Index", new {page}))

@@ -6,7 +6,7 @@ namespace TimesheetManagement.Client.Models
 {
 	public class TimesheetViewModel
 	{
-		public IPagedList<EmployeeActivity> EmployeeActivities { get; set; }
+		public IPagedList<TaskActivity> TaskActivities { get; set; }
 
 		public PagingInfo PagingInfo { get; set; }
 	}

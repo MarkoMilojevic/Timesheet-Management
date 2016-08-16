@@ -108,7 +108,9 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
 		public ICollection<TaskActivityBO> GetTaskActivities(int taskId, int employeeId)
 		{
-			throw new NotImplementedException();
-		}
+            List<TaskActivity> taskActivities = this.context.TaskActivities.Where(ta => ta.TaskId == taskId && ta.Activity != null && ta.Activity.EmployeeId == employeeId).ToList();
+
+            return taskActivities.Select(EntityFrameworkAutoMapper.CreateTaskActivity).ToList();
+        }
 	}
 }

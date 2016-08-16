@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Data.Entities;
 
 namespace TimesheetManagement.Data.Repositories
 {

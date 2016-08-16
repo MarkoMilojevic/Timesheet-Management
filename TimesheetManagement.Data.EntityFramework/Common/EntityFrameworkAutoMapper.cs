@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using TimesheetManagement.Data.EntityFramework.Entities;
-using EmployeeBO = TimesheetManagement.Business.Entities.Employee;
-using ActivityBO = TimesheetManagement.Business.Entities.Activity;
-using AccountBO = TimesheetManagement.Business.Tasks.Entities.Account;
-using ProjectBO = TimesheetManagement.Business.Tasks.Entities.Project;
-using TaskBO = TimesheetManagement.Business.Tasks.Entities.Task;
-using TaskActivityBO = TimesheetManagement.Business.Tasks.Entities.TaskActivity;
+using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
+using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
+using AccountDTO = TimesheetManagement.Data.Tasks.Entities.Account;
+using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
+using TaskDTO = TimesheetManagement.Data.Tasks.Entities.Task;
+using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Data.EntityFramework.Common
 {
@@ -15,43 +15,42 @@ namespace TimesheetManagement.Data.EntityFramework.Common
 		{
 			Mapper.Initialize(config =>
 			{
-				config.CreateMap<Employee, EmployeeBO>();
-				config.CreateMap<Activity, ActivityBO>();
-				config.CreateMap<Account, AccountBO>();
-				config.CreateMap<Project, ProjectBO>();
-				config.CreateMap<Task, TaskBO>();
-				config.CreateMap<TaskActivity, TaskActivityBO>();
+                config.CreateMap<Employee, EmployeeDTO>();
+                config.CreateMap<Activity, ActivityDTO>();
+                config.CreateMap<Account, AccountDTO>();
+				config.CreateMap<Project, ProjectDTO>();
+				config.CreateMap<Task, TaskDTO>();
+				config.CreateMap<TaskActivity, TaskActivityDTO>();
 			});
 		}
 
-		public static EmployeeBO CreateEmployee(Employee employee)
+        public static EmployeeDTO CreateEmployee(Employee employee)
+        {
+            return Mapper.Map<EmployeeDTO>(employee);
+        }
+
+        public static ActivityDTO CreateActivity(Activity activity)
+        {
+            return Mapper.Map<ActivityDTO>(activity);
+        }
+        public static AccountDTO CreateAccount(Account account)
 		{
-			return Mapper.Map<EmployeeBO>(employee);
+			return Mapper.Map<AccountDTO>(account);
 		}
 
-		public static ActivityBO CreateActivity(Activity activity)
+		public static ProjectDTO CreateProject(Project project)
 		{
-			return Mapper.Map<ActivityBO>(activity);
+			return Mapper.Map<ProjectDTO>(project);
 		}
 
-		public static AccountBO CreateAccount(Account client)
+		public static TaskDTO CreateTask(Task task)
 		{
-			return Mapper.Map<AccountBO>(client);
+			return Mapper.Map<TaskDTO>(task);
 		}
 
-		public static ProjectBO CreateProject(Project project)
+		public static TaskActivityDTO CreateTaskActivity(TaskActivity taskActivity)
 		{
-			return Mapper.Map<ProjectBO>(project);
-		}
-
-		public static TaskBO CreateTask(Task task)
-		{
-			return Mapper.Map<TaskBO>(task);
-		}
-
-		public static TaskActivityBO CreateTaskActivity(TaskActivity taskActivity)
-		{
-			return Mapper.Map<TaskActivityBO>(taskActivity);
+			return Mapper.Map<TaskActivityDTO>(taskActivity);
 		}
 	}
 }

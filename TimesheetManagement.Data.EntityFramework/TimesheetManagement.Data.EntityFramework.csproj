@@ -107,13 +107,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj">
-      <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
-      <Name>TimesheetManagement.Business.Tasks</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
-      <Project>{8720f651-01d3-4659-8ee8-4fd933daee94}</Project>
-      <Name>TimesheetManagement.Business</Name>
+    <ProjectReference Include="..\TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj">
+      <Project>{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}</Project>
+      <Name>TimesheetManagement.Data.Tasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>

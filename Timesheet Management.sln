@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Common", "TimesheetManagement.Client.Common\TimesheetManagement.Client.Common.csproj", "{BB773BDD-6ADF-4188-82E6-6048FA3E5420}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.Tasks", "TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj", "{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,10 @@ Global
 		{BB773BDD-6ADF-4188-82E6-6048FA3E5420}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB773BDD-6ADF-4188-82E6-6048FA3E5420}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB773BDD-6ADF-4188-82E6-6048FA3E5420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,5 +120,6 @@ Global
 		{BF247438-BEC6-4459-9CF8-B16C27B833E7} = {E9819B3C-B622-47ED-AD82-DE8CB100BD2B}
 		{5889619D-CC10-4BE5-BC54-D9199F52078A} = {6D3B8C16-186F-4585-B673-FCD2944F38B3}
 		{BB773BDD-6ADF-4188-82E6-6048FA3E5420} = {6D3B8C16-186F-4585-B673-FCD2944F38B3}
+		{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB} = {D6343D97-C1C2-414A-93BA-99AE80D004DB}
 	EndGlobalSection
 EndGlobal

@@ -231,7 +231,16 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TimesheetManagement.Service.Api.Common\TimesheetManagement.Service.Api.Common.csproj">
+      <Project>{46cb408f-9721-423f-84d7-844328e08731}</Project>
+      <Name>TimesheetManagement.Service.Api.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Service.Api.Tasks\TimesheetManagement.Service.Api.Tasks.csproj">
+      <Project>{bf247438-bec6-4459-9cf8-b16c27b833e7}</Project>
+      <Name>TimesheetManagement.Service.Api.Tasks</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />
   </ItemGroup>

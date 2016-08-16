@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace TimesheetManagement.Client.Helpers
+namespace TimesheetManagement.Client.Common.Helpers
 {
     public static class TimesheetHttpClient
     {

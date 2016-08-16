@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TimesheetManagement.Client.Helpers
+namespace TimesheetManagement.Client.Common.Helpers
 {
     public static class HttpClientExtensions
     {

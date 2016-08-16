@@ -1,4 +1,4 @@
-﻿namespace TimesheetManagement.Client.Helpers
+﻿namespace TimesheetManagement.Client.Common.Helpers
 {
     public class PagingInfo
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using PagedList;
 using TimesheetManagement.Business.Tasks.Entities;
-using TimesheetManagement.Client.Helpers;
+using TimesheetManagement.Client.Common.Helpers;
 using TimesheetManagement.Client.Models;
 using TimesheetManagement.Service;
 

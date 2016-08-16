@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TimesheetManagement.Business.Entities;
 using TimesheetManagement.Business.Tasks.Entities;
-using TimesheetManagement.Client.Helpers;
+using TimesheetManagement.Client.Common.Helpers;
 using TimesheetManagement.Service;
 using Task = System.Threading.Tasks.Task;
 

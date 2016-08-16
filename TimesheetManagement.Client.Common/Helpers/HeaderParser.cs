@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 
-namespace TimesheetManagement.Client.Helpers
+namespace TimesheetManagement.Client.Common.Helpers
 {
     public static class HeaderParser
     {

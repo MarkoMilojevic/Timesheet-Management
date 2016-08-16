@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace TimesheetManagement.Service.Api.Controllers
 {
+    [EnableCors("*", "*", "GET")]
 	public class ValuesController : ApiController
 	{
 		// GET api/values

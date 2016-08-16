@@ -6,11 +6,20 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client", "TimesheetManagement.Client\TimesheetManagement.Client.csproj", "{85EB28F6-03E2-474D-8023-EE8FD95F75F2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42ABF962-0B51-41B0-92B3-98C7A2B2B171} = {42ABF962-0B51-41B0-92B3-98C7A2B2B171}
+		{5889619D-CC10-4BE5-BC54-D9199F52078A} = {5889619D-CC10-4BE5-BC54-D9199F52078A}
+		{BB773BDD-6ADF-4188-82E6-6048FA3E5420} = {BB773BDD-6ADF-4188-82E6-6048FA3E5420}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service.Api", "TimesheetManagement.Service.Api\TimesheetManagement.Service.Api.csproj", "{CB45067C-A9D3-4758-9FFD-ADD9F280EA4D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF247438-BEC6-4459-9CF8-B16C27B833E7} = {BF247438-BEC6-4459-9CF8-B16C27B833E7}
+		{46CB408F-9721-423F-84D7-844328E08731} = {46CB408F-9721-423F-84D7-844328E08731}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks", "TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj", "{740E193C-C000-407D-88EB-AB6492874554}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8720F651-01D3-4659-8EE8-4FD933DAEE94} = {8720F651-01D3-4659-8EE8-4FD933DAEE94}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data", "TimesheetManagement.Data\TimesheetManagement.Data.csproj", "{566450BB-65AF-40CD-8654-E525C16B2408}"
 EndProject
@@ -33,6 +42,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service.Api.Tasks", "TimesheetManagement.Service.Api.Tasks\TimesheetManagement.Service.Api.Tasks.csproj", "{BF247438-BEC6-4459-9CF8-B16C27B833E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Tasks", "TimesheetManagement.Client.Tasks\TimesheetManagement.Client.Tasks.csproj", "{5889619D-CC10-4BE5-BC54-D9199F52078A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BB773BDD-6ADF-4188-82E6-6048FA3E5420} = {BB773BDD-6ADF-4188-82E6-6048FA3E5420}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Common", "TimesheetManagement.Client.Common\TimesheetManagement.Client.Common.csproj", "{BB773BDD-6ADF-4188-82E6-6048FA3E5420}"
 EndProject

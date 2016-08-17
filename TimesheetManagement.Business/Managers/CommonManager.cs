@@ -8,12 +8,12 @@ using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 
 namespace TimesheetManagement.Business.Managers
 {
-    public class TasksManager
+    public class CommonManager
     {
         private readonly IEmployeeRepository employeeRepository;
         private readonly IActivityRepository activityRepository;
 
-        public TasksManager(IEmployeeRepository employeeRepository, IActivityRepository activityRepository)
+        public CommonManager(IEmployeeRepository employeeRepository, IActivityRepository activityRepository)
         {
             this.employeeRepository = employeeRepository;
             this.activityRepository = activityRepository;

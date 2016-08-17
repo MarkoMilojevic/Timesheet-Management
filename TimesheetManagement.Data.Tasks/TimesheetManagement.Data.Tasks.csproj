@@ -46,7 +46,6 @@
     <Compile Include="Entities\Task.cs" />
     <Compile Include="Entities\TaskActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ITaskRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimesheetManagement.Data.EntityFramework.Common;
 using TimesheetManagement.Data.EntityFramework.Entities;
-using TimesheetManagement.Data.Repositories;
+using TimesheetManagement.Data.Interfaces.CommonRepositories;
 using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories

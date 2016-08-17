@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TimesheetManagement.Business.Tasks.Common;
-using TimesheetManagement.Business.Tasks.Entities;
-using TimesheetManagement.Data.Tasks.Repositories;
 using AccountDTO = TimesheetManagement.Data.Tasks.Entities.Account;
 using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
 using TaskDTO = TimesheetManagement.Data.Tasks.Entities.Task;
 using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
+using TimesheetManagement.Business.Interfaces.Tasks;
+using System;
+using TimesheetManagement.Business.Tasks.Entities.Entities;
+using TimesheetManagement.Data.Interfaces.TaskRepositories;
 
 namespace TimesheetManagement.Business.Tasks.Managers
 {
-    public class TasksManager
+    public class TasksManager : ITasksManager
     {
         private readonly ITaskRepository repository;
 

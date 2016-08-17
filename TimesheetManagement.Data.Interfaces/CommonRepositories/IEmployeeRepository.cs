@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TimesheetManagement.Data.Entities;
 
-namespace TimesheetManagement.Data.Repositories
+namespace TimesheetManagement.Data.Interfaces.CommonRepositories
 {
 	public interface IEmployeeRepository
 	{

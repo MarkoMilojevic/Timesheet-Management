@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Business.Entities.Entities;
 using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
 using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 

@@ -1,5 +1,5 @@
 ﻿using PagedList;
-using TimesheetManagement.Business.Tasks.Entities;
+using TimesheetManagement.Business.Tasks.Entities.Entities;
 using TimesheetManagement.Client.Common.Helpers;
 
 namespace TimesheetManagement.Client.Models

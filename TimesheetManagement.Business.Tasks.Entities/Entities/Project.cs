@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TimesheetManagement.Business.Tasks.Entities
+namespace TimesheetManagement.Business.Tasks.Entities.Entities
 {
 	public class Project
 	{

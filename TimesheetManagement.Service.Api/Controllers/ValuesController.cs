@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using TimesheetManagement.Business.Interfaces.Common;
+using TimesheetManagement.Business.Interfaces.Tasks;
 using TimesheetManagement.Business.Tasks.Managers;
 using TimesheetManagement.Data.EntityFramework.Repositories;
 using TimesheetManagement.Service.Api.Common.Helpers;
@@ -10,11 +12,13 @@ namespace TimesheetManagement.Service.Api.Controllers
     [EnableCors("*", "*", "GET")]
 	public class ValuesController : ApiController
     {
-        private TasksManager tasksManager;
+        private ITasksManager tasksManager;
+        private ICommonManager commonManager;
 
-        public ValuesController()
+        public ValuesController(ITasksManager taskManager, ICommonManager commonManager)
         {
-            tasksManager = new TasksManager(new TaskEFRepository());
+            this.tasksManager = taskManager;
+            this.commonManager = commonManager;
         }
 
 		// Some test methods
@@ -30,10 +34,10 @@ namespace TimesheetManagement.Service.Api.Controllers
             return Ok(tasksManager.GetProjects(id));
         }
 
-        [VersionedRoute("api/project/{id}/task", 1)]
-        public IHttpActionResult GetProjectTasks(int id)
+        [VersionedRoute("api/employees", 1)]
+        public IHttpActionResult GetEmployees(int id)
         {
-            return Ok(tasksManager.GetTasks(id));
+            return Ok(commonManager.GetEmployees());
         }
 
         // GET api/values/5

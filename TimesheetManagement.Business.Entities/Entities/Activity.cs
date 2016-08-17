@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TimesheetManagement.Business.Entities
+namespace TimesheetManagement.Business.Entities.Entities
 {
 	public class Activity
 	{

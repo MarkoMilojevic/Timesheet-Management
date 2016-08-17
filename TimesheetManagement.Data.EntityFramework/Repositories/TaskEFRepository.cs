@@ -2,7 +2,7 @@
 using System.Linq;
 using TimesheetManagement.Data.EntityFramework.Entities;
 using TimesheetManagement.Data.EntityFramework.Common;
-using TimesheetManagement.Data.Tasks.Repositories;
+using TimesheetManagement.Data.Interfaces.TaskRepositories;
 using AccountDTO = TimesheetManagement.Data.Tasks.Entities.Account;
 using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
 using TaskDTO = TimesheetManagement.Data.Tasks.Entities.Task;

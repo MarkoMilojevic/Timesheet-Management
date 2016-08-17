@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Business.Entities.Entities;
 
-namespace TimesheetManagement.Business.Tasks.Entities
+namespace TimesheetManagement.Business.Tasks.Entities.Entities
 {
 	public class TaskActivity
 	{

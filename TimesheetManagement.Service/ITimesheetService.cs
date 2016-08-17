@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TimesheetManagement.Business.Entities;
-using TimesheetManagement.Business.Tasks.Entities;
+using TimesheetManagement.Business.Entities.Entities;
+using TimesheetManagement.Business.Tasks.Entities.Entities;
 using Task = System.Threading.Tasks.Task;
 
 namespace TimesheetManagement.Service

@@ -16,7 +16,7 @@ namespace TimesheetManagement.Client.Common.Helpers
 
             if (requestedVersion != null)
             {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.expensetrackerapi.v" + requestedVersion + "+json"));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.timesheetmanagement.v" + requestedVersion + "+json"));
             }
 
             return client;

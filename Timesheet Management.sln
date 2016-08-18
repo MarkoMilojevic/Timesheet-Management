@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client", "TimesheetManagement.Client\TimesheetManagement.Client.csproj", "{85EB28F6-03E2-474D-8023-EE8FD95F75F2}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -20,7 +20,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks", "TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj", "{740E193C-C000-407D-88EB-AB6492874554}"
 	ProjectSection(ProjectDependencies) = postProject
+		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {C63A0F22-0C98-4CA1-B341-B495BE759509}
 		{8720F651-01D3-4659-8EE8-4FD933DAEE94} = {8720F651-01D3-4659-8EE8-4FD933DAEE94}
+		{9E0BF7F3-748E-4657-B3A1-095463BD48E1} = {9E0BF7F3-748E-4657-B3A1-095463BD48E1}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data", "TimesheetManagement.Data\TimesheetManagement.Data.csproj", "{566450BB-65AF-40CD-8654-E525C16B2408}"
@@ -28,6 +30,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.EntityFramework", "TimesheetManagement.Data.EntityFramework\TimesheetManagement.Data.EntityFramework.csproj", "{0CDD347D-C11B-435C-B0D9-BF82E5245503}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business", "TimesheetManagement.Business\TimesheetManagement.Business.csproj", "{8720F651-01D3-4659-8EE8-4FD933DAEE94}"
+	ProjectSection(ProjectDependencies) = postProject
+		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7} = {94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}
+		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {C63A0F22-0C98-4CA1-B341-B495BE759509}
+		{9E0BF7F3-748E-4657-B3A1-095463BD48E1} = {9E0BF7F3-748E-4657-B3A1-095463BD48E1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service", "TimesheetManagement.Service\TimesheetManagement.Service.csproj", "{42ABF962-0B51-41B0-92B3-98C7A2B2B171}"
 EndProject

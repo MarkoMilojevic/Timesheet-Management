@@ -7,8 +7,8 @@
     <ProjectGuid>{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TimesheetManagement.Business.Entities</RootNamespace>
-    <AssemblyName>TimesheetManagement.Business.Entities</AssemblyName>
+    <RootNamespace>TimesheetManagement.Business.Managers</RootNamespace>
+    <AssemblyName>TimesheetManagement.Business.Managers</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,9 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Activity.cs" />
-    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="CommonManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj">
+      <Project>{9E0BF7F3-748E-4657-B3A1-095463BD48E1}</Project>
+      <Name>TimesheetManagement.Business.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+      <Project>{8720f651-01d3-4659-8ee8-4fd933daee94}</Project>
+      <Name>TimesheetManagement.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj">
+      <Project>{C63A0F22-0C98-4CA1-B341-B495BE759509}</Project>
+      <Name>TimesheetManagement.Data.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
+      <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
+      <Name>TimesheetManagement.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

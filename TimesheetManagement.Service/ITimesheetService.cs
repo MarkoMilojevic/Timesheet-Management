@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TimesheetManagement.Business.Entities.Entities;
-using TimesheetManagement.Business.Tasks.Entities.Entities;
-using Task = System.Threading.Tasks.Task;
+using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Business.Tasks.Entities;
+using Task = TimesheetManagement.Business.Tasks.Entities.Task;
 
 namespace TimesheetManagement.Service
 {
@@ -31,5 +31,7 @@ namespace TimesheetManagement.Service
 		Task<ICollection<Task>> GetTasksAsync(int projectId);
 
 		Task<ICollection<TaskActivity>> GetTaskActivitiesAsync(int taskId);
-	}
+
+        Task<ICollection<TaskActivity>> GetTaskActivitiesAsync(int taskId, int employeeId);
+    }
 }

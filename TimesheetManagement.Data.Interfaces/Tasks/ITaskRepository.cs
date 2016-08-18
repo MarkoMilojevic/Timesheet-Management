@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TimesheetManagement.Data.Tasks.Entities;
 
-namespace TimesheetManagement.Data.Interfaces.TaskRepositories
+namespace TimesheetManagement.Data.Interfaces.Tasks
 {
 	public interface ITaskRepository
 	{

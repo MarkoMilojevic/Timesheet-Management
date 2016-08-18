@@ -2,15 +2,15 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Business.Tasks.Entities;
 using TimesheetManagement.Client.Common.Helpers;
 using TimesheetManagement.Service;
-using Task = System.Threading.Tasks.Task;
-using TimesheetManagement.Business.Tasks.Entities.Entities;
-using TimesheetManagement.Business.Entities.Entities;
+using Task = TimesheetManagement.Business.Tasks.Entities.Task;
 
 namespace TimesheetManagement.Client.Services
 {
-	/*public class ApiTimesheetService : ITimesheetService
+	public class ApiTimesheetService : ITimesheetService
 	{
 		public async Task<Employee> GetEmployeeAsync(int employeeId)
 		{
@@ -166,6 +166,19 @@ namespace TimesheetManagement.Client.Services
 
 			string responseContent = await response.Content.ReadAsStringAsync();
 			return JsonConvert.DeserializeObject<ICollection<TaskActivity>>(responseContent);
-		}*/
-	//}
+		}
+
+	    public async Task<ICollection<TaskActivity>> GetTaskActivitiesAsync(int taskId, int employeeId)
+	    {
+            HttpClient httpClient = TimesheetHttpClient.GetHttpClient();
+            HttpResponseMessage response = await httpClient.GetAsync($"api/taskactivities/taskId={taskId},employeeId={employeeId}");
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            string responseContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ICollection<TaskActivity>>(responseContent);
+        }
+	}
 }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TimesheetManagement.Business.Entities.Entities;
+using TimesheetManagement.Business.Entities;
 using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
 using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 
@@ -11,8 +11,8 @@ namespace TimesheetManagement.Business.Common
 		{
 			Mapper.Initialize(config =>
 			{
-				config.CreateMap<EmployeeDTO, Employee>();
-				config.CreateMap<ActivityDTO, Activity>();
+				config.CreateMap<EmployeeDTO, Employee>().MaxDepth(3);
+				config.CreateMap<ActivityDTO, Activity>().MaxDepth(3);
 			});
 		}
 

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using TimesheetManagement.Business.Entities.Entities;
+﻿using System.Collections.Generic;
+using TimesheetManagement.Business.Entities;
 
 namespace TimesheetManagement.Business.Interfaces.Common
 {

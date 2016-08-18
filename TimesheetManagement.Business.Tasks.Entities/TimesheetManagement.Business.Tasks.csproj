@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{740E193C-C000-407D-88EB-AB6492874554}</ProjectGuid>
+    <ProjectGuid>{F140B1BA-BDBE-492C-A523-119C13E657B8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TimesheetManagement.Business.Tasks</RootNamespace>
@@ -35,12 +35,12 @@
       <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,35 +50,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\TasksAutoMapper.cs" />
-    <Compile Include="Managers\TasksManager.cs" />
+    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\Task.cs" />
+    <Compile Include="Entities\TaskActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj">
-      <Project>{9e0bf7f3-748e-4657-b3a1-095463bd48e1}</Project>
-      <Name>TimesheetManagement.Business.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.Entities.csproj">
-      <Project>{f140b1ba-bdbe-492c-a523-119c13e657b8}</Project>
-      <Name>TimesheetManagement.Business.Tasks.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
-      <Project>{8720f651-01d3-4659-8ee8-4fd933daee94}</Project>
+      <Project>{8720F651-01D3-4659-8EE8-4FD933DAEE94}</Project>
       <Name>TimesheetManagement.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj">
-      <Project>{C63A0F22-0C98-4CA1-B341-B495BE759509}</Project>
-      <Name>TimesheetManagement.Data.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj">
       <Project>{c73c1127-b7ef-4e90-9acd-bfd61b1845bb}</Project>
       <Name>TimesheetManagement.Data.Tasks</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

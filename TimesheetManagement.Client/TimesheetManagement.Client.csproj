@@ -185,16 +185,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business.Entities\TimesheetManagement.Business.Entities.csproj">
-      <Project>{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}</Project>
-      <Name>TimesheetManagement.Business.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.Entities.csproj">
-      <Project>{F140B1BA-BDBE-492C-A523-119C13E657B8}</Project>
-      <Name>TimesheetManagement.Business.Tasks.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj">
-      <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.csproj">
+      <Project>{f140b1ba-bdbe-492c-a523-119c13e657b8}</Project>
       <Name>TimesheetManagement.Business.Tasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">

@@ -46,25 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonAutoMapper.cs" />
-    <Compile Include="Managers\CommonManager.cs" />
+    <Compile Include="Entities\Activity.cs" />
+    <Compile Include="Entities\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business.Entities\TimesheetManagement.Business.Entities.csproj">
-      <Project>{94ec4c1f-180c-4c4c-be24-6de0370ce5b7}</Project>
-      <Name>TimesheetManagement.Business.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj">
-      <Project>{9e0bf7f3-748e-4657-b3a1-095463bd48e1}</Project>
-      <Name>TimesheetManagement.Business.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj">
-      <Project>{c63a0f22-0c98-4ca1-b341-b495be759509}</Project>
-      <Name>TimesheetManagement.Data.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
       <Name>TimesheetManagement.Data</Name>

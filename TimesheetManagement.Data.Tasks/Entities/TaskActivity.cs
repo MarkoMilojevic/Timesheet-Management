@@ -9,8 +9,8 @@ namespace TimesheetManagement.Data.Tasks.Entities
 
         public int ActivityId { get; set; }
 
-        //public Task Task { get; set; }
+        public Task Task { get; set; }
 
-        //public ICollection<Activity> Activities { get; set; }
+        public ICollection<Activity> Activities { get; set; }
     }
 }

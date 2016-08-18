@@ -2,7 +2,7 @@
 using System.Linq;
 using TimesheetManagement.Data.EntityFramework.Common;
 using TimesheetManagement.Data.EntityFramework.Entities;
-using TimesheetManagement.Data.Interfaces.CommonRepositories;
+using TimesheetManagement.Data.Interfaces.Common;
 using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
 
 

@@ -265,21 +265,21 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business.Entities\TimesheetManagement.Business.Entities.csproj">
+    <ProjectReference Include="..\TimesheetManagement.Business.Entities\TimesheetManagement.Business.Managers.csproj">
       <Project>{94ec4c1f-180c-4c4c-be24-6de0370ce5b7}</Project>
-      <Name>TimesheetManagement.Business.Entities</Name>
+      <Name>TimesheetManagement.Business.Managers</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj">
       <Project>{9E0BF7F3-748E-4657-B3A1-095463BD48E1}</Project>
       <Name>TimesheetManagement.Business.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.Entities.csproj">
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.csproj">
       <Project>{f140b1ba-bdbe-492c-a523-119c13e657b8}</Project>
-      <Name>TimesheetManagement.Business.Tasks.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj">
-      <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
       <Name>TimesheetManagement.Business.Tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.Managers.csproj">
+      <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
+      <Name>TimesheetManagement.Business.Tasks.Managers</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
       <Project>{8720f651-01d3-4659-8ee8-4fd933daee94}</Project>
@@ -292,10 +292,6 @@
     <ProjectReference Include="..\TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj">
       <Project>{C63A0F22-0C98-4CA1-B341-B495BE759509}</Project>
       <Name>TimesheetManagement.Data.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj">
-      <Project>{c73c1127-b7ef-4e90-9acd-bfd61b1845bb}</Project>
-      <Name>TimesheetManagement.Data.Tasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Service.Api.Common\TimesheetManagement.Service.Api.Common.csproj">
       <Project>{46cb408f-9721-423f-84d7-844328e08731}</Project>
@@ -327,7 +323,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55674</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55675/</IISUrl>
+          <IISUrl>http://localhost:55674/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

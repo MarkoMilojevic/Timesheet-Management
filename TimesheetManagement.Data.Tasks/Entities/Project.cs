@@ -13,9 +13,9 @@ namespace TimesheetManagement.Data.Tasks.Entities
 
 		public DateTime EndDate { get; set; }
 
-        //public Account Account { get; set; }
+        public Account Account { get; set; }
 
-        //public ICollection<Task> Tasks { get; set; }
+        public ICollection<Task> Tasks { get; set; }
 
         public string TaxpayerIdentificationNumber { get; set; }
     }

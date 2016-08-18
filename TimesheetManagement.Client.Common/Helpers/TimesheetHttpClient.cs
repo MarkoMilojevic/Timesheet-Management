@@ -10,7 +10,7 @@ namespace TimesheetManagement.Client.Common.Helpers
         public static HttpClient GetHttpClient(string requestedVersion = null)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("");
+            client.BaseAddress = new Uri("http://localhost:55674");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

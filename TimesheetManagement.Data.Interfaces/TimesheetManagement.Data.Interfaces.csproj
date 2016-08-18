@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonRepositories\IActivityRepository.cs" />
-    <Compile Include="CommonRepositories\IEmployeeRepository.cs" />
+    <Compile Include="Common\IActivityRepository.cs" />
+    <Compile Include="Common\IEmployeeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskRepositories\ITaskRepository.cs" />
+    <Compile Include="Tasks\ITaskRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj">

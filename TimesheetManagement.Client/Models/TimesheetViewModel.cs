@@ -1,13 +1,14 @@
-﻿using PagedList;
-using TimesheetManagement.Business.Tasks.Entities.Entities;
+﻿using System.Collections.Generic;
+using PagedList;
+using TimesheetManagement.Business.Tasks.Entities;
 using TimesheetManagement.Client.Common.Helpers;
 
 namespace TimesheetManagement.Client.Models
 {
 	public class TimesheetViewModel
 	{
-		public IPagedList<TaskActivity> TaskActivities { get; set; }
+		public IEnumerable<Account> Accounts { get; set; }
 
-		public PagingInfo PagingInfo { get; set; }
+		//public PagingInfo PagingInfo { get; set; }
 	}
 }

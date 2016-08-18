@@ -15,12 +15,12 @@ namespace TimesheetManagement.Data.EntityFramework.Common
 		{
 			Mapper.Initialize(config =>
 			{
-			    config.CreateMap<Employee, EmployeeDTO>();
-                config.CreateMap<Activity, ActivityDTO>();
-                config.CreateMap<Account, AccountDTO>();
-				config.CreateMap<Project, ProjectDTO>();
-				config.CreateMap<Task, TaskDTO>();
-				config.CreateMap<TaskActivity, TaskActivityDTO>();
+			    config.CreateMap<Employee, EmployeeDTO>().MaxDepth(3);
+                config.CreateMap<Activity, ActivityDTO>().MaxDepth(3);
+			    config.CreateMap<Account, AccountDTO>().MaxDepth(3);
+				config.CreateMap<Project, ProjectDTO>().MaxDepth(3);
+                config.CreateMap<Task, TaskDTO>().MaxDepth(3);
+				config.CreateMap<TaskActivity, TaskActivityDTO>().MaxDepth(3);
 			});
 		}
 
@@ -35,21 +35,13 @@ namespace TimesheetManagement.Data.EntityFramework.Common
         }
         public static AccountDTO CreateAccount(Account account)
 		{
-            return Mapper.Map<Account, AccountDTO>(account);
+            return Mapper.Map<AccountDTO>(account);
         }
 
 		public static ProjectDTO CreateProject(Project project)
 		{
-            //Throws Exception for Mapper.Map<ProjectDTO>(project);
-            //Map<TSource, TDestination>(TSource source); vs Map<TDestination>(object source); 
-            //Better to call generic method rather one casting to object
-
-            //return Mapper.Map<Project, ProjectDTO>(project); Even this throws an exception often.
-
-		    var projectDto = Mapper.Map<Project, ProjectDTO>(project);
+            ProjectDTO projectDto = Mapper.Map<Project, ProjectDTO>(project);
 		    return projectDto;
-
-            //We will possibly have to quit using Automapper when transforming Entities to DTO's. We will have to write conversion methods manualy.
 		}
 
 		public static TaskDTO CreateTask(Task task)

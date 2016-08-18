@@ -1,4 +1,4 @@
-﻿namespace TimesheetManagement.Business.Entities.Entities
+﻿namespace TimesheetManagement.Business.Entities
 {
 	public class Employee
 	{

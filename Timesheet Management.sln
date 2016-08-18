@@ -15,13 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service
 		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {C63A0F22-0C98-4CA1-B341-B495BE759509}
 		{BF247438-BEC6-4459-9CF8-B16C27B833E7} = {BF247438-BEC6-4459-9CF8-B16C27B833E7}
 		{8720F651-01D3-4659-8EE8-4FD933DAEE94} = {8720F651-01D3-4659-8EE8-4FD933DAEE94}
+		{0CDD347D-C11B-435C-B0D9-BF82E5245503} = {0CDD347D-C11B-435C-B0D9-BF82E5245503}
 		{46CB408F-9721-423F-84D7-844328E08731} = {46CB408F-9721-423F-84D7-844328E08731}
+		{9E0BF7F3-748E-4657-B3A1-095463BD48E1} = {9E0BF7F3-748E-4657-B3A1-095463BD48E1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks", "TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.csproj", "{740E193C-C000-407D-88EB-AB6492874554}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks.Managers", "TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.Managers.csproj", "{740E193C-C000-407D-88EB-AB6492874554}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {C63A0F22-0C98-4CA1-B341-B495BE759509}
-		{8720F651-01D3-4659-8EE8-4FD933DAEE94} = {8720F651-01D3-4659-8EE8-4FD933DAEE94}
 		{F140B1BA-BDBE-492C-A523-119C13E657B8} = {F140B1BA-BDBE-492C-A523-119C13E657B8}
 		{9E0BF7F3-748E-4657-B3A1-095463BD48E1} = {9E0BF7F3-748E-4657-B3A1-095463BD48E1}
 	EndProjectSection
@@ -29,13 +30,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data", "TimesheetManagement.Data\TimesheetManagement.Data.csproj", "{566450BB-65AF-40CD-8654-E525C16B2408}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.EntityFramework", "TimesheetManagement.Data.EntityFramework\TimesheetManagement.Data.EntityFramework.csproj", "{0CDD347D-C11B-435C-B0D9-BF82E5245503}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {C63A0F22-0C98-4CA1-B341-B495BE759509}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business", "TimesheetManagement.Business\TimesheetManagement.Business.csproj", "{8720F651-01D3-4659-8EE8-4FD933DAEE94}"
-	ProjectSection(ProjectDependencies) = postProject
-		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7} = {94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}
-		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {C63A0F22-0C98-4CA1-B341-B495BE759509}
-		{9E0BF7F3-748E-4657-B3A1-095463BD48E1} = {9E0BF7F3-748E-4657-B3A1-095463BD48E1}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service", "TimesheetManagement.Service\TimesheetManagement.Service.csproj", "{42ABF962-0B51-41B0-92B3-98C7A2B2B171}"
 EndProject
@@ -61,12 +60,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.Tasks", "TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj", "{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Interfaces", "TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj", "{9E0BF7F3-748E-4657-B3A1-095463BD48E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F140B1BA-BDBE-492C-A523-119C13E657B8} = {F140B1BA-BDBE-492C-A523-119C13E657B8}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks.Entities", "TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.Entities.csproj", "{F140B1BA-BDBE-492C-A523-119C13E657B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks", "TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.csproj", "{F140B1BA-BDBE-492C-A523-119C13E657B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.Interfaces", "TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj", "{C63A0F22-0C98-4CA1-B341-B495BE759509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Entities", "TimesheetManagement.Business.Entities\TimesheetManagement.Business.Entities.csproj", "{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Managers", "TimesheetManagement.Business.Entities\TimesheetManagement.Business.Managers.csproj", "{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

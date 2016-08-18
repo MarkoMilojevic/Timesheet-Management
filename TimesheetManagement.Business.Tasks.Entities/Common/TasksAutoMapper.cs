@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TimesheetManagement.Business.Tasks.Entities.Entities;
+using TimesheetManagement.Business.Tasks.Entities;
 using AccountDTO = TimesheetManagement.Data.Tasks.Entities.Account;
 using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
 using TaskDTO = TimesheetManagement.Data.Tasks.Entities.Task;
@@ -13,10 +13,10 @@ namespace TimesheetManagement.Business.Tasks.Common
 		{
 			Mapper.Initialize(config =>
 			{
-				config.CreateMap<AccountDTO, Account>();
-				config.CreateMap<ProjectDTO, Project>();
-				config.CreateMap<TaskDTO, Task>();
-				config.CreateMap<TaskActivityDTO, TaskActivity>();
+			    config.CreateMap<AccountDTO, Account>().MaxDepth(3);
+				config.CreateMap<ProjectDTO, Project>().MaxDepth(3);
+				config.CreateMap<TaskDTO, Task>().MaxDepth(3);
+				config.CreateMap<TaskActivityDTO, TaskActivity>().MaxDepth(3);
 			});
 		}
         

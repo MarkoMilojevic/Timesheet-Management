@@ -10,6 +10,6 @@ namespace TimesheetManagement.Data.Tasks.Entities
 
 		public string TaxpayerIdentificationNumber { get; set; }
 
-		//public ICollection<Project> Projects { get; set; }
+		public ICollection<Project> Projects { get; set; }
 	}
 }

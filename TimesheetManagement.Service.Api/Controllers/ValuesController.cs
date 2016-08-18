@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Newtonsoft.Json;
 using TimesheetManagement.Business.Interfaces.Common;
 using TimesheetManagement.Business.Interfaces.Tasks;
-using TimesheetManagement.Business.Tasks.Managers;
-using TimesheetManagement.Data.EntityFramework.Repositories;
 using TimesheetManagement.Service.Api.Common.Helpers;
+using TimesheetManagement.Business.Tasks;
+using TimesheetManagement.Business;
+using TimesheetManagement.Business.Tasks.Entities;
 
 namespace TimesheetManagement.Service.Api.Controllers
 {
     [EnableCors("*", "*", "GET")]
-	public class ValuesController : ApiController
+    [RoutePrefix("api")]
+    public class ValuesController : ApiController
     {
         private ITasksManager tasksManager;
         private ICommonManager commonManager;
@@ -22,41 +25,42 @@ namespace TimesheetManagement.Service.Api.Controllers
         }
 
 		// Some test methods
-        [VersionedRoute("api/accounts", 1)]
+        [VersionedRoute("accounts", 1)]
 		public IHttpActionResult GetAccounts()
-		{
-		    return Ok(tasksManager.GetAccounts());
+        {
+            ICollection<Account> accounts = tasksManager.GetAccounts();
+		    return Ok(accounts);
 		}
 
-        [VersionedRoute("api/account/{id}/projects", 1)]
+        [VersionedRoute("account/{id}/projects", 1)]
         public IHttpActionResult GetProjects(string id)
         {
             return Ok(tasksManager.GetProjects(id));
         }
 
-        [VersionedRoute("api/employees", 1)]
+        [VersionedRoute("employees", 1)]
         public IHttpActionResult GetEmployees(int id)
         {
             return Ok(commonManager.GetEmployees());
         }
 
-        // GET api/values/5
+        // GET values/5
         public string Get(int id)
 		{
 			return "value";
 		}
 
-		// POST api/values
+		// POST values
 		public void Post([FromBody] string value)
 		{
 		}
 
-		// PUT api/values/5
+		// PUT values/5
 		public void Put(int id, [FromBody] string value)
 		{
 		}
 
-		// DELETE api/values/5
+		// DELETE values/5
 		public void Delete(int id)
 		{
 		}

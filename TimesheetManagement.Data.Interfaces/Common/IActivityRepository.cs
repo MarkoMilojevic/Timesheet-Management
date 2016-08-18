@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using TimesheetManagement.Data.Entities;
 
-
-namespace TimesheetManagement.Data.Interfaces.CommonRepositories
+namespace TimesheetManagement.Data.Interfaces.Common
 {
 	public interface IActivityRepository
 	{

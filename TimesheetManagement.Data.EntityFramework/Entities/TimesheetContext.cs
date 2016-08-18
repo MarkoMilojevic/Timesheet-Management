@@ -17,7 +17,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 
 		public DbSet<TaskActivity> TaskActivities { get; set; }
 
-		public TimesheetContext() : base("TimesheetConnection")
+		public TimesheetContext() : base("TimesheetConnection2")
 		{
 		}
 

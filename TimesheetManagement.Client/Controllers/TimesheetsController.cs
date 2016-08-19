@@ -4,27 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using PagedList;
-using TimesheetManagement.Business.Tasks.Entities;
 using TimesheetManagement.Client.Common.Helpers;
 using TimesheetManagement.Client.Models;
 using TimesheetManagement.Client.Services;
-using TimesheetManagement.Service;
 
 namespace TimesheetManagement.Client.Controllers
 {
 	public class TimesheetsController : Controller
 	{
-		private readonly ITimesheetService service;
+		private readonly ApiTimesheetService service;
 
         public TimesheetsController()
         {
             this.service = new ApiTimesheetService();
         }
-
-        public TimesheetsController(ITimesheetService service)
-		{
-			this.service = service;
-		}
 
 		public async Task<ActionResult> Index()
 		{

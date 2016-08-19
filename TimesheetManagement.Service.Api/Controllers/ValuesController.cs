@@ -32,14 +32,14 @@ namespace TimesheetManagement.Service.Api.Controllers
 		    return Ok(accounts);
 		}
 
-        [VersionedRoute("api/account/{id}/projects", 1)]
-        public IHttpActionResult GetProjects(string id)
+        [VersionedRoute("api/account/{accountTin}/projects", 1)]
+        public IHttpActionResult GetProjects(string accountTin)
         {
-            return Ok(tasksManager.GetProjects(id));
+            return Ok(tasksManager.GetProjects(accountTin));
         }
 
-        [VersionedRoute("api/employees", 1)]
-        public IHttpActionResult GetEmployees(int id)
+        [VersionedRoute("api/employees", 1)] //
+        public IHttpActionResult GetEmployees(int eId)
         {
             return Ok(commonManager.GetEmployees());
         }

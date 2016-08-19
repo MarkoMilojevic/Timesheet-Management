@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using PagedList;
-using TimesheetManagement.Business.Tasks.Entities;
 using TimesheetManagement.Client.Common.Helpers;
+using TimesheetManagement.Client.Tasks.Entities;
 
 namespace TimesheetManagement.Client.Models
 {

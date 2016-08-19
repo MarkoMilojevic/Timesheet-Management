@@ -37,7 +37,7 @@ namespace TimesheetManagement.Service.Api
                 "DefaultApi",
                 "api/{controller}/{id}",
                 new {id = RouteParameter.Optional}
-                );
+            );
 
             //Don't support XML
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
@@ -47,9 +47,7 @@ namespace TimesheetManagement.Service.Api
 
             //Format JSON
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
-
-            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }

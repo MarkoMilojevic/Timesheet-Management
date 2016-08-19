@@ -2,15 +2,14 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using TimesheetManagement.Business.Entities;
-using TimesheetManagement.Business.Tasks.Entities;
+using TimesheetManagement.Client.Common.Entities;
 using TimesheetManagement.Client.Common.Helpers;
-using TimesheetManagement.Service;
-using Task = TimesheetManagement.Business.Tasks.Entities.Task;
+using TimesheetManagement.Client.Tasks.Entities;
+using Task = TimesheetManagement.Client.Tasks.Entities.Task;
 
 namespace TimesheetManagement.Client.Services
 {
-	public class ApiTimesheetService : ITimesheetService
+	public class ApiTimesheetService
 	{
 		public async Task<Employee> GetEmployeeAsync(int employeeId)
 		{

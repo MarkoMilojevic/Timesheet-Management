@@ -47,6 +47,10 @@
       <HintPath>..\packages\Marvin.JsonPatch.0.9.0\lib\portable-net40+win+wpa81\Marvin.JsonPatch.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -95,7 +99,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\EntityFrameworkAutoMapper.cs" />
+    <Compile Include="Common\EfDtoMapper.cs" />
+    <Compile Include="Common\EfDtoMapperProfile.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\TaskActivity.cs" />
     <Compile Include="Entities\Account.cs" />
@@ -123,7 +128,7 @@
       <Name>TimesheetManagement.Data.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj">
-      <Project>{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}</Project>
+      <Project>{c73c1127-b7ef-4e90-9acd-bfd61b1845bb}</Project>
       <Name>TimesheetManagement.Data.Tasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">

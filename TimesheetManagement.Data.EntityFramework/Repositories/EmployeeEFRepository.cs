@@ -21,21 +21,21 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         {
             Employee employee = this.context.Employees.Find(employeeId);
 
-            return EntityFrameworkAutoMapper.CreateEmployee(employee);
+            return EfDtoMapper.CreateEmployee(employee);
         }
 
         public EmployeeDTO GetEmployee(string email)
         {
             Employee employee = this.context.Employees.FirstOrDefault(e => e.Email == email);
 
-            return EntityFrameworkAutoMapper.CreateEmployee(employee);
+            return EfDtoMapper.CreateEmployee(employee);
         }
 
         public ICollection<EmployeeDTO> GetEmployees()
         {
             List<Employee> employees = this.context.Employees.ToList();
 
-            return employees.Select(EntityFrameworkAutoMapper.CreateEmployee).ToList();
+            return employees.Select(EfDtoMapper.CreateEmployee).ToList();
         }        
     }
 }

@@ -9,51 +9,43 @@ using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Data.EntityFramework.Common
 {
-	public static class EntityFrameworkAutoMapper
-	{
-		static EntityFrameworkAutoMapper()
-		{
-			Mapper.Initialize(config =>
-			{
-			    config.CreateMap<Employee, EmployeeDTO>().MaxDepth(3);
-                config.CreateMap<Activity, ActivityDTO>().MaxDepth(3);
-			    config.CreateMap<Account, AccountDTO>().MaxDepth(3);
-				config.CreateMap<Project, ProjectDTO>().MaxDepth(3);
-                config.CreateMap<Task, TaskDTO>().MaxDepth(3);
-				config.CreateMap<TaskActivity, TaskActivityDTO>().MaxDepth(3);
-			});
-		}
+	public static class EfDtoMapper
+    {
+        private static readonly IMapper Mapper;
+
+        static EfDtoMapper()
+        {
+            MapperConfiguration config = new MapperConfiguration(cfg => cfg.AddProfile<EfDtoMapperProfile>());
+            EfDtoMapper.Mapper = config.CreateMapper();
+        }
 
         public static EmployeeDTO CreateEmployee(Employee employee)
         {
-            return Mapper.Map<Employee, EmployeeDTO>(employee);
+            return EfDtoMapper.Mapper.Map<Employee, EmployeeDTO>(employee);
         }
 
         public static ActivityDTO CreateActivity(Activity activity)
         {
-            return Mapper.Map<Activity, ActivityDTO>(activity);
+            return EfDtoMapper.Mapper.Map<Activity, ActivityDTO>(activity);
         }
         public static AccountDTO CreateAccount(Account account)
 		{
-            return Mapper.Map<AccountDTO>(account);
+            return EfDtoMapper.Mapper.Map<AccountDTO>(account);
         }
 
 		public static ProjectDTO CreateProject(Project project)
 		{
-            ProjectDTO projectDto = Mapper.Map<Project, ProjectDTO>(project);
-		    return projectDto;
+            return EfDtoMapper.Mapper.Map<Project, ProjectDTO>(project);
 		}
 
 		public static TaskDTO CreateTask(Task task)
 		{
-			var taskDto =  Mapper.Map<Task, TaskDTO>(task);
-		    return taskDto;
+			return EfDtoMapper.Mapper.Map<Task, TaskDTO>(task);
 		}
 
 		public static TaskActivityDTO CreateTaskActivity(TaskActivity taskActivity)
 		{
-			var taskActivityDto =  Mapper.Map<TaskActivity, TaskActivityDTO>(taskActivity);
-		    return taskActivityDto;
+			return EfDtoMapper.Mapper.Map<TaskActivity, TaskActivityDTO>(taskActivity);
 		}
 	}
 }

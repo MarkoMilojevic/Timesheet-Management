@@ -24,35 +24,35 @@ namespace TimesheetManagement.Business.Managers
         {
             ActivityDTO activity = this.activityRepository.GetActivity(activityId);
 
-            return CommonAutoMapper.CreateActivity(activity);
+            return CommonBoMapper.CreateActivity(activity);
         }
 
         public ICollection<Activity> GetActivities(int employeeId)
         {
             ICollection<ActivityDTO> activities = this.activityRepository.GetActivities(employeeId).ToList();
 
-            return activities.Select(CommonAutoMapper.CreateActivity).ToList();
+            return activities.Select(CommonBoMapper.CreateActivity).ToList();
         }
 
         public Employee GetEmployee(int employeeId)
         {
             EmployeeDTO employee = this.employeeRepository.GetEmployee(employeeId);
 
-            return CommonAutoMapper.CreateEmployee(employee);
+            return CommonBoMapper.CreateEmployee(employee);
         }
 
         public Employee GetEmployee(string email)
         {
             EmployeeDTO employee = this.employeeRepository.GetEmployee(email);
 
-            return CommonAutoMapper.CreateEmployee(employee);
+            return CommonBoMapper.CreateEmployee(employee);
         }
 
         public ICollection<Employee> GetEmployees()
         {
             ICollection<EmployeeDTO> employees = this.employeeRepository.GetEmployees().ToList();
 
-            return employees.Select(CommonAutoMapper.CreateEmployee).ToList();
+            return employees.Select(CommonBoMapper.CreateEmployee).ToList();
         }
     }
 }

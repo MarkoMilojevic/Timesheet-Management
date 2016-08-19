@@ -23,14 +23,14 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         {
             Activity activity = this.context.Activities.Find(activityId);
 
-            return EntityFrameworkAutoMapper.CreateActivity(activity);
+            return EfDtoMapper.CreateActivity(activity);
         }
 
         public ICollection<ActivityDTO> GetActivities(int employeeId)
         {
             List<Activity> activities = this.context.Activities.Where(a => a.EmployeeId == employeeId).ToList();
 
-            return activities.Select(EntityFrameworkAutoMapper.CreateActivity).ToList();
+            return activities.Select(EfDtoMapper.CreateActivity).ToList();
         }
     }
 }

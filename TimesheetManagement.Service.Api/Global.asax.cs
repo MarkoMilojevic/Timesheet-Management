@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace TimesheetManagement.Service.Api
 {
-	public class WebApiApplication : HttpApplication
+    public class WebApiApplication : HttpApplication
 	{
 		protected void Application_Start()
 		{

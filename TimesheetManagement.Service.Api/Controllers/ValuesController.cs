@@ -12,7 +12,7 @@ using TimesheetManagement.Business.Tasks.Entities;
 namespace TimesheetManagement.Service.Api.Controllers
 {
     [EnableCors("*", "*", "GET")]
-    [RoutePrefix("api")]
+    //[RoutePrefix("api")]
     public class ValuesController : ApiController
     {
         private ITasksManager tasksManager;
@@ -25,20 +25,20 @@ namespace TimesheetManagement.Service.Api.Controllers
         }
 
 		// Some test methods
-        [VersionedRoute("accounts", 1)]
+        [VersionedRoute("api/accounts", 1)]
 		public IHttpActionResult GetAccounts()
         {
             ICollection<Account> accounts = tasksManager.GetAccounts();
 		    return Ok(accounts);
 		}
 
-        [VersionedRoute("account/{id}/projects", 1)]
+        [VersionedRoute("api/account/{id}/projects", 1)]
         public IHttpActionResult GetProjects(string id)
         {
             return Ok(tasksManager.GetProjects(id));
         }
 
-        [VersionedRoute("employees", 1)]
+        [VersionedRoute("api/employees", 1)]
         public IHttpActionResult GetEmployees(int id)
         {
             return Ok(commonManager.GetEmployees());

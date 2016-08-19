@@ -291,6 +291,10 @@
       <Project>{f140b1ba-bdbe-492c-a523-119c13e657b8}</Project>
       <Name>TimesheetManagement.Business.Tasks</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Interfaces\TimesheetManagement.Business.Tasks.Interfaces.csproj">
+      <Project>{F8DCDCA5-7E65-4D99-9614-67A928DC2397}</Project>
+      <Name>TimesheetManagement.Business.Tasks.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business.Tasks\TimesheetManagement.Business.Tasks.Managers.csproj">
       <Project>{740e193c-c000-407d-88eb-ab6492874554}</Project>
       <Name>TimesheetManagement.Business.Tasks.Managers</Name>

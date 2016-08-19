@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using Newtonsoft.Json;
-using TimesheetManagement.Business.Interfaces.Common;
-using TimesheetManagement.Business.Interfaces.Tasks;
-using TimesheetManagement.Service.Api.Common.Helpers;
-using TimesheetManagement.Business.Tasks;
-using TimesheetManagement.Business;
+using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
+using TimesheetManagement.Business.Tasks.Interfaces;
+using TimesheetManagement.Service.Api.Common.Helpers;
 
 namespace TimesheetManagement.Service.Api.Controllers
 {
@@ -15,22 +12,22 @@ namespace TimesheetManagement.Service.Api.Controllers
     //[RoutePrefix("api")]
     public class ValuesController : ApiController
     {
-        private ITasksManager tasksManager;
-        private ICommonManager commonManager;
+        private readonly ICommonManager commonManager;
+        private readonly ITasksManager tasksManager;
 
         public ValuesController(ITasksManager taskManager, ICommonManager commonManager)
         {
-            this.tasksManager = taskManager;
+            tasksManager = taskManager;
             this.commonManager = commonManager;
         }
 
-		// Some test methods
+        // Some test methods
         [VersionedRoute("api/accounts", 1)]
-		public IHttpActionResult GetAccounts()
+        public IHttpActionResult GetAccounts()
         {
             ICollection<Account> accounts = tasksManager.GetAccounts();
-		    return Ok(accounts);
-		}
+            return Ok(accounts);
+        }
 
         [VersionedRoute("api/account/{accountTin}/projects", 1)]
         public IHttpActionResult GetProjects(string accountTin)
@@ -46,23 +43,23 @@ namespace TimesheetManagement.Service.Api.Controllers
 
         // GET values/5
         public string Get(int id)
-		{
-			return "value";
-		}
+        {
+            return "value";
+        }
 
-		// POST values
-		public void Post([FromBody] string value)
-		{
-		}
+        // POST values
+        public void Post([FromBody] string value)
+        {
+        }
 
-		// PUT values/5
-		public void Put(int id, [FromBody] string value)
-		{
-		}
+        // PUT values/5
+        public void Put(int id, [FromBody] string value)
+        {
+        }
 
-		// DELETE values/5
-		public void Delete(int id)
-		{
-		}
-	}
+        // DELETE values/5
+        public void Delete(int id)
+        {
+        }
+    }
 }

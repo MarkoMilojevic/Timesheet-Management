@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client", "TimesheetManagement.Client\TimesheetManagement.Client.csproj", "{85EB28F6-03E2-474D-8023-EE8FD95F75F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Mvc", "TimesheetManagement.Client.Mvc\TimesheetManagement.Client.Mvc.csproj", "{85EB28F6-03E2-474D-8023-EE8FD95F75F2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5889619D-CC10-4BE5-BC54-D9199F52078A} = {5889619D-CC10-4BE5-BC54-D9199F52078A}
 		{BB773BDD-6ADF-4188-82E6-6048FA3E5420} = {BB773BDD-6ADF-4188-82E6-6048FA3E5420}
@@ -23,7 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Busines
 	ProjectSection(ProjectDependencies) = postProject
 		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {C63A0F22-0C98-4CA1-B341-B495BE759509}
 		{F140B1BA-BDBE-492C-A523-119C13E657B8} = {F140B1BA-BDBE-492C-A523-119C13E657B8}
-		{9E0BF7F3-748E-4657-B3A1-095463BD48E1} = {9E0BF7F3-748E-4657-B3A1-095463BD48E1}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data", "TimesheetManagement.Data\TimesheetManagement.Data.csproj", "{566450BB-65AF-40CD-8654-E525C16B2408}"
@@ -47,25 +46,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Service.Api.Tasks", "TimesheetManagement.Service.Api.Tasks\TimesheetManagement.Service.Api.Tasks.csproj", "{BF247438-BEC6-4459-9CF8-B16C27B833E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Tasks", "TimesheetManagement.Client.Tasks\TimesheetManagement.Client.Tasks.csproj", "{5889619D-CC10-4BE5-BC54-D9199F52078A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Mvc.Tasks", "TimesheetManagement.Client.Mvc.Tasks\TimesheetManagement.Client.Mvc.Tasks.csproj", "{5889619D-CC10-4BE5-BC54-D9199F52078A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BB773BDD-6ADF-4188-82E6-6048FA3E5420} = {BB773BDD-6ADF-4188-82E6-6048FA3E5420}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Common", "TimesheetManagement.Client.Common\TimesheetManagement.Client.Common.csproj", "{BB773BDD-6ADF-4188-82E6-6048FA3E5420}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Client.Mvc.Common", "TimesheetManagement.Client.Mvc.Common\TimesheetManagement.Client.Mvc.Common.csproj", "{BB773BDD-6ADF-4188-82E6-6048FA3E5420}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.Tasks", "TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj", "{C73C1127-B7EF-4E90-9ACD-BFD61B1845BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Interfaces", "TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj", "{9E0BF7F3-748E-4657-B3A1-095463BD48E1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F140B1BA-BDBE-492C-A523-119C13E657B8} = {F140B1BA-BDBE-492C-A523-119C13E657B8}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks", "TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.csproj", "{F140B1BA-BDBE-492C-A523-119C13E657B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.Interfaces", "TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj", "{C63A0F22-0C98-4CA1-B341-B495BE759509}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Managers", "TimesheetManagement.Business.Entities\TimesheetManagement.Business.Managers.csproj", "{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks.Interfaces", "TimesheetManagement.Business.Tasks.Interfaces\TimesheetManagement.Business.Tasks.Interfaces.csproj", "{F8DCDCA5-7E65-4D99-9614-67A928DC2397}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +131,10 @@ Global
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,5 +155,6 @@ Global
 		{F140B1BA-BDBE-492C-A523-119C13E657B8} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
 		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {D6343D97-C1C2-414A-93BA-99AE80D004DB}
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
+		{F8DCDCA5-7E65-4D99-9614-67A928DC2397} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
 	EndGlobalSection
 EndGlobal

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E0BF7F3-748E-4657-B3A1-095463BD48E1}</ProjectGuid>
+    <ProjectGuid>{BB773BDD-6ADF-4188-82E6-6048FA3E5420}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TimesheetManagement.Business.Interfaces</RootNamespace>
-    <AssemblyName>TimesheetManagement.Business.Interfaces</AssemblyName>
+    <RootNamespace>TimesheetManagement.Client.Mvc.Common</RootNamespace>
+    <AssemblyName>TimesheetManagement.Client.Mvc.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,16 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICommonManager.cs" />
+    <Compile Include="Entities\Activity.cs" />
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Helpers\HeaderParser.cs" />
+    <Compile Include="Helpers\HttpClientExtensions.cs" />
+    <Compile Include="Helpers\PagingInfo.cs" />
+    <Compile Include="Helpers\TimesheetHttpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
-      <Project>{8720F651-01D3-4659-8EE8-4FD933DAEE94}</Project>
-      <Name>TimesheetManagement.Business</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -56,13 +56,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj">
-      <Project>{9e0bf7f3-748e-4657-b3a1-095463bd48e1}</Project>
-      <Name>TimesheetManagement.Business.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.csproj">
       <Project>{f140b1ba-bdbe-492c-a523-119c13e657b8}</Project>
       <Name>TimesheetManagement.Business.Tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Interfaces\TimesheetManagement.Business.Tasks.Interfaces.csproj">
+      <Project>{f8dcdca5-7e65-4d99-9614-67a928dc2397}</Project>
+      <Name>TimesheetManagement.Business.Tasks.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj">
       <Project>{c63a0f22-0c98-4ca1-b341-b495be759509}</Project>

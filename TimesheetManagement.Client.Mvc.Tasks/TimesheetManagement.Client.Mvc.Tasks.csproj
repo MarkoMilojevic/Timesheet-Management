@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E0BF7F3-748E-4657-B3A1-095463BD48E1}</ProjectGuid>
+    <ProjectGuid>{5889619D-CC10-4BE5-BC54-D9199F52078A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TimesheetManagement.Business.Interfaces</RootNamespace>
-    <AssemblyName>TimesheetManagement.Business.Interfaces</AssemblyName>
+    <RootNamespace>TimesheetManagement.Client.Mvc.Tasks</RootNamespace>
+    <AssemblyName>TimesheetManagement.Client.Mvc.Tasks</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -33,6 +33,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,16 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICommonManager.cs" />
+    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\Task.cs" />
+    <Compile Include="Entities\TaskActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
-      <Project>{8720F651-01D3-4659-8EE8-4FD933DAEE94}</Project>
-      <Name>TimesheetManagement.Business</Name>
+    <ProjectReference Include="..\TimesheetManagement.Client.Mvc.Common\TimesheetManagement.Client.Mvc.Common.csproj">
+      <Project>{bb773bdd-6adf-4188-82e6-6048fa3e5420}</Project>
+      <Name>TimesheetManagement.Client.Mvc.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

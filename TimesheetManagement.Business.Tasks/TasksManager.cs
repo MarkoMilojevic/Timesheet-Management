@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TimesheetManagement.Business.Interfaces.Tasks;
 using TimesheetManagement.Business.Tasks.Common;
 using TimesheetManagement.Business.Tasks.Entities;
+using TimesheetManagement.Business.Tasks.Interfaces;
 using TimesheetManagement.Data.Interfaces.Tasks;
 using AccountDTO = TimesheetManagement.Data.Tasks.Entities.Account;
 using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;

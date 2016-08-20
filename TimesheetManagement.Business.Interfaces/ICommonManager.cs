@@ -3,16 +3,16 @@ using TimesheetManagement.Business.Entities;
 
 namespace TimesheetManagement.Business.Interfaces
 {
-    public interface ICommonManager
-    {
-        Activity GetActivity(int activityId);
+	public interface ICommonManager
+	{
+		Activity GetActivity(int activityId);
 
-        ICollection<Activity> GetActivities(int employeeId);
+		ICollection<Activity> GetActivities(int employeeId);
 
-        Employee GetEmployee(int employeeId);
+		Employee GetEmployee(int employeeId);
 
-        Employee GetEmployee(string email);
+		Employee GetEmployee(string email);
 
-        ICollection<Employee> GetEmployees();
-    }
+		ICollection<Employee> GetEmployees();
+	}
 }

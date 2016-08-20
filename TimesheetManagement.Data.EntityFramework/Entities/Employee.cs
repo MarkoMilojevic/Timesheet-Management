@@ -6,7 +6,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 {
 	public class Employee
 	{
-        [Key]
+		[Key]
 		public int EmployeeId { get; set; }
 
 		[Required]
@@ -23,6 +23,6 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
 
-	    public virtual ICollection<Activity> Activities { get; set; }
+		public virtual ICollection<Activity> Activities { get; set; }
 	}
 }

@@ -6,7 +6,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 {
 	public class Activity
 	{
-        [Key]
+		[Key]
 		public int ActivityId { get; set; }
 
 		[Required]

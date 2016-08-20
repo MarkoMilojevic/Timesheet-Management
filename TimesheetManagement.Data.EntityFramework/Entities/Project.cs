@@ -7,7 +7,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 {
 	public class Project
 	{
-        [Key]
+		[Key]
 		public int ProjectId { get; set; }
 
 		[Required]

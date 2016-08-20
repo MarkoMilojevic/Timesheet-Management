@@ -11,69 +11,69 @@ using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Business.Tasks.Managers
 {
-    public class TasksManager : ITasksManager
-    {
-        private readonly ITaskRepository repository;
+	public class TasksManager : ITasksManager
+	{
+		private readonly ITaskRepository repository;
 
-        public TasksManager(ITaskRepository repository)
-        {
-            this.repository = repository;
-        }
+		public TasksManager(ITaskRepository repository)
+		{
+			this.repository = repository;
+		}
 
-        public Account GetAccount(string tin)
-        {
-            AccountDTO account = repository.GetAccount(tin);
+		public Account GetAccount(string tin)
+		{
+			AccountDTO account = this.repository.GetAccount(tin);
 
-            return TasksBoMapper.CreateAccount(account);
-        }
+			return TasksBoMapper.CreateAccount(account);
+		}
 
-        public ICollection<Account> GetAccounts()
-        {
-            ICollection<AccountDTO> clients = repository.GetAccounts();
+		public ICollection<Account> GetAccounts()
+		{
+			ICollection<AccountDTO> clients = this.repository.GetAccounts();
 
-            return clients.Select(TasksBoMapper.CreateAccount).ToList();
-        }
+			return clients.Select(TasksBoMapper.CreateAccount).ToList();
+		}
 
-        public Project GetProject(int projectId)
-        {
-            ProjectDTO project = repository.GetProject(projectId);
+		public Project GetProject(int projectId)
+		{
+			ProjectDTO project = this.repository.GetProject(projectId);
 
-            return TasksBoMapper.CreateProject(project);
-        }
+			return TasksBoMapper.CreateProject(project);
+		}
 
-        public ICollection<Project> GetProjects(string accountTin)
-        {
-            ICollection<ProjectDTO> projects = repository.GetProjects(accountTin);
+		public ICollection<Project> GetProjects(string accountTin)
+		{
+			ICollection<ProjectDTO> projects = this.repository.GetProjects(accountTin);
 
-            return projects.Select(TasksBoMapper.CreateProject).ToList();
-        }
+			return projects.Select(TasksBoMapper.CreateProject).ToList();
+		}
 
-        public Task GetTask(int taskId)
-        {
-            TaskDTO task = repository.GetTask(taskId);
+		public Task GetTask(int taskId)
+		{
+			TaskDTO task = this.repository.GetTask(taskId);
 
-            return TasksBoMapper.CreateTask(task);
-        }
+			return TasksBoMapper.CreateTask(task);
+		}
 
-        public ICollection<Task> GetTasks(int projectId)
-        {
-            ICollection<TaskDTO> tasks = repository.GetTasks(projectId);
+		public ICollection<Task> GetTasks(int projectId)
+		{
+			ICollection<TaskDTO> tasks = this.repository.GetTasks(projectId);
 
-            return tasks.Select(TasksBoMapper.CreateTask).ToList();
-        }
+			return tasks.Select(TasksBoMapper.CreateTask).ToList();
+		}
 
-        public ICollection<TaskActivity> GetTaskActivities(int taskId)
-        {
-            ICollection<TaskActivityDTO> taskActivities = repository.GetTaskActivities(taskId);
+		public ICollection<TaskActivity> GetTaskActivities(int taskId)
+		{
+			ICollection<TaskActivityDTO> taskActivities = this.repository.GetTaskActivities(taskId);
 
-            return taskActivities.Select(TasksBoMapper.CreateTaskActivity).ToList();
-        }
+			return taskActivities.Select(TasksBoMapper.CreateTaskActivity).ToList();
+		}
 
-        public ICollection<TaskActivity> GetTaskActivities(int taskId, int employeeId)
-        {
-            ICollection<TaskActivityDTO> taskActivities = repository.GetTaskActivities(taskId, employeeId);
+		public ICollection<TaskActivity> GetTaskActivities(int taskId, int employeeId)
+		{
+			ICollection<TaskActivityDTO> taskActivities = this.repository.GetTaskActivities(taskId, employeeId);
 
-            return taskActivities.Select(TasksBoMapper.CreateTaskActivity).ToList();
-        }
-    }
+			return taskActivities.Select(TasksBoMapper.CreateTaskActivity).ToList();
+		}
+	}
 }

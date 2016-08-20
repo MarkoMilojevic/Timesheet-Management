@@ -9,16 +9,16 @@ using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Data.EntityFramework.Common
 {
-    public class EfDtoMapperProfile : Profile
-    {
-        public EfDtoMapperProfile()
-        {
-            CreateMap<Employee, EmployeeDTO>().MaxDepth(2);
-            CreateMap<Activity, ActivityDTO>().MaxDepth(2);
-            CreateMap<Account, AccountDTO>().MaxDepth(2);
-            CreateMap<Project, ProjectDTO>().MaxDepth(2);
-            CreateMap<Task, TaskDTO>().MaxDepth(2);
-            CreateMap<TaskActivity, TaskActivityDTO>().MaxDepth(2);
-        }
-    }
+	public class EfDtoMapperProfile : Profile
+	{
+		public EfDtoMapperProfile()
+		{
+			this.CreateMap<Employee, EmployeeDTO>().MaxDepth(2);
+			this.CreateMap<Activity, ActivityDTO>().MaxDepth(2);
+			this.CreateMap<Account, AccountDTO>().MaxDepth(2);
+			this.CreateMap<Project, ProjectDTO>().MaxDepth(2);
+			this.CreateMap<Task, TaskDTO>().MaxDepth(2);
+			this.CreateMap<TaskActivity, TaskActivityDTO>().MaxDepth(2);
+		}
+	}
 }

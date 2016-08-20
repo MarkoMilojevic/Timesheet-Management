@@ -6,10 +6,10 @@
 
 		public string Name { get; set; }
 
-        public Account Account { get; set; }
+		public Account Account { get; set; }
 
-        public Project Project { get; set; }
+		public Project Project { get; set; }
 
-        public int ProjectId { get; set; }
-    }
+		public int ProjectId { get; set; }
+	}
 }

@@ -9,15 +9,15 @@ namespace TimesheetManagement.Business.Tasks.Common
 {
 	public static class TasksBoMapper
 	{
-        private static readonly IMapper Mapper;
+		private static readonly IMapper Mapper;
 
-        static TasksBoMapper()
-        {
-            MapperConfiguration config = new MapperConfiguration(cfg => cfg.AddProfile<TasksBoMapperProfile>());
-            TasksBoMapper.Mapper = config.CreateMapper();
-        }
+		static TasksBoMapper()
+		{
+			MapperConfiguration config = new MapperConfiguration(cfg => cfg.AddProfile<TasksBoMapperProfile>());
+			TasksBoMapper.Mapper = config.CreateMapper();
+		}
 
-        public static Account CreateAccount(AccountDTO account)
+		public static Account CreateAccount(AccountDTO account)
 		{
 			return TasksBoMapper.Mapper.Map<Account>(account);
 		}

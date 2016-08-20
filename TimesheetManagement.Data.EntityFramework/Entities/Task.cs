@@ -5,7 +5,7 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 {
 	public class Task
 	{
-        [Key]
+		[Key]
 		public int TaskId { get; set; }
 
 		[Required]
@@ -14,12 +14,12 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 
 		public string AccountId { get; set; }
 
-	    public int ProjectId { get; set; }
+		public int ProjectId { get; set; }
 
-	    [ForeignKey(nameof(Task.AccountId))]
+		[ForeignKey(nameof(Task.AccountId))]
 		public Account Account { get; set; }
 
-	    [ForeignKey(nameof(Task.ProjectId))]
+		[ForeignKey(nameof(Task.ProjectId))]
 		public Project Project { get; set; }
 	}
 }

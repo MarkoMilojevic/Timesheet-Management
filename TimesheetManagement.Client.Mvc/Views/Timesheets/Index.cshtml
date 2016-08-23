@@ -1,53 +1,22 @@
-﻿@using PagedList.Mvc
-@using TimesheetManagement.Client.Mvc.Tasks.Entities
-@model TimesheetManagement.Client.Mvc.Models.TimesheetViewModel
-
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css"/>
-
-@{
+﻿@{
 	ViewBag.Title = "View";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Your Activities</h2>
+<div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-content" data-toggle="tab" data-tm-ajax="true" data-tm-action ="@Url.Action("Index", "Tasks")" data-tm-target="#tab-content">Tasks</a></li>
+    </ul>
 
-<p>
-	@Html.ActionLink("Add activity", "Create")
-</p>
-<table class="table">
-	<tr>
-		<th>
-			Account
-		</th>
-		<th>
-			TIN
-		</th>
-		<th>
-			RN
-		</th>
-		<th></th>
-	</tr>
-	@foreach (Account account in Model.Accounts)
-    {
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => account.Name)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => account.TaxpayerIdentificationNumber)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => account.RegisterNumber)
-			</td>
-			<td>
-				@Html.ActionLink("Details", "Details") |
-				@Html.ActionLink("Edit", "Edit") |
-				@Html.ActionLink("Delete", "Delete")
-			</td>
-		</tr>
-	}
-</table>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab-content">
+            <!-- Loads content dynamically -->
+        </div>
+    </div>
+</div>
 
-@*Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
-
-@Html.PagedListPager(Model.EmployeeActivities, page => Url.Action("Index", new {page}))*@
+@section scripts {
+    @Scripts.Render("~/bundles/timesheets")
+}

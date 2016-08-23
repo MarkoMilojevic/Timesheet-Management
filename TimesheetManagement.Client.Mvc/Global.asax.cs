@@ -13,7 +13,7 @@ namespace TimesheetManagement.Client.Mvc
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ControllerBuilder.Current.DefaultNamespaces.Add("TimesheetManagement.Client.Tasks.Controllers");
+            ControllerBuilder.Current.DefaultNamespaces.Add("TimesheetManagement.Client.Mvc.Tasks.Controllers");
         }
 	}
 }

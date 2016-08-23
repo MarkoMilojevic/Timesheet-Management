@@ -7,9 +7,9 @@ using TimesheetManagement.Client.Mvc.Common.Helpers;
 using TimesheetManagement.Client.Mvc.Tasks.Entities;
 using Task = TimesheetManagement.Client.Mvc.Tasks.Entities.Task;
 
-namespace TimesheetManagement.Client.Mvc.Services
+namespace TimesheetManagement.Client.Mvc.Tasks.Services
 {
-	public class ApiTimesheetService
+	public class TasksApiService
 	{
 		public async Task<Employee> GetEmployeeAsync(int employeeId)
 		{

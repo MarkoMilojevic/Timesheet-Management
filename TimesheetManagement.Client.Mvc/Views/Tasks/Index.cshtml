@@ -1,0 +1,50 @@
+﻿@using PagedList.Mvc
+@using TimesheetManagement.Client.Mvc.Tasks.Entities
+@model TimesheetManagement.Client.Mvc.Tasks.Models.TaskActivityViewModel
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>Your Activities</h2>
+
+<p>
+    @Html.ActionLink("Add Activity", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Account
+        </th>
+        <th>
+            TIN
+        </th>
+        <th>
+            RN
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (Account account in Model.Accounts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => account.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => account.TaxpayerIdentificationNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => account.RegisterNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details") |
+                @Html.ActionLink("Edit", "Edit") |
+                @Html.ActionLink("Delete", "Delete")
+            </td>
+        </tr>
+    }
+</table>
+
+Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
+
+@Html.PagedListPager(Model.Accounts, page => Url.Action("Index", new {page}))

@@ -1,24 +1,23 @@
 ﻿using System.Collections.Generic;
 using TimesheetManagement.Business.Tasks.Entities;
+using TimesheetManagement.Business.Tasks.Models;
 
 namespace TimesheetManagement.Business.Tasks.Interfaces
 {
-	public interface ITasksManager
-	{
-		Account GetAccount(string tin);
+    public interface ITasksManager
+    {
+        Account GetAccount(string tin);
 
-		ICollection<Account> GetAccounts();
+        ICollection<Account> GetAccounts();
 
-		Project GetProject(int projectId);
+        Project GetProject(int projectId);
 
-		ICollection<Project> GetProjects(string accountTin);
+        ICollection<Project> GetProjects(string accountTin);
 
-		Task GetTask(int taskId);
+        Task GetTask(int taskId);
 
-		ICollection<Task> GetTasks(int projectId);
+        ICollection<Task> GetTasks(int projectId);
 
-		ICollection<TaskActivity> GetTaskActivities(int taskId);
-
-		ICollection<TaskActivity> GetTaskActivities(int taskId, int employeeId);
-	}
+        ICollection<TaskActivityViewModel> GetTaskActivities(int employeeId);
+    }
 }

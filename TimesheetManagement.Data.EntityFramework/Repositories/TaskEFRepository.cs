@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TimesheetManagement.Data.EntityFramework.Common;
 using TimesheetManagement.Data.EntityFramework.Entities;
+using TimesheetManagement.Data.EntityFramework.Helpers;
 using TimesheetManagement.Data.Interfaces.Tasks;
 using AccountDTO = TimesheetManagement.Data.Tasks.Entities.Account;
 using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
@@ -40,9 +40,9 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 			return EfDtoMapper.CreateProject(project);
 		}
 
-		public ICollection<ProjectDTO> GetProjects(string accountTin)
+		public ICollection<ProjectDTO> GetProjects()
 		{
-			List<Project> projects = this.context.Projects.Where(p => p.TaxpayerIdentificationNumber == accountTin).ToList();
+			List<Project> projects = this.context.Projects.ToList();
 
 			return projects.Select(EfDtoMapper.CreateProject).ToList();
 		}
@@ -54,16 +54,16 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 			return EfDtoMapper.CreateTask(task);
 		}
 
-		ICollection<TaskDTO> ITaskRepository.GetTasks(int projectId)
+		ICollection<TaskDTO> ITaskRepository.GetTasks()
 		{
-			List<Task> tasks = this.context.Tasks.Where(p => p.ProjectId == projectId).ToList();
+			List<Task> tasks = this.context.Tasks.ToList();
 
 			return tasks.Select(EfDtoMapper.CreateTask).ToList();
 		}
 
-		public ICollection<TaskActivityDTO> GetTaskActivities(int taskId)
+		public ICollection<TaskActivityDTO> GetTaskActivities(int employeeId)
 		{
-			List<TaskActivity> taskActivities = this.context.TaskActivities.Where(ta => ta.TaskId == taskId).ToList();
+			List<TaskActivity> taskActivities = this.context.TaskActivities.Where(ta => ta.Activity.EmployeeId == employeeId).ToList();
 
 			return taskActivities.Select(EfDtoMapper.CreateTaskActivity).ToList();
 		}

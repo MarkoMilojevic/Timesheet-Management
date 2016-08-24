@@ -11,13 +11,13 @@ namespace TimesheetManagement.Data.Interfaces.Tasks
 
 		Project GetProject(int projectId);
 
-		ICollection<Project> GetProjects(string accountTin);
+		ICollection<Project> GetProjects();
 
 		Task GetTask(int taskId);
 
-		ICollection<Task> GetTasks(int projectId);
+		ICollection<Task> GetTasks();
 
-		ICollection<TaskActivity> GetTaskActivities(int taskId);
+		ICollection<TaskActivity> GetTaskActivities(int employeeId);
 
 		ICollection<TaskActivity> GetTaskActivities(int taskId, int employeeId);
 	}

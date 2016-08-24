@@ -24,12 +24,14 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 		[StringLength(500)]
 		public string Description { get; set; }
 
+        [Required]
 		[Display(Name = "Is Approved")]
 		public bool IsApproved { get; set; }
 
+        [Required]
 		public int EmployeeId { get; set; }
 
 		[ForeignKey(nameof(Activity.EmployeeId))]
-		public Employee Employee { get; set; }
+		public virtual Employee Employee { get; set; }
 	}
 }

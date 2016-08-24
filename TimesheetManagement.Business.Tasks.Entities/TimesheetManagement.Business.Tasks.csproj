@@ -53,12 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\TasksBoMapper.cs" />
-    <Compile Include="Common\TasksBoMapperProfile.cs" />
+    <Compile Include="Helpers\TasksBoMapper.cs" />
+    <Compile Include="Helpers\TasksBoMapperProfile.cs" />
     <Compile Include="Entities\Account.cs" />
+    <Compile Include="Models\TaskActivityViewModel.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Task.cs" />
-    <Compile Include="Entities\TaskActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +69,10 @@
     <ProjectReference Include="..\TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj">
       <Project>{c73c1127-b7ef-4e90-9acd-bfd61b1845bb}</Project>
       <Name>TimesheetManagement.Data.Tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
+      <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
+      <Name>TimesheetManagement.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

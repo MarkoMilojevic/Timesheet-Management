@@ -41,6 +41,12 @@ namespace TimesheetManagement.Service.Api.Controllers
             return Ok(commonManager.GetEmployees());
         }
 
+        [VersionedRoute("api/taskactivity/{employeeId}", 1)] //
+        public IHttpActionResult GetTaskActivites(int employeeId)
+        {
+            return Ok(tasksManager.GetTaskActivities(employeeId));
+        }
+
         // GET values/5
         public string Get(int id)
         {

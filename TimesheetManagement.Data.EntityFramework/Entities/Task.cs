@@ -12,14 +12,10 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 		[StringLength(50)]
 		public string Name { get; set; }
 
-		public string AccountId { get; set; }
-
+        [Required]
 		public int ProjectId { get; set; }
 
-		[ForeignKey(nameof(Task.AccountId))]
-		public Account Account { get; set; }
-
 		[ForeignKey(nameof(Task.ProjectId))]
-		public Project Project { get; set; }
+		public virtual Project Project { get; set; }
 	}
 }

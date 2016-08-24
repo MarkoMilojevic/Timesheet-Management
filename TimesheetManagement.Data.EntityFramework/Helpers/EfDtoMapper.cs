@@ -7,7 +7,7 @@ using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
 using TaskDTO = TimesheetManagement.Data.Tasks.Entities.Task;
 using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
-namespace TimesheetManagement.Data.EntityFramework.Common
+namespace TimesheetManagement.Data.EntityFramework.Helpers
 {
 	public static class EfDtoMapper
 	{

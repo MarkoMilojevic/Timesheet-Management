@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TimesheetManagement.Data.EntityFramework.Common;
 using TimesheetManagement.Data.EntityFramework.Entities;
+using TimesheetManagement.Data.EntityFramework.Helpers;
 using TimesheetManagement.Data.Interfaces.Common;
 using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 

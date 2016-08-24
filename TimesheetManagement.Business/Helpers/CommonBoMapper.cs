@@ -3,7 +3,7 @@ using TimesheetManagement.Business.Entities;
 using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
 using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 
-namespace TimesheetManagement.Business.Common
+namespace TimesheetManagement.Business.Helpers
 {
 	public static class CommonBoMapper
 	{

@@ -23,14 +23,14 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
 				new Account {Name = "Coca Cola", TaxpayerIdentificationNumber = "987654321", RegisterNumber = "87654321"});
 
 			context.Projects.AddOrUpdate(pr => pr.Name,
-				new Project {Name = "New Year Marketing", StartDate = DateTime.Now, EndDate = new DateTime(2016, 12, 31), TaxpayerIdentificationNumber = "987654321"},
-				new Project {Name = "Developing new flavours", StartDate = DateTime.Now, EndDate = new DateTime(2016, 12, 31), TaxpayerIdentificationNumber = "987654321"},
+				new Project {Name = "New Year Marketing", StartDate = DateTime.Now, EndDate = new DateTime(2016, 12, 31), AccountId = "987654321"},
+				new Project {Name = "Developing new flavours", StartDate = DateTime.Now, EndDate = new DateTime(2016, 12, 31), AccountId = "987654321"},
 				new Project
 				{
 					Name = "Timesheet-Management System",
 					StartDate = DateTime.Now,
 					EndDate = new DateTime(2017, 3, 31),
-					TaxpayerIdentificationNumber = "123456789"
+					AccountId = "123456789"
 				});
 			context.SaveChanges();
 
@@ -40,13 +40,11 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
 				context.Tasks.AddOrUpdate(a => a.Name,
 					new Task
 					{
-						AccountId = "987654321",
 						Name = "Shooting Commercial",
 						ProjectId = firstOrDefault.ProjectId
 					},
 					new Task
 					{
-						AccountId = "987654321",
 						Name = "Making flyers",
 						ProjectId = firstOrDefault.ProjectId
 					});
@@ -58,25 +56,21 @@ namespace TimesheetManagement.Data.EntityFramework.Migrations
 				context.Tasks.AddOrUpdate(a => a.Name,
 					new Task
 					{
-						AccountId = "123456789",
 						Name = "Gathering Requirements",
 						ProjectId = firstOrDefault.ProjectId
 					},
 					new Task
 					{
-						AccountId = "123456789",
 						Name = "Creating UML",
 						ProjectId = firstOrDefault.ProjectId
 					},
 					new Task
 					{
-						AccountId = "123456789",
 						Name = "Developing solution",
 						ProjectId = firstOrDefault.ProjectId
 					},
 					new Task
 					{
-						AccountId = "123456789",
 						Name = "Testing",
 						ProjectId = firstOrDefault.ProjectId
 					});

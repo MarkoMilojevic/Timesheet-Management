@@ -16,6 +16,6 @@ namespace TimesheetManagement.Business.Entities
 
 		public bool IsApproved { get; set; }
 
-		public Employee Employee { get; set; }
+		public int EmployeeId { get; set; }
 	}
 }

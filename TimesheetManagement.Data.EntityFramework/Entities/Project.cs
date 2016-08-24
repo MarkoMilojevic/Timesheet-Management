@@ -20,9 +20,10 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
 		[Required]
 		public DateTime EndDate { get; set; }
 
-		public string TaxpayerIdentificationNumber { get; set; }
+        [Required]
+		public string AccountId { get; set; }
 
-		[ForeignKey(nameof(Project.TaxpayerIdentificationNumber))]
+		[ForeignKey(nameof(Project.AccountId))]
 		public virtual Account Account { get; set; }
 
 		public virtual ICollection<Task> Tasks { get; set; }

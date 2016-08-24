@@ -49,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CommonBoMapper.cs" />
-    <Compile Include="Common\CommonBoMapperProfile.cs" />
+    <Compile Include="Helpers\CommonBoMapper.cs" />
+    <Compile Include="Helpers\CommonBoMapperProfile.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

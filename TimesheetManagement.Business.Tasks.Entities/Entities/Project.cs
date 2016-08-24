@@ -13,8 +13,6 @@ namespace TimesheetManagement.Business.Tasks.Entities
 
 		public DateTime EndDate { get; set; }
 
-		public Account Account { get; set; }
-
-		public ICollection<Task> Tasks { get; set; }
-	}
+		public string AccountId { get; set; }
+    }
 }

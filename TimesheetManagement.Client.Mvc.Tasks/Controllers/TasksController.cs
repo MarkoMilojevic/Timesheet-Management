@@ -22,8 +22,8 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
         public async Task<ActionResult> Index()
         {
             TaskActivityViewModel model = new TaskActivityViewModel();
-            IEnumerable<Account> accounts = await service.GetAccountsAsync();
-            model.Accounts =  new StaticPagedList<Account>(accounts, 1, 10, 0);
+            IEnumerable<TaskActivityModel> taskActivityModels = await service.GetTaskActivitiesAsync(1);
+            model.TaskActivityModels =  new StaticPagedList<TaskActivityModel>(taskActivityModels, 1, 10, 0);
             model.PagingInfo = new PagingInfo(0, 1, 1, 10, "", "");
             return View("Index", model);
         }

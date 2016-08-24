@@ -59,6 +59,7 @@
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Task.cs" />
     <Compile Include="Entities\TaskActivity.cs" />
+    <Compile Include="Models\TaskActivityModel.cs" />
     <Compile Include="Models\TaskActivityViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TasksApiService.cs" />

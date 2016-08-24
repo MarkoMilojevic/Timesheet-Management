@@ -1,5 +1,5 @@
 ﻿@using PagedList.Mvc
-@using TimesheetManagement.Client.Mvc.Tasks.Entities
+@using TimesheetManagement.Client.Mvc.Tasks.Models
 @model TimesheetManagement.Client.Mvc.Tasks.Models.TaskActivityViewModel
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
@@ -13,28 +13,52 @@
 <table class="table">
     <tr>
         <th>
-            Account
+            Client
         </th>
         <th>
-            TIN
+            Project
         </th>
         <th>
-            RN
+            Task
+        </th>
+        <th>
+            Start Date
+        </th>
+        <th>
+            End Date
+        </th>
+        <th>
+            Hours
+        </th>
+        <th>
+            Is Approved
         </th>
         <th></th>
     </tr>
 
-    @foreach (Account account in Model.Accounts)
+    @foreach (TaskActivityModel taModel in Model.TaskActivityModels)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => account.Name)
+                @Html.DisplayFor(modelItem => taModel.AccountName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => account.TaxpayerIdentificationNumber)
+                @Html.DisplayFor(modelItem => taModel.ProjectName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => account.RegisterNumber)
+                @Html.DisplayFor(modelItem => taModel.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => taModel.Activity.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => taModel.Activity.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => taModel.Activity.DurationInHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => taModel.Activity.IsApproved)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details") |
@@ -47,4 +71,4 @@
 
 Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
 
-@Html.PagedListPager(Model.Accounts, page => Url.Action("Index", new {page}))
+@Html.PagedListPager(Model.TaskActivityModels, page => Url.Action("Index", new {page}))

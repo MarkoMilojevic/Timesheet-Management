@@ -29,7 +29,7 @@ namespace TimesheetManagement.Service.Api.Controllers
             return Ok(accounts);
         }
 
-        [VersionedRoute("api/account/{accountTin}/projects", 1)]
+        [VersionedRoute("api/accounts/{accountTin}/projects", 1)]
         public IHttpActionResult GetProjects(string accountTin)
         {
             return Ok(tasksManager.GetProjects(accountTin));
@@ -41,7 +41,7 @@ namespace TimesheetManagement.Service.Api.Controllers
             return Ok(commonManager.GetEmployees());
         }
 
-        [VersionedRoute("api/taskactivity/{employeeId}", 1)] //
+        [VersionedRoute("api/taskactivities/{employeeId}", 1)] //
         public IHttpActionResult GetTaskActivites(int employeeId)
         {
             return Ok(tasksManager.GetTaskActivities(employeeId));

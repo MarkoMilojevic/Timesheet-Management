@@ -47,12 +47,10 @@ namespace TimesheetManagement.Business.Tasks.Managers
             return TasksBoMapper.CreateProject(project);
         }
 
-        public ICollection<Project> GetProjects(string accountTin)
+        public ICollection<Project> GetProjects(string accoundId)
         {
-            //var projects = taskRepository.GetProjects(accountTin);
-
-            //return projects.Select(TasksBoMapper.CreateProject).ToList();
-            return null;
+            var projects = taskRepository.GetProjects(accoundId);
+            return projects.Select(TasksBoMapper.CreateProject).ToList();
         }
         
         public Task GetTask(int taskId)
@@ -64,10 +62,9 @@ namespace TimesheetManagement.Business.Tasks.Managers
 
         public ICollection<Task> GetTasks(int projectId)
         {
-            //var tasks = taskRepository.GetTasks(projectId);
+            var tasks = taskRepository.GetTasks(projectId);
 
-            //return tasks.Select(TasksBoMapper.CreateTask).ToList();
-            return null;
+            return tasks.Select(TasksBoMapper.CreateTask).ToList();
         }
 
         public ICollection<TaskActivityViewModel> GetTaskActivities(int employeeId)

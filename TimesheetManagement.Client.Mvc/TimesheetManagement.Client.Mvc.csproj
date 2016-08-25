@@ -181,6 +181,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\tasks.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -215,7 +216,10 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\taskactivity.js" />
+    <Content Include="Scripts\tasks.js" />
     <Content Include="Scripts\timesheets.js" />
+    <Content Include="Scripts\utility.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -229,9 +233,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Timesheets\Index.cshtml" />
-    <Content Include="Views\Tasks\_Edit.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
-    <Content Include="Views\Tasks\_Create.cshtml" />
+    <Content Include="Views\Tasks\_TaskActivity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

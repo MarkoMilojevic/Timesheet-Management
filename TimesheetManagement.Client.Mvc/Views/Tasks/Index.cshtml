@@ -1,15 +1,32 @@
 ﻿@using PagedList.Mvc
 @using TimesheetManagement.Client.Mvc.Tasks.Models
-@model TimesheetManagement.Client.Mvc.Tasks.Models.TaskActivityViewModel
+@model TimesheetManagement.Client.Mvc.Tasks.Models.TaskActivitiesViewModel
+
+@section styles {
+    @Styles.Render("~/Content/tasks")
+}
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>Your Activities</h2>
 
-<p>
-    @Html.ActionLink("Add Activity", "Create")
-</p>
+<!-- Add Activity Accordian -->
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <h4 class="panel-title">
+                Add Activity
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div id="collapseOneBody" class="panel-body">
+                <!-- Loads content dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Task Activities table -->
 <table class="table">
     <tr>
         <th>
@@ -36,7 +53,7 @@
         <th></th>
     </tr>
 
-    @foreach (TaskActivityModel taModel in Model.TaskActivityModels)
+    @foreach (TaskActivityViewModel taModel in Model.TaskActivityViewModels)
     {
         <tr>
             <td>
@@ -69,6 +86,12 @@
     }
 </table>
 
+<!-- Task Activities table pagination -->
 Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
 
-@Html.PagedListPager(Model.TaskActivityModels, page => Url.Action("Index", new {page}))
+@Html.PagedListPager(Model.TaskActivityViewModels, page => Url.Action("Index", new {page}))
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/tasks")
+}

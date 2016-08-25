@@ -40,9 +40,9 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 			return EfDtoMapper.CreateProject(project);
 		}
 
-		public ICollection<ProjectDTO> GetProjects()
+		public ICollection<ProjectDTO> GetProjects(string accountId)
 		{
-			List<Project> projects = this.context.Projects.ToList();
+			List<Project> projects = this.context.Projects.Where(p => p.AccountId == accountId).ToList();
 
 			return projects.Select(EfDtoMapper.CreateProject).ToList();
 		}
@@ -54,9 +54,9 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 			return EfDtoMapper.CreateTask(task);
 		}
 
-		ICollection<TaskDTO> ITaskRepository.GetTasks()
+		public ICollection<TaskDTO> GetTasks(int projectId)
 		{
-			List<Task> tasks = this.context.Tasks.ToList();
+			List<Task> tasks = this.context.Tasks.Where(t => t.ProjectId == projectId).ToList();
 
 			return tasks.Select(EfDtoMapper.CreateTask).ToList();
 		}

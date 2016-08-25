@@ -21,6 +21,12 @@ namespace TimesheetManagement.Service.Api.Controllers
             this.commonManager = commonManager;
         }
 
+        [VersionedRoute("api/employees", 1)] //
+        public IHttpActionResult GetEmployees(int eId)
+        {
+            return Ok(commonManager.GetEmployees());
+        }
+
         // Some test methods
         [VersionedRoute("api/accounts", 1)]
         public IHttpActionResult GetAccounts()
@@ -29,16 +35,16 @@ namespace TimesheetManagement.Service.Api.Controllers
             return Ok(accounts);
         }
 
-        [VersionedRoute("api/accounts/{accountTin}/projects", 1)]
-        public IHttpActionResult GetProjects(string accountTin)
+        [VersionedRoute("api/accounts/{accountId}/projects", 1)]
+        public IHttpActionResult GetProjects(string accountId)
         {
-            return Ok(tasksManager.GetProjects(accountTin));
+            return Ok(tasksManager.GetProjects(accountId));
         }
 
-        [VersionedRoute("api/employees", 1)] //
-        public IHttpActionResult GetEmployees(int eId)
+        [VersionedRoute("api/projects/{projectId}/tasks", 1)]
+        public IHttpActionResult GetTasks(int projectId)
         {
-            return Ok(commonManager.GetEmployees());
+            return Ok(tasksManager.GetTasks(projectId));
         }
 
         [VersionedRoute("api/taskactivities/{employeeId}", 1)] //

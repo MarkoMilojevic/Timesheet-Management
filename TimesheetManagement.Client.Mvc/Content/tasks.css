@@ -1,0 +1,17 @@
+﻿.panel-heading.accordion-toggle:before {
+    /* symbol for expanded panels */
+    content:"\e114";
+
+    font-family:'Glyphicons Halflings';
+    float: right;
+    color: #9d9d9d;
+}
+
+.panel-heading.accordion-toggle.collapsed:before {
+    /* symbol for collapsed panels */
+    content:"\e080";
+}
+
+.panel-heading {
+    cursor: pointer;
+}

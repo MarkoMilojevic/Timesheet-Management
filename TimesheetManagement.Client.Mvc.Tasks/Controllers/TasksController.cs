@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -7,6 +8,7 @@ using TimesheetManagement.Client.Mvc.Common.Helpers;
 using TimesheetManagement.Client.Mvc.Tasks.Entities;
 using TimesheetManagement.Client.Mvc.Tasks.Models;
 using TimesheetManagement.Client.Mvc.Tasks.Services;
+using Task = TimesheetManagement.Client.Mvc.Tasks.Entities.Task;
 
 namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
 {
@@ -21,17 +23,51 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
 
         public async Task<ActionResult> Index()
         {
-            TaskActivityViewModel model = new TaskActivityViewModel();
-            IEnumerable<TaskActivityModel> taskActivityModels = await service.GetTaskActivitiesAsync(1);
-            model.TaskActivityModels =  new StaticPagedList<TaskActivityModel>(taskActivityModels, 1, 10, 0);
+            TaskActivitiesViewModel model = new TaskActivitiesViewModel();
+            IEnumerable<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
+            model.TaskActivityViewModels =  new StaticPagedList<TaskActivityViewModel>(taskActivities, 1, 10, 0);
             model.PagingInfo = new PagingInfo(0, 1, 1, 10, "", "");
             return View("Index", model);
         }
 
-        public async Task<ActionResult> Create()
+        public async Task<ActionResult> GetTaskActivity()
         {
-            throw new NotImplementedException();
+            ICollection<Account> accounts = await service.GetAccountsAsync();
+            ViewBag.Accounts = new SelectList(accounts.Select(a => new { Value = a.TaxpayerIdentificationNumber, Text = a.Name }), "Value", "Text");
+
+            return View("_TaskActivity", new TaskActivityViewModel());
         }
+
+        public async Task<ActionResult> GetAccounts()
+        {
+            ICollection<Account> accounts = await service.GetAccountsAsync();
+
+            return Json(
+                accounts.Select(a => new { Id = a.TaxpayerIdentificationNumber, Value = a.Name }), 
+                JsonRequestBehavior.AllowGet
+            );
+        }
+        
+        public async Task<ActionResult> GetProjects(string accountId)
+        {
+            ICollection<Project> projects = await service.GetProjectsAsync(accountId);
+
+            return Json(
+                projects.Select(p => new { Id = p.ProjectId, Value = p.Name }),
+                JsonRequestBehavior.AllowGet
+            );
+        }
+        
+        public async Task<ActionResult> GetTasks(int projectId)
+        {
+            ICollection<Task> projects = await service.GetTasksAsync(projectId);
+
+            return Json(
+                projects.Select(t => new { Id = t.TaskId, Value = t.Name }),
+                JsonRequestBehavior.AllowGet
+            );
+        }
+
         public async Task<ActionResult> Edit()
         {
             throw new NotImplementedException();

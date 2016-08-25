@@ -16,7 +16,14 @@ namespace TimesheetManagement.Client.Mvc
 
             bundles.Add(new ScriptBundle("~/bundles/timesheets").Include(
                 "~/Scripts/jquery.unobtrusive-ajax.js",
+                "~/Scripts/utility.js",
                 "~/Scripts/timesheets.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tasks").Include(
+                "~/Scripts/tasks.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/taskactivity").Include(
+                "~/Scripts/taskactivity.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -30,6 +37,12 @@ namespace TimesheetManagement.Client.Mvc
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/Content/bootstrap.css",
 				"~/Content/site.css"));
-		}
+
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                "~/Content/themes/base/base.css"));
+
+            bundles.Add(new StyleBundle("~/Content/tasks").Include(
+                "~/Content/tasks.css"));
+        }
 	}
 }

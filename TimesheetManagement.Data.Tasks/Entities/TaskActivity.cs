@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TimesheetManagement.Data.Entities;
+﻿using TimesheetManagement.Data.Entities;
 
 namespace TimesheetManagement.Data.Tasks.Entities
 {

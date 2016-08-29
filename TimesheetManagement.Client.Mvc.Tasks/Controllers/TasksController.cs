@@ -30,12 +30,32 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
             return View("Index", model);
         }
 
-        public async Task<ActionResult> GetTaskActivity()
+        [HttpGet]
+        public async Task<ActionResult> AddTaskActivity()
         {
             ICollection<Account> accounts = await service.GetAccountsAsync();
-            ViewBag.Accounts = new SelectList(accounts.Select(a => new { Value = a.TaxpayerIdentificationNumber, Text = a.Name }), "Value", "Text");
+            ViewBag.Accounts = new SelectList(accounts.Select(account => new { Value = account.TaxpayerIdentificationNumber, Text = account.Name }), "Value", "Text");
 
-            return View("_TaskActivity", new TaskActivityViewModel());
+            return View("_TaskActivity");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddTaskActivity(TaskActivityViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+
+            model.Activity.EmployeeId = 1;
+            TaskActivity taskActivity = new TaskActivity
+            {
+                TaskId = model.TaskId,
+                Activity = model.Activity
+            };
+
+            await service.CreateTaskActivityAsync(taskActivity);
+            return RedirectToAction("Index", "Timesheets");
         }
 
         public async Task<ActionResult> GetAccounts()
@@ -43,7 +63,7 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
             ICollection<Account> accounts = await service.GetAccountsAsync();
 
             return Json(
-                accounts.Select(a => new { Id = a.TaxpayerIdentificationNumber, Value = a.Name }), 
+                accounts.Select(account => new { Value = account.TaxpayerIdentificationNumber, Text = account.Name }), 
                 JsonRequestBehavior.AllowGet
             );
         }
@@ -53,17 +73,17 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
             ICollection<Project> projects = await service.GetProjectsAsync(accountId);
 
             return Json(
-                projects.Select(p => new { Id = p.ProjectId, Value = p.Name }),
+                projects.Select(project => new { Value = project.ProjectId, Text = project.Name }),
                 JsonRequestBehavior.AllowGet
             );
         }
         
         public async Task<ActionResult> GetTasks(int projectId)
         {
-            ICollection<Task> projects = await service.GetTasksAsync(projectId);
+            ICollection<Task> tasks = await service.GetTasksAsync(projectId);
 
             return Json(
-                projects.Select(t => new { Id = t.TaskId, Value = t.Name }),
+                tasks.Select(task => new { Value = task.TaskId, Text = task.Name }),
                 JsonRequestBehavior.AllowGet
             );
         }

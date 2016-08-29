@@ -12,14 +12,14 @@
 
 <!-- Add Activity Accordian -->
 <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+    <div class="panel panel-primary">
+        <div id="add-activity-accordian" class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" data-tm-action ="@Url.Action("AddTaskActivity", "Tasks")" data-tm-target="#collapse1-body">
             <h4 class="panel-title">
                 Add Activity
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse">
-            <div id="collapseOneBody" class="panel-body">
+        <div id="collapse1" class="panel-collapse collapse">
+            <div id="collapse1-body" class="panel-body">
                 <!-- Loads content dynamically -->
             </div>
         </div>
@@ -90,7 +90,6 @@
 Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
 
 @Html.PagedListPager(Model.TaskActivityViewModels, page => Url.Action("Index", new {page}))
-
 
 @section scripts {
     @Scripts.Render("~/bundles/tasks")

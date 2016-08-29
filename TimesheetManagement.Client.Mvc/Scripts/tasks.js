@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $("#accordion").on("show.bs.collapse", function (e) {
-        Utility.LoadContent("/tasks/gettaskactivity", "#collapseOneBody");
+        Utility.LoadContent($("#add-activity-accordian").attr("data-tm-action"), $("#add-activity-accordian").attr("data-tm-target"));
     });
 
     $('[data-toggle="collapse"]').click(function (e) {

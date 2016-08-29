@@ -53,6 +53,14 @@ namespace TimesheetManagement.Service.Api.Controllers
             return Ok(tasksManager.GetTaskActivities(employeeId));
         }
 
+        [HttpPost]
+        [VersionedRoute("api/taskactivities", 1)] //
+        public IHttpActionResult CreateTaskActivity(TaskActivity taskActivity)
+        {
+            tasksManager.CreateTaskActivity(taskActivity);
+            return Ok();
+        }
+
         // GET values/5
         public string Get(int id)
         {

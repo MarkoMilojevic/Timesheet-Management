@@ -29,7 +29,7 @@
             addOptionToDropdown($dropdown, null, null);
 
             $(result).each(function () {
-                addOptionToDropdown($dropdown, this.Id, this.Value);
+                addOptionToDropdown($dropdown, this.Value, this.Text);
             });
 
             $dropdown.trigger("change");
@@ -47,4 +47,5 @@
         LoadContent: loadContent,
         LoadDropdown: loadDropdown
     };
+
 }();

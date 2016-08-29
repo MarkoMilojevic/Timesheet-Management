@@ -19,6 +19,6 @@ namespace TimesheetManagement.Data.Interfaces.Tasks
 
 		ICollection<TaskActivity> GetTaskActivities(int employeeId);
 
-		ICollection<TaskActivity> GetTaskActivities(int taskId, int employeeId);
+	    void CreateTaskActivity(TaskActivity taskActivity);
 	}
 }

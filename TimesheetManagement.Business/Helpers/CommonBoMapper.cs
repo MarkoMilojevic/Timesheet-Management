@@ -17,12 +17,22 @@ namespace TimesheetManagement.Business.Helpers
 
 		public static Employee CreateEmployee(EmployeeDTO employee)
 		{
-			return CommonBoMapper.Mapper.Map<Employee>(employee);
+			return CommonBoMapper.Mapper.Map<EmployeeDTO, Employee>(employee);
 		}
 
-		public static Activity CreateActivity(ActivityDTO activity)
+        public static EmployeeDTO CreateEmployeeDto(Employee employee)
+        {
+            return CommonBoMapper.Mapper.Map<Employee, EmployeeDTO>(employee);
+        }
+
+        public static Activity CreateActivity(ActivityDTO activity)
 		{
-			return CommonBoMapper.Mapper.Map<Activity>(activity);
+			return CommonBoMapper.Mapper.Map<ActivityDTO, Activity>(activity);
 		}
-	}
+
+	    public static ActivityDTO CreateActivityDto(Activity activity)
+	    {
+            return CommonBoMapper.Mapper.Map<Activity, ActivityDTO>(activity);
+        }
+    }
 }

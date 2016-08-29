@@ -22,9 +22,9 @@ namespace TimesheetManagement.Service.Api
             container.RegisterType<ITasksManager, TasksManager>(new HierarchicalLifetimeManager());
             container.RegisterType<ICommonManager, CommonManager>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<ITaskRepository, TaskEFRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<IActivityRepository, ActivityEFRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<IEmployeeRepository, EmployeeEFRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITaskRepository, TaskRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IActivityRepository, ActivityRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>(new HierarchicalLifetimeManager());
 
             config.DependencyResolver = new UnityResolver(container);
 

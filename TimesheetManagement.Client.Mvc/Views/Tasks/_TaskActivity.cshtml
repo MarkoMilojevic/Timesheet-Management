@@ -3,30 +3,31 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.Activity.ActivityId)
+
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AccountName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AccountId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.AccountName, (SelectList)ViewBag.Accounts, "", htmlAttributes: new { id = "accountsDropdown", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AccountName, "", new { @class = "text-danger" })
-</div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ProjectName, Enumerable.Empty<SelectListItem>(), htmlAttributes: new { id = "projectsDropdown", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.AccountId, (SelectList) ViewBag.Accounts, "", htmlAttributes: new {id = "accounts-dropdown", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AccountId, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TaskName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProjectId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.TaskName, Enumerable.Empty<SelectListItem>(), htmlAttributes: new { id = "tasksDropdown", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TaskName, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.ProjectId, Enumerable.Empty<SelectListItem>(), htmlAttributes: new { id = "projects-dropdown", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaskId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TaskId, Enumerable.Empty<SelectListItem>(), htmlAttributes: new { id = "tasks-dropdown", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TaskId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -55,12 +56,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Activity.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Activity.Description, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Activity.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Activity.Description, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Activity.Description, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Activity.Description, "", new {@class = "text-danger"})
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-md-2 col-md-offset-2">
+                <input type="submit" class="btn btn-primary" value="Save"/>
+                <input type="button" class="btn btn-default" value="Cancel" />
+            </div>
+        </div>
+    
     </div>
 }
 

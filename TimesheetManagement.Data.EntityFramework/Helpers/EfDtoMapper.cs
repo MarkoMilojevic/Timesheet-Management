@@ -19,34 +19,44 @@ namespace TimesheetManagement.Data.EntityFramework.Helpers
 			EfDtoMapper.Mapper = config.CreateMapper();
 		}
 
-		public static EmployeeDTO CreateEmployee(Employee employee)
+		public static EmployeeDTO CreateEmployeeDto(Employee employee)
 		{
 			return EfDtoMapper.Mapper.Map<Employee, EmployeeDTO>(employee);
 		}
 
-		public static ActivityDTO CreateActivity(Activity activity)
+		public static ActivityDTO CreateActivityDto(Activity activity)
 		{
 			return EfDtoMapper.Mapper.Map<Activity, ActivityDTO>(activity);
 		}
 
-		public static AccountDTO CreateAccount(Account account)
+        public static Activity CreateActivity(ActivityDTO activity)
+        {
+            return EfDtoMapper.Mapper.Map<ActivityDTO, Activity>(activity);
+        }
+
+        public static AccountDTO CreateAccountDto(Account account)
 		{
-			return EfDtoMapper.Mapper.Map<AccountDTO>(account);
+			return EfDtoMapper.Mapper.Map<Account, AccountDTO>(account);
 		}
 
-		public static ProjectDTO CreateProject(Project project)
+		public static ProjectDTO CreateProjectDto(Project project)
 		{
 			return EfDtoMapper.Mapper.Map<Project, ProjectDTO>(project);
 		}
 
-		public static TaskDTO CreateTask(Task task)
+		public static TaskDTO CreateTaskDto(Task task)
 		{
 			return EfDtoMapper.Mapper.Map<Task, TaskDTO>(task);
 		}
 
-		public static TaskActivityDTO CreateTaskActivity(TaskActivity taskActivity)
+		public static TaskActivityDTO CreateTaskActivityDto(TaskActivity taskActivity)
 		{
 			return EfDtoMapper.Mapper.Map<TaskActivity, TaskActivityDTO>(taskActivity);
 		}
-	}
+
+        public static TaskActivity CreateTaskActivity(TaskActivityDTO taskActivity)
+        {
+            return EfDtoMapper.Mapper.Map<TaskActivityDTO, TaskActivity>(taskActivity);
+        }
+    }
 }

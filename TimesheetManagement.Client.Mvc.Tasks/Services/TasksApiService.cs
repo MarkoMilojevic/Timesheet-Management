@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -62,5 +63,13 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Services
 			string responseContent = await response.Content.ReadAsStringAsync();
 			return JsonConvert.DeserializeObject<ICollection<TaskActivityViewModel>>(responseContent);
 		}
-	}
+
+	    public async Task<HttpResponseMessage> CreateTaskActivityAsync(TaskActivity taskActivity)
+	    {
+            HttpClient httpClient = TimesheetHttpClient.GetHttpClient();
+            string serializedTaskActivity = JsonConvert.SerializeObject(taskActivity);
+
+            return await httpClient.PostAsync("api/taskactivities/", new StringContent(serializedTaskActivity, System.Text.Encoding.Unicode, "application/json"));
+        }
+    }
 }

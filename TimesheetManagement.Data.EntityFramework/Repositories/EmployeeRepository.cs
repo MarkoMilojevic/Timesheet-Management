@@ -7,11 +7,11 @@ using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
-	public class EmployeeEFRepository : IEmployeeRepository
+	public class EmployeeRepository : IEmployeeRepository
 	{
 		private readonly TimesheetContext context;
 
-		public EmployeeEFRepository()
+		public EmployeeRepository()
 		{
 			this.context = new TimesheetContext();
 		}
@@ -20,21 +20,21 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 		{
 			Employee employee = this.context.Employees.Find(employeeId);
 
-			return EfDtoMapper.CreateEmployee(employee);
+			return EfDtoMapper.CreateEmployeeDto(employee);
 		}
 
 		public EmployeeDTO GetEmployee(string email)
 		{
 			Employee employee = this.context.Employees.FirstOrDefault(e => e.Email == email);
 
-			return EfDtoMapper.CreateEmployee(employee);
+			return EfDtoMapper.CreateEmployeeDto(employee);
 		}
 
 		public ICollection<EmployeeDTO> GetEmployees()
 		{
 			List<Employee> employees = this.context.Employees.ToList();
 
-			return employees.Select(EfDtoMapper.CreateEmployee).ToList();
+			return employees.Select(EfDtoMapper.CreateEmployeeDto).ToList();
 		}
 	}
 }

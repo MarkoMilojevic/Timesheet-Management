@@ -10,70 +10,69 @@ using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
-	public class TaskEFRepository : ITaskRepository
+	public class TaskRepository : ITaskRepository
 	{
 		private readonly TimesheetContext context;
 
-		public TaskEFRepository()
+		public TaskRepository()
 		{
 			this.context = new TimesheetContext();
 		}
 
-		public AccountDTO GetAccount(string tin)
+		public AccountDTO GetAccount(string accountId)
 		{
-			Account client = this.context.Accounts.Find(tin);
+			Account client = this.context.Accounts.Find(accountId);
 
-			return EfDtoMapper.CreateAccount(client);
+			return EfDtoMapper.CreateAccountDto(client);
 		}
 
 		public ICollection<AccountDTO> GetAccounts()
 		{
 			List<Account> clients = this.context.Accounts.ToList();
 
-			return clients.Select(EfDtoMapper.CreateAccount).ToList();
+			return clients.Select(EfDtoMapper.CreateAccountDto).ToList();
 		}
 
 		public ProjectDTO GetProject(int projectId)
 		{
 			Project project = this.context.Projects.Find(projectId);
 
-			return EfDtoMapper.CreateProject(project);
+			return EfDtoMapper.CreateProjectDto(project);
 		}
 
 		public ICollection<ProjectDTO> GetProjects(string accountId)
 		{
 			List<Project> projects = this.context.Projects.Where(p => p.AccountId == accountId).ToList();
 
-			return projects.Select(EfDtoMapper.CreateProject).ToList();
+			return projects.Select(EfDtoMapper.CreateProjectDto).ToList();
 		}
 
 		public TaskDTO GetTask(int taskId)
 		{
 			Task task = this.context.Tasks.Find(taskId);
 
-			return EfDtoMapper.CreateTask(task);
+			return EfDtoMapper.CreateTaskDto(task);
 		}
 
 		public ICollection<TaskDTO> GetTasks(int projectId)
 		{
 			List<Task> tasks = this.context.Tasks.Where(t => t.ProjectId == projectId).ToList();
 
-			return tasks.Select(EfDtoMapper.CreateTask).ToList();
+			return tasks.Select(EfDtoMapper.CreateTaskDto).ToList();
 		}
 
 		public ICollection<TaskActivityDTO> GetTaskActivities(int employeeId)
 		{
 			List<TaskActivity> taskActivities = this.context.TaskActivities.Where(ta => ta.Activity.EmployeeId == employeeId).ToList();
 
-			return taskActivities.Select(EfDtoMapper.CreateTaskActivity).ToList();
+			return taskActivities.Select(EfDtoMapper.CreateTaskActivityDto).ToList();
 		}
 
-		public ICollection<TaskActivityDTO> GetTaskActivities(int taskId, int employeeId)
-		{
-			List<TaskActivity> taskActivities =
-				this.context.TaskActivities.Where(ta => (ta.TaskId == taskId) && (ta.Activity != null) && (ta.Activity.EmployeeId == employeeId)).ToList();
-
-			return taskActivities.Select(EfDtoMapper.CreateTaskActivity).ToList();
-		}
+	    public void CreateTaskActivity(TaskActivityDTO taskActivity)
+	    {
+	        TaskActivity ta = EfDtoMapper.CreateTaskActivity(taskActivity);
+            this.context.TaskActivities.Add(ta);
+	        this.context.SaveChanges();
+	    }
 	}
 }

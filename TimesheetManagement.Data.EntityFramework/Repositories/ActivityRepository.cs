@@ -7,11 +7,11 @@ using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
-	public class ActivityEFRepository : IActivityRepository
+	public class ActivityRepository : IActivityRepository
 	{
 		private readonly TimesheetContext context;
 
-		public ActivityEFRepository()
+		public ActivityRepository()
 		{
 			this.context = new TimesheetContext();
 		}
@@ -20,14 +20,22 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 		{
 			Activity activity = this.context.Activities.Find(activityId);
 
-			return EfDtoMapper.CreateActivity(activity);
+			return EfDtoMapper.CreateActivityDto(activity);
 		}
 
 		public ICollection<ActivityDTO> GetActivities(int employeeId)
 		{
 			List<Activity> activities = this.context.Activities.Where(a => a.EmployeeId == employeeId).ToList();
 
-			return activities.Select(EfDtoMapper.CreateActivity).ToList();
+			return activities.Select(EfDtoMapper.CreateActivityDto).ToList();
 		}
-	}
+
+        public int CreateActivity(ActivityDTO activity)
+        {
+            Activity act = EfDtoMapper.CreateActivity(activity);
+            act = this.context.Activities.Add(act);
+            this.context.SaveChanges();
+            return act.ActivityId;
+        }
+    }
 }

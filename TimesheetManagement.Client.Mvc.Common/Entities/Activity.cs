@@ -24,6 +24,6 @@ namespace TimesheetManagement.Client.Mvc.Common.Entities
         [Display(Name = "Is Approved")]
         public bool IsApproved { get; set; }
 
-		public Employee Employee { get; set; }
+		public int EmployeeId { get; set; }
 	}
 }

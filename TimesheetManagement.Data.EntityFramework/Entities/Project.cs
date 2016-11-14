@@ -5,27 +5,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimesheetManagement.Data.EntityFramework.Entities
 {
-	public class Project
-	{
-		[Key]
-		public int ProjectId { get; set; }
-
-		[Required]
-		[StringLength(50)]
-		public string Name { get; set; }
-
-		[Required]
-		public DateTime StartDate { get; set; }
-
-		[Required]
-		public DateTime EndDate { get; set; }
+    public class Project
+    {
+        [Key]
+        public int ProjectId { get; set; }
 
         [Required]
-		public string AccountId { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
 
-		[ForeignKey(nameof(Project.AccountId))]
-		public virtual Account Account { get; set; }
+        [Required]
+        public DateTime StartDate { get; set; }
 
-		public virtual ICollection<Task> Tasks { get; set; }
-	}
+        [Required]
+        public DateTime EndDate { get; set; }
+
+        [Required]
+        public string ClientId { get; set; }
+
+        [ForeignKey(nameof(ClientId))]
+        public Client Client { get; set; }
+
+        public virtual IEnumerable<Task> Tasks { get; set; }
+    }
 }

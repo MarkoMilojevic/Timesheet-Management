@@ -1,78 +1,57 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using TimesheetManagement.Data.EntityFramework.Entities;
 using TimesheetManagement.Data.EntityFramework.Helpers;
-using TimesheetManagement.Data.Interfaces.Tasks;
-using AccountDTO = TimesheetManagement.Data.Tasks.Entities.Account;
-using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
 using TaskDTO = TimesheetManagement.Data.Tasks.Entities.Task;
-using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
-	public class TaskRepository : ITaskRepository
-	{
-		private readonly TimesheetContext context;
+    public class TaskRepository : EfRepository<TaskDTO, int>
+    {
+        public override int Add(TaskDTO taskDto)
+        {
+            Task task = EfDtoMapper.CreateTask(taskDto);
+            task = context.Tasks.Add(task);
+            context.SaveChanges();
 
-		public TaskRepository()
-		{
-			this.context = new TimesheetContext();
-		}
+            return task.TaskId;
+        }
 
-		public AccountDTO GetAccount(string accountId)
-		{
-			Account client = this.context.Accounts.Find(accountId);
+        public override bool Remove(TaskDTO taskDto)
+        {
+            Task task = EfDtoMapper.CreateTask(taskDto);
+            context.Tasks.Remove(task);
 
-			return EfDtoMapper.CreateAccountDto(client);
-		}
+            return context.SaveChanges() != 0;
+        }
 
-		public ICollection<AccountDTO> GetAccounts()
-		{
-			List<Account> clients = this.context.Accounts.ToList();
+        public override TaskDTO Find(params int[] keys)
+        {
+            Task task = context.Tasks
+                .Include(t => t.Project)
+                .SingleOrDefault(t => t.TaskId == keys[0]);
 
-			return clients.Select(EfDtoMapper.CreateAccountDto).ToList();
-		}
+            return EfDtoMapper.CreateTaskDto(task);
+        }
 
-		public ProjectDTO GetProject(int projectId)
-		{
-			Project project = this.context.Projects.Find(projectId);
+        public override IEnumerable<TaskDTO> Find(Expression<Func<TaskDTO, bool>> predicate)
+        {
+            Expression<Func<Task, bool>> efPredicate = EfExpressionTransformer<TaskDTO, Task>.Tranform(predicate);
 
-			return EfDtoMapper.CreateProjectDto(project);
-		}
+            return context.Tasks
+                .Where(efPredicate)
+                .Include(t => t.Project)
+                .Select(EfDtoMapper.CreateTaskDto);
+        }
 
-		public ICollection<ProjectDTO> GetProjects(string accountId)
-		{
-			List<Project> projects = this.context.Projects.Where(p => p.AccountId == accountId).ToList();
-
-			return projects.Select(EfDtoMapper.CreateProjectDto).ToList();
-		}
-
-		public TaskDTO GetTask(int taskId)
-		{
-			Task task = this.context.Tasks.Find(taskId);
-
-			return EfDtoMapper.CreateTaskDto(task);
-		}
-
-		public ICollection<TaskDTO> GetTasks(int projectId)
-		{
-			List<Task> tasks = this.context.Tasks.Where(t => t.ProjectId == projectId).ToList();
-
-			return tasks.Select(EfDtoMapper.CreateTaskDto).ToList();
-		}
-
-		public ICollection<TaskActivityDTO> GetTaskActivities(int employeeId)
-		{
-			List<TaskActivity> taskActivities = this.context.TaskActivities.Where(ta => ta.Activity.EmployeeId == employeeId).ToList();
-
-			return taskActivities.Select(EfDtoMapper.CreateTaskActivityDto).ToList();
-		}
-
-	    public void CreateTaskActivity(TaskActivityDTO taskActivity)
-	    {
-	        TaskActivity ta = EfDtoMapper.CreateTaskActivity(taskActivity);
-            this.context.TaskActivities.Add(ta);
-	        this.context.SaveChanges();
-	    }
-	}
+        public override IEnumerable<TaskDTO> FindAll()
+        {
+            return context.Tasks
+                .Include(t => t.Project)
+                .Select(EfDtoMapper.CreateTaskDto);
+        }
+    }
 }

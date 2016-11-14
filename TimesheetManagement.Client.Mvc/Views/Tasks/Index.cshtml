@@ -1,6 +1,6 @@
 ﻿@using PagedList.Mvc
 @using TimesheetManagement.Client.Mvc.Tasks.Models
-@model TimesheetManagement.Client.Mvc.Tasks.Models.TaskActivitiesViewModel
+@model TaskActivitiesViewModel
 
 @section styles {
     @Styles.Render("~/Content/tasks")
@@ -13,7 +13,7 @@
 <!-- Add Activity Accordian -->
 <div class="panel-group" id="accordion">
     <div class="panel panel-primary">
-        <div id="add-activity-accordian" class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" data-tm-action ="@Url.Action("AddTaskActivity", "Tasks")" data-tm-target="#collapse1-body">
+        <div id="add-activity-accordian" class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" data-tm-action="@Url.Action("AddTaskActivity", "Tasks")" data-tm-target="#collapse1-body">
             <h4 class="panel-title">
                 Add Activity
             </h4>
@@ -26,70 +26,7 @@
     </div>
 </div>
 
-<!-- Task Activities table -->
-<table class="table">
-    <tr>
-        <th>
-            Client
-        </th>
-        <th>
-            Project
-        </th>
-        <th>
-            Task
-        </th>
-        <th>
-            Start Date
-        </th>
-        <th>
-            End Date
-        </th>
-        <th>
-            Hours
-        </th>
-        <th>
-            Is Approved
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (TaskActivityViewModel taModel in Model.TaskActivityViewModels)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => taModel.AccountName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => taModel.ProjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => taModel.TaskName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => taModel.Activity.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => taModel.Activity.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => taModel.Activity.DurationInHours)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => taModel.Activity.IsApproved)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details") |
-                @Html.ActionLink("Edit", "Edit") |
-                @Html.ActionLink("Delete", "Delete")
-            </td>
-        </tr>
-    }
-</table>
-
-<!-- Task Activities table pagination -->
-Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
-
-@Html.PagedListPager(Model.TaskActivityViewModels, page => Url.Action("Index", new {page}))
+@Html.Partial("~/Views/Tasks/_TaskActivitiesTable.cshtml", Model)
 
 @section scripts {
     @Scripts.Render("~/bundles/tasks")

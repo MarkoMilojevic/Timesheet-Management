@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Task.cs" />
     <Compile Include="Entities\TaskActivity.cs" />

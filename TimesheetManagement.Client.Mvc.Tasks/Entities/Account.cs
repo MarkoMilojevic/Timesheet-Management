@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TimesheetManagement.Client.Mvc.Tasks.Entities
+﻿namespace TimesheetManagement.Client.Mvc.Tasks.Entities
 {
 	public class Account
 	{

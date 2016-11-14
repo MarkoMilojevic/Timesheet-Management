@@ -49,10 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\CommonBoMapper.cs" />
-    <Compile Include="Helpers\CommonBoMapperProfile.cs" />
+    <Compile Include="Helpers\CoreBoMapper.cs" />
+    <Compile Include="Helpers\CoreBoMapperProfile.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Helpers\ExpressionTransformer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

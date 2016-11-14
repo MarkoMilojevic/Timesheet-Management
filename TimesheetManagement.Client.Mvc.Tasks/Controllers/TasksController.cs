@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using PagedList;
+using TimesheetManagement.Client.Mvc.Common.Entities;
 using TimesheetManagement.Client.Mvc.Common.Helpers;
 using TimesheetManagement.Client.Mvc.Tasks.Entities;
 using TimesheetManagement.Client.Mvc.Tasks.Models;
@@ -21,12 +22,12 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
             this.service = new TasksApiService();
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int page = 1)
         {
             TaskActivitiesViewModel model = new TaskActivitiesViewModel();
-            IEnumerable<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
-            model.TaskActivityViewModels =  new StaticPagedList<TaskActivityViewModel>(taskActivities, 1, 10, 0);
-            model.PagingInfo = new PagingInfo(0, 1, 1, 10, "", "");
+            ICollection<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
+            model.TaskActivityViewModels =  new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * 10).Take(10), page, 10, taskActivities.Count);
+            model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / 10), page, 10, "", "");
             return View("Index", model);
         }
 
@@ -39,6 +40,20 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
             return View("_TaskActivity");
         }
 
+        public async Task<ActionResult> GetTaskActivitiesViewModel(int page = 1)
+        {
+            if (!Request.IsAjaxRequest())
+            {
+                
+            }
+
+            TaskActivitiesViewModel model = new TaskActivitiesViewModel();
+            ICollection<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
+            model.TaskActivityViewModels = new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * 10).Take(10), page, 10, taskActivities.Count);
+            model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / 10), page, 10, "", "");
+            return PartialView("_TaskActivitiesTable", model);
+        }
+
         [HttpPost]
         public async Task<ActionResult> AddTaskActivity(TaskActivityViewModel model)
         {
@@ -47,10 +62,14 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
                 
             }
 
-            model.Activity.EmployeeId = 1;
+            model.Activity.Employee = new Employee
+            {
+                EmployeeId = 1
+            };
+
             TaskActivity taskActivity = new TaskActivity
             {
-                TaskId = model.TaskId,
+                Task = model.Task,
                 Activity = model.Activity
             };
 

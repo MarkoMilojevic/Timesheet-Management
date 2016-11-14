@@ -1,40 +1,51 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using TimesheetManagement.Data.EntityFramework.Entities;
 using TimesheetManagement.Data.EntityFramework.Helpers;
-using TimesheetManagement.Data.Interfaces.Common;
 using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
 
 namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
-	public class EmployeeRepository : IEmployeeRepository
-	{
-		private readonly TimesheetContext context;
+    public class EmployeeRepository : EfRepository<EmployeeDTO, int>
+    {
+        public override int Add(EmployeeDTO employeeDto)
+        {
+            Employee employee = EfDtoMapper.CreateEmployee(employeeDto);
+            employee = context.Employees.Add(employee);
+            context.SaveChanges();
 
-		public EmployeeRepository()
-		{
-			this.context = new TimesheetContext();
-		}
+            return employee.EmployeeId;
+        }
 
-		public EmployeeDTO GetEmployee(int employeeId)
-		{
-			Employee employee = this.context.Employees.Find(employeeId);
+        public override bool Remove(EmployeeDTO employeeDto)
+        {
+            Employee employee = EfDtoMapper.CreateEmployee(employeeDto);
+            context.Employees.Remove(employee);
 
-			return EfDtoMapper.CreateEmployeeDto(employee);
-		}
+            return context.SaveChanges() != 0;
+        }
 
-		public EmployeeDTO GetEmployee(string email)
-		{
-			Employee employee = this.context.Employees.FirstOrDefault(e => e.Email == email);
+        public override EmployeeDTO Find(params int[] keys)
+        {
+            Employee employee = context.Employees.Find(keys[0]);
 
-			return EfDtoMapper.CreateEmployeeDto(employee);
-		}
+            return EfDtoMapper.CreateEmployeeDto(employee);
+        }
 
-		public ICollection<EmployeeDTO> GetEmployees()
-		{
-			List<Employee> employees = this.context.Employees.ToList();
+        public override IEnumerable<EmployeeDTO> Find(Expression<Func<EmployeeDTO, bool>> predicate)
+        {
+            Expression<Func<Employee, bool>> efPredicate = EfExpressionTransformer<EmployeeDTO, Employee>.Tranform(predicate);
 
-			return employees.Select(EfDtoMapper.CreateEmployeeDto).ToList();
-		}
-	}
+            return context.Employees
+                .Where(efPredicate)
+                .Select(EfDtoMapper.CreateEmployeeDto);
+        }
+
+        public override IEnumerable<EmployeeDTO> FindAll()
+        {
+            return context.Employees.Select(EfDtoMapper.CreateEmployeeDto);
+        }
+    }
 }

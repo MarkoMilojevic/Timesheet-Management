@@ -4,7 +4,7 @@ namespace TimesheetManagement.Business.Tasks.Entities
 {
     public class TaskActivity
     {
-        public int TaskId { get; set; }
+        public Task Task { get; set; }
 
         public Activity Activity { get; set; }
     }

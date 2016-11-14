@@ -1,4 +1,5 @@
 ﻿using TimesheetManagement.Business.Entities;
+using TimesheetManagement.Business.Tasks.Entities;
 
 namespace TimesheetManagement.Business.Tasks.Models
 {
@@ -12,9 +13,7 @@ namespace TimesheetManagement.Business.Tasks.Models
 
         public string ProjectName { get; set; }
 
-        public int TaskId { get; set; }
-
-        public string TaskName { get; set; }
+        public Task Task { get; set; }
 
         public Activity Activity { get; set; }
     }

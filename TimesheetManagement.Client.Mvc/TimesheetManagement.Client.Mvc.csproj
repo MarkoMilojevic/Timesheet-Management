@@ -236,6 +236,7 @@
     <Content Include="Views\Timesheets\Index.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Tasks\_TaskActivity.cshtml" />
+    <Content Include="Views\Tasks\_TaskActivitiesTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

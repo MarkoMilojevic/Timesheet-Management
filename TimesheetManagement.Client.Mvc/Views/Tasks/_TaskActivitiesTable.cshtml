@@ -1,0 +1,45 @@
+﻿@using PagedList.Mvc
+@using TimesheetManagement.Client.Mvc.Tasks.Models
+@model TaskActivitiesViewModel
+
+<div id="task-activity-table">
+    <table class="table">
+        <tr>
+            <th>Client</th>
+            <th>Project</th>
+            <th>Task</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Hours</th>
+            <th>Is Approved</th>
+            <th></th>
+        </tr>
+
+        @foreach (TaskActivityViewModel taModel in Model.TaskActivityViewModels)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => taModel.AccountName)</td>
+                <td>@Html.DisplayFor(modelItem => taModel.ProjectName)</td>
+                <td>@Html.DisplayFor(modelItem => taModel.Task.Name)</td>
+                <td>@Html.DisplayFor(modelItem => taModel.Activity.StartDate)</td>
+                <td>@Html.DisplayFor(modelItem => taModel.Activity.EndDate)</td>
+                <td>@Html.DisplayFor(modelItem => taModel.Activity.DurationInHours)</td>
+                <td>@Html.DisplayFor(modelItem => taModel.Activity.IsApproved)</td>
+                <td>
+                    @Html.ActionLink("Details", "Details") |
+                    @Html.ActionLink("Edit", "Edit") |
+                    @Html.ActionLink("Delete", "Delete")
+                </td>
+            </tr>
+        }
+    </table>
+
+    <!-- Task Activities table pagination -->
+    Page @(Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
+
+    @Html.PagedListPager(
+        Model.TaskActivityViewModels,
+        page => Url.Action("GetTaskActivitiesViewModel", "Tasks", new { page }),
+        PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.OnlyShowFivePagesAtATime, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "task-activity-table" })
+    )
+</div>

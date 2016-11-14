@@ -15,11 +15,8 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Models
         public int ProjectId { get; set; }
 
         public string ProjectName { get; set; }
-
-        [Display(Name = "Task")]
-        public int TaskId { get; set; }
-
-        public string TaskName { get; set; }
+        
+        public Task Task { get; set; }
 
         public Activity Activity { get; set; }
     }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace TimesheetManagement.Client.Mvc.Tasks.Entities
 {
@@ -13,6 +12,6 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Entities
 
 		public DateTime EndDate { get; set; }
 
-		public int AccountId { get; set; }
+		public string AccountId { get; set; }
 	}
 }

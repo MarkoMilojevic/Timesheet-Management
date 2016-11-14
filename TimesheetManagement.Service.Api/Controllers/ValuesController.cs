@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using TimesheetManagement.Business.Entities;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
-using TimesheetManagement.Business.Tasks.Interfaces;
 using TimesheetManagement.Service.Api.Common.Helpers;
 
 namespace TimesheetManagement.Service.Api.Controllers
@@ -12,52 +12,61 @@ namespace TimesheetManagement.Service.Api.Controllers
     //[RoutePrefix("api")]
     public class ValuesController : ApiController
     {
-        private readonly ICommonManager commonManager;
-        private readonly ITasksManager tasksManager;
+        private readonly IManager<Employee, int> employeeManager;
+        private readonly IManager<Activity, int> activityManager;
+        private readonly IManager<Client, string> clientManager;
+        private readonly IManager<Project, int> projectManager;
+        private readonly IManager<Task, int> taskManager;
+        private readonly IManager<TaskActivity, int> taskActivityManager;
 
-        public ValuesController(ITasksManager taskManager, ICommonManager commonManager)
+        public ValuesController(IManager<Employee, int> employeeManager, IManager<Activity, int> activityManager, IManager<Client, string> clientManager, IManager<Project, int> projectManager, IManager<Task, int> taskManager, IManager<TaskActivity, int> taskActivityManager)
         {
-            tasksManager = taskManager;
-            this.commonManager = commonManager;
+            this.employeeManager = employeeManager;
+            this.activityManager = activityManager;
+            this.clientManager = clientManager;
+            this.projectManager = projectManager;
+            this.taskManager = taskManager;
+            this.taskActivityManager = taskActivityManager;
         }
+
 
         [VersionedRoute("api/employees", 1)] //
         public IHttpActionResult GetEmployees(int eId)
         {
-            return Ok(commonManager.GetEmployees());
+            return Ok(employeeManager.Find(eId));
         }
 
         // Some test methods
         [VersionedRoute("api/accounts", 1)]
         public IHttpActionResult GetAccounts()
         {
-            ICollection<Account> accounts = tasksManager.GetAccounts();
+            IEnumerable<Client> accounts = clientManager.FindAll();
             return Ok(accounts);
         }
 
         [VersionedRoute("api/accounts/{accountId}/projects", 1)]
         public IHttpActionResult GetProjects(string accountId)
         {
-            return Ok(tasksManager.GetProjects(accountId));
+            return Ok(projectManager.Find(p => p.Client != null && p.Client.TaxpayerIdentificationNumber == accountId));
         }
 
         [VersionedRoute("api/projects/{projectId}/tasks", 1)]
         public IHttpActionResult GetTasks(int projectId)
         {
-            return Ok(tasksManager.GetTasks(projectId));
+            return Ok(taskManager.Find(t => t.Project != null && t.Project.ProjectId == projectId));
         }
 
         [VersionedRoute("api/taskactivities/{employeeId}", 1)] //
         public IHttpActionResult GetTaskActivites(int employeeId)
         {
-            return Ok(tasksManager.GetTaskActivities(employeeId));
+            return Ok(taskActivityManager.Find(ta => ta.Activity != null && ta.Activity.Employee != null && ta.Activity.Employee.EmployeeId == employeeId));
         }
 
         [HttpPost]
         [VersionedRoute("api/taskactivities", 1)] //
         public IHttpActionResult CreateTaskActivity(TaskActivity taskActivity)
         {
-            tasksManager.CreateTaskActivity(taskActivity);
+            taskActivityManager.Add(taskActivity);
             return Ok();
         }
 

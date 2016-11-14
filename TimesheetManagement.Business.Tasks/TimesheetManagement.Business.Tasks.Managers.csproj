@@ -49,24 +49,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TasksManager.cs" />
+    <Compile Include="TaskActivityManager.cs" />
+    <Compile Include="ProjectManager.cs" />
+    <Compile Include="ClientManager.cs" />
+    <Compile Include="TaskManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\TimesheetManagement.Business.Entities\TimesheetManagement.Business.Managers.csproj">
+      <Project>{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}</Project>
+      <Name>TimesheetManagement.Business.Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj">
+      <Project>{9E0BF7F3-748E-4657-B3A1-095463BD48E1}</Project>
+      <Name>TimesheetManagement.Business.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.csproj">
       <Project>{f140b1ba-bdbe-492c-a523-119c13e657b8}</Project>
       <Name>TimesheetManagement.Business.Tasks</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Interfaces\TimesheetManagement.Business.Tasks.Interfaces.csproj">
-      <Project>{f8dcdca5-7e65-4d99-9614-67a928dc2397}</Project>
-      <Name>TimesheetManagement.Business.Tasks.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
       <Project>{8720F651-01D3-4659-8EE8-4FD933DAEE94}</Project>
       <Name>TimesheetManagement.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Data.EntityFramework\TimesheetManagement.Data.EntityFramework.csproj">
+      <Project>{0CDD347D-C11B-435C-B0D9-BF82E5245503}</Project>
+      <Name>TimesheetManagement.Data.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimesheetManagement.Data.Interfaces\TimesheetManagement.Data.Interfaces.csproj">
       <Project>{c63a0f22-0c98-4ca1-b341-b495be759509}</Project>
@@ -80,6 +88,9 @@
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
       <Name>TimesheetManagement.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -64,8 +64,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Data.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Managers", "TimesheetManagement.Business.Entities\TimesheetManagement.Business.Managers.csproj", "{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Business.Tasks.Interfaces", "TimesheetManagement.Business.Tasks.Interfaces\TimesheetManagement.Business.Tasks.Interfaces.csproj", "{F8DCDCA5-7E65-4D99-9614-67A928DC2397}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,10 +130,6 @@ Global
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8DCDCA5-7E65-4D99-9614-67A928DC2397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,6 +150,5 @@ Global
 		{F140B1BA-BDBE-492C-A523-119C13E657B8} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
 		{C63A0F22-0C98-4CA1-B341-B495BE759509} = {D6343D97-C1C2-414A-93BA-99AE80D004DB}
 		{94EC4C1F-180C-4C4C-BE24-6DE0370CE5B7} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
-		{F8DCDCA5-7E65-4D99-9614-67A928DC2397} = {CBE2B581-9BFD-4F1B-B8F2-1A08FCBF031C}
 	EndGlobalSection
 EndGlobal

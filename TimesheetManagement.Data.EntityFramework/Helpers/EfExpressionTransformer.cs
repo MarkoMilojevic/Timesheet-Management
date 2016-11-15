@@ -53,19 +53,11 @@ namespace TimesheetManagement.Data.EntityFramework.Helpers
                     return base.VisitMember(node);
                 }
 
+                Expression inner = Visit(node.Expression);
                 string memberName = node.Member.Name;
-                if (node.Member.ReflectedType == null)
-                {
-                    return Expression.Empty();
-                }
-
                 PropertyInfo member = mapper[node.Member.ReflectedType].GetProperty(memberName);
-                if (member == null)
-                {
-                    return Expression.Empty();
-                }
 
-                return Expression.Property(Visit(node.Expression), member);
+                return Expression.Property(inner, member);
             }
         }
     }

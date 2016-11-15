@@ -42,7 +42,7 @@ namespace TimesheetManagement.Business.Tasks.Managers
 
         public IEnumerable<TaskActivity> Find(Expression<Func<TaskActivity, bool>> predicate)
         {
-            Expression<Func<TaskActivityDTO, bool>> dataPredicate = ExpressionTransformer<TaskActivity, TaskActivityDTO>.Tranform(predicate);
+            Expression<Func<TaskActivityDTO, bool>> dataPredicate = TasksExpressionTransformer<TaskActivity, TaskActivityDTO>.Tranform(predicate);
 
             return taskActivityRepository.Find(dataPredicate).Select(TasksBoMapper.CreateTaskActivity);
         }

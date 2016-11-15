@@ -44,12 +44,6 @@
     <Compile Include="IManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
-      <Project>{8720F651-01D3-4659-8EE8-4FD933DAEE94}</Project>
-      <Name>TimesheetManagement.Business</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

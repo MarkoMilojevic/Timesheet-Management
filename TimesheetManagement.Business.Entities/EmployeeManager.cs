@@ -42,7 +42,7 @@ namespace TimesheetManagement.Business.Managers
 
         public IEnumerable<Employee> Find(Expression<Func<Employee, bool>> predicate)
         {
-            Expression<Func<EmployeeDTO, bool>> dataPredicate = ExpressionTransformer<Employee, EmployeeDTO>.Tranform(predicate);
+            Expression<Func<EmployeeDTO, bool>> dataPredicate = CoreExpressionTransformer<Employee, EmployeeDTO>.Tranform(predicate);
 
             return employeeRepository.Find(dataPredicate).Select(CoreBoMapper.CreateEmployee);
         }

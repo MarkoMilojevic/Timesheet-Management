@@ -16,6 +16,7 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
     public class TasksController : Controller
     {
         private readonly TasksApiService service;
+        private const int pageSize = 5;
 
         public TasksController()
         {
@@ -26,8 +27,8 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
         {
             TaskActivitiesViewModel model = new TaskActivitiesViewModel();
             ICollection<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
-            model.TaskActivityViewModels =  new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * 10).Take(10), page, 10, taskActivities.Count);
-            model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / 10), page, 10, "", "");
+            model.TaskActivityViewModels =  new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
+            model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / pageSize), page, pageSize, "", "");
             return View("Index", model);
         }
 
@@ -49,8 +50,8 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
 
             TaskActivitiesViewModel model = new TaskActivitiesViewModel();
             ICollection<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
-            model.TaskActivityViewModels = new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * 10).Take(10), page, 10, taskActivities.Count);
-            model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / 10), page, 10, "", "");
+            model.TaskActivityViewModels = new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
+            model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / pageSize), page, pageSize, "", "");
             return PartialView("_TaskActivitiesTable", model);
         }
 

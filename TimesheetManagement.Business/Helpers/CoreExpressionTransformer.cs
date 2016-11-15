@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using TimesheetManagement.Business.Entities;
-using TimesheetManagement.Business.Tasks.Entities;
 using ActivityDTO = TimesheetManagement.Data.Entities.Activity;
 using EmployeeDTO = TimesheetManagement.Data.Entities.Employee;
-using ClientDTO = TimesheetManagement.Data.Tasks.Entities.Client;
-using ProjectDTO = TimesheetManagement.Data.Tasks.Entities.Project;
-using TaskDTO = TimesheetManagement.Data.Tasks.Entities.Task;
-using TaskActivityDTO = TimesheetManagement.Data.Tasks.Entities.TaskActivity;
 
-namespace TimesheetManagement.Business.Tasks.Helpers
+namespace TimesheetManagement.Business.Helpers
 {
-    public static class ExpressionTransformer<TFrom, TTo>
+    public static class CoreExpressionTransformer<TFrom, TTo>
     {
         public static Expression<Func<TTo, bool>> Tranform(Expression<Func<TFrom, bool>> expression)
         {
@@ -34,11 +29,7 @@ namespace TimesheetManagement.Business.Tasks.Helpers
                 mapper = new Dictionary<Type, Type>
                 {
                     {typeof(Employee), typeof(EmployeeDTO)},
-                    {typeof(Activity), typeof(ActivityDTO)},
-                    {typeof(Client), typeof(ClientDTO)},
-                    {typeof(Project), typeof(ProjectDTO)},
-                    {typeof(Task), typeof(TaskDTO)},
-                    {typeof(TaskActivity), typeof(TaskActivityDTO)}
+                    {typeof(Activity), typeof(ActivityDTO)}
                 };
             }
 
@@ -54,19 +45,11 @@ namespace TimesheetManagement.Business.Tasks.Helpers
                     return base.VisitMember(node);
                 }
 
+                Expression inner = Visit(node.Expression);
                 string memberName = node.Member.Name;
-                if (node.Member.ReflectedType == null)
-                {
-                    return Expression.Empty();
-                }
-
                 PropertyInfo member = mapper[node.Member.ReflectedType].GetProperty(memberName);
-                if (member == null)
-                {
-                    return Expression.Empty();
-                }
 
-                return Expression.Property(Visit(node.Expression), member);
+                return Expression.Property(inner, member);
             }
         }
     }

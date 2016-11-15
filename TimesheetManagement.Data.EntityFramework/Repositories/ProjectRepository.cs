@@ -14,6 +14,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override int Add(ProjectDTO projectDto)
         {
             Project project = EfDtoMapper.CreateProject(projectDto);
+
             project = context.Projects.Add(project);
             context.SaveChanges();
 
@@ -23,6 +24,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override bool Remove(ProjectDTO projectDto)
         {
             Project project = EfDtoMapper.CreateProject(projectDto);
+
             context.Projects.Remove(project);
 
             return context.SaveChanges() != 0;
@@ -30,9 +32,11 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override ProjectDTO Find(params int[] keys)
         {
+            int projectId = keys[0];
+
             Project project = context.Projects
                 .Include(p => p.Client)
-                .SingleOrDefault(p => p.ProjectId == keys[0]);
+                .SingleOrDefault(p => p.ProjectId == projectId);
 
             return EfDtoMapper.CreateProjectDto(project);
         }

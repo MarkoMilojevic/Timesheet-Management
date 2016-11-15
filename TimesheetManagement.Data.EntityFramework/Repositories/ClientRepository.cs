@@ -13,6 +13,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override string Add(ClientDTO clientDto)
         {
             Client client = EfDtoMapper.CreateClient(clientDto);
+
             client = context.Clients.Add(client);
             context.SaveChanges();
 
@@ -22,6 +23,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override bool Remove(ClientDTO clientDto)
         {
             Client client = EfDtoMapper.CreateClient(clientDto);
+
             context.Clients.Remove(client);
 
             return context.SaveChanges() != 0;
@@ -29,7 +31,9 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override ClientDTO Find(params string[] keys)
         {
-            Client client = context.Clients.Find(keys[0]);
+            string clientId = keys[0];
+
+            Client client = context.Clients.Find(clientId);
 
             return EfDtoMapper.CreateClientDto(client);
         }

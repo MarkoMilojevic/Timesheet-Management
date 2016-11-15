@@ -14,6 +14,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override int Add(ActivityDTO activityDto)
         {
             Activity activity = EfDtoMapper.CreateActivity(activityDto);
+
             activity = context.Activities.Add(activity);
             context.SaveChanges();
 
@@ -23,6 +24,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override bool Remove(ActivityDTO activityDto)
         {
             Activity activity = EfDtoMapper.CreateActivity(activityDto);
+
             context.Activities.Remove(activity);
 
             return context.SaveChanges() != 0;
@@ -30,9 +32,11 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override ActivityDTO Find(params int[] keys)
         {
+            int activityId = keys[0];
+
             Activity activity = context.Activities
                 .Include(a => a.Employee)
-                .SingleOrDefault(a => a.ActivityId == keys[0]);
+                .SingleOrDefault(a => a.ActivityId == activityId);
 
             return EfDtoMapper.CreateActivityDto(activity);
         }

@@ -15,9 +15,11 @@ namespace TimesheetManagement.Data.EntityFramework.Entities
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
 
         [Required]
+        [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
 
         [Required]

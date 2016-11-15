@@ -44,16 +44,6 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Data.Tasks\TimesheetManagement.Data.Tasks.csproj">
-      <Project>{c73c1127-b7ef-4e90-9acd-bfd61b1845bb}</Project>
-      <Name>TimesheetManagement.Data.Tasks</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
-      <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
-      <Name>TimesheetManagement.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

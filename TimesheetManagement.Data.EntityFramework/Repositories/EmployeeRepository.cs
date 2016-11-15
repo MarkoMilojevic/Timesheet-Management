@@ -13,6 +13,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override int Add(EmployeeDTO employeeDto)
         {
             Employee employee = EfDtoMapper.CreateEmployee(employeeDto);
+
             employee = context.Employees.Add(employee);
             context.SaveChanges();
 
@@ -22,6 +23,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override bool Remove(EmployeeDTO employeeDto)
         {
             Employee employee = EfDtoMapper.CreateEmployee(employeeDto);
+
             context.Employees.Remove(employee);
 
             return context.SaveChanges() != 0;
@@ -29,7 +31,9 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override EmployeeDTO Find(params int[] keys)
         {
-            Employee employee = context.Employees.Find(keys[0]);
+            int employeeId = keys[0];
+
+            Employee employee = context.Employees.Find(employeeId);
 
             return EfDtoMapper.CreateEmployeeDto(employee);
         }

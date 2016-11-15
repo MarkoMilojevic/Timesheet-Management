@@ -29,13 +29,13 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override TaskActivityDTO Find(params int[] keys)
         {
+            int taskId = keys[0];
+            int activityId = keys[1];
+
             TaskActivity taskActivity = context.TaskActivities
-                .Include(ta => ta.Activity)
-                .Include(ta => ta.Task)
                 .Include(ta => ta.Activity.Employee)
-                .Include(ta => ta.Task.Project)
                 .Include(ta => ta.Task.Project.Client)
-                .SingleOrDefault(ta => ta.TaskId == keys[0] && ta.ActivityId == keys[1]);
+                .SingleOrDefault(ta => ta.TaskId == taskId && ta.ActivityId == activityId);
 
             return EfDtoMapper.CreateTaskActivityDto(taskActivity);
         }
@@ -46,10 +46,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
             return context.TaskActivities
                 .Where(efPredicate)
-                .Include(ta => ta.Activity)
-                .Include(ta => ta.Task)
                 .Include(ta => ta.Activity.Employee)
-                .Include(ta => ta.Task.Project)
                 .Include(ta => ta.Task.Project.Client)
                 .Select(EfDtoMapper.CreateTaskActivityDto);
         }
@@ -57,10 +54,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override IEnumerable<TaskActivityDTO> FindAll()
         {
             return context.TaskActivities
-                .Include(ta => ta.Activity)
-                .Include(ta => ta.Task)
                 .Include(ta => ta.Activity.Employee)
-                .Include(ta => ta.Task.Project)
                 .Include(ta => ta.Task.Project.Client)
                 .Select(EfDtoMapper.CreateTaskActivityDto);
         }

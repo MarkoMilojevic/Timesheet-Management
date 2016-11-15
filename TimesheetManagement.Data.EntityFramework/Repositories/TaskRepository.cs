@@ -14,6 +14,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override int Add(TaskDTO taskDto)
         {
             Task task = EfDtoMapper.CreateTask(taskDto);
+
             task = context.Tasks.Add(task);
             context.SaveChanges();
 
@@ -23,6 +24,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
         public override bool Remove(TaskDTO taskDto)
         {
             Task task = EfDtoMapper.CreateTask(taskDto);
+
             context.Tasks.Remove(task);
 
             return context.SaveChanges() != 0;
@@ -30,9 +32,11 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override TaskDTO Find(params int[] keys)
         {
+            int taskId = keys[0];
+
             Task task = context.Tasks
-                .Include(t => t.Project)
-                .SingleOrDefault(t => t.TaskId == keys[0]);
+                .Include(t => t.Project.Client)
+                .SingleOrDefault(t => t.TaskId == taskId);
 
             return EfDtoMapper.CreateTaskDto(task);
         }
@@ -43,14 +47,14 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
             return context.Tasks
                 .Where(efPredicate)
-                .Include(t => t.Project)
+                .Include(t => t.Project.Client)
                 .Select(EfDtoMapper.CreateTaskDto);
         }
 
         public override IEnumerable<TaskDTO> FindAll()
         {
             return context.Tasks
-                .Include(t => t.Project)
+                .Include(t => t.Project.Client)
                 .Select(EfDtoMapper.CreateTaskDto);
         }
     }

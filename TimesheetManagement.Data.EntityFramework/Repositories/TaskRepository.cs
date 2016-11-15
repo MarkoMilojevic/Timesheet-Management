@@ -41,6 +41,23 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
             return EfDtoMapper.CreateTaskDto(task);
         }
 
+        public override bool Update(TaskDTO taskDto)
+        {
+            Task existingTask = context.Tasks.FirstOrDefault(t => t.TaskId == taskDto.TaskId);
+            if (existingTask == null)
+            {
+                return false;
+            }
+
+            context.Entry(existingTask).State = EntityState.Detached;
+
+            Task updatedTask = EfDtoMapper.CreateTask(taskDto);
+            context.Tasks.Attach(updatedTask);
+            context.Entry(updatedTask).State = EntityState.Modified;
+
+            return context.SaveChanges() != 0;
+        }
+
         public override IEnumerable<TaskDTO> Find(Expression<Func<TaskDTO, bool>> predicate)
         {
             Expression<Func<Task, bool>> efPredicate = EfExpressionTransformer<TaskDTO, Task>.Tranform(predicate);

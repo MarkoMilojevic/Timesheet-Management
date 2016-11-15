@@ -33,6 +33,13 @@ namespace TimesheetManagement.Business.Tasks.Managers
             return taskActivityRepository.Remove(taskActivityDto);
         }
 
+        public bool Update(TaskActivity taskActivity)
+        {
+            TaskActivityDTO taskActivityDto = TasksBoMapper.CreateTaskActivityDto(taskActivity);
+
+            return taskActivityRepository.Update(taskActivityDto);
+        }
+
         public TaskActivity Find(params int[] keys)
         {
             TaskActivityDTO taskActivityDto = taskActivityRepository.Find(keys);

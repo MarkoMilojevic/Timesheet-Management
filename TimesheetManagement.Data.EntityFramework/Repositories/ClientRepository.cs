@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using TimesheetManagement.Data.EntityFramework.Entities;
@@ -25,6 +26,23 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
             Client client = EfDtoMapper.CreateClient(clientDto);
 
             context.Clients.Remove(client);
+
+            return context.SaveChanges() != 0;
+        }
+
+        public override bool Update(ClientDTO clientDto)
+        {
+            Client existingClient = context.Clients.FirstOrDefault(c => c.TaxpayerIdentificationNumber == clientDto.TaxpayerIdentificationNumber);
+            if (existingClient == null)
+            {
+                return false;
+            }
+
+            context.Entry(existingClient).State = EntityState.Detached;
+
+            Client updatedClient = EfDtoMapper.CreateClient(clientDto);
+            context.Clients.Attach(updatedClient);
+            context.Entry(updatedClient).State = EntityState.Modified;
 
             return context.SaveChanges() != 0;
         }

@@ -14,7 +14,7 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Services
         public async Task<ICollection<Account>> GetAccountsAsync()
         {
             HttpClient httpClient = TimesheetHttpClient.GetHttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync("api/accounts");
+            HttpResponseMessage response = await httpClient.GetAsync("api/clients");
             if (!response.IsSuccessStatusCode)
             {
                 return null;
@@ -24,10 +24,10 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Services
             return JsonConvert.DeserializeObject<ICollection<Account>>(responseContent);
         }
 
-        public async Task<ICollection<Project>> GetProjectsAsync(string accountId)
+        public async Task<ICollection<Project>> GetProjectsAsync(string clientId)
         {
             HttpClient httpClient = TimesheetHttpClient.GetHttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync($"api/accounts/{accountId}/projects");
+            HttpResponseMessage response = await httpClient.GetAsync($"api/clients/{clientId}/projects");
             if (!response.IsSuccessStatusCode)
             {
                 return null;

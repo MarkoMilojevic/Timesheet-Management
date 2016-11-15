@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using TimesheetManagement.Data.EntityFramework.Entities;
@@ -25,6 +26,23 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
             Employee employee = EfDtoMapper.CreateEmployee(employeeDto);
 
             context.Employees.Remove(employee);
+
+            return context.SaveChanges() != 0;
+        }
+
+        public override bool Update(EmployeeDTO employeeDto)
+        {
+            Employee existingEmployee = context.Employees.FirstOrDefault(e => e.EmployeeId == employeeDto.EmployeeId);
+            if (existingEmployee == null)
+            {
+                return false;
+            }
+
+            context.Entry(existingEmployee).State = EntityState.Detached;
+
+            Employee updatedEmployee = EfDtoMapper.CreateEmployee(employeeDto);
+            context.Employees.Attach(updatedEmployee);
+            context.Entry(updatedEmployee).State = EntityState.Modified;
 
             return context.SaveChanges() != 0;
         }

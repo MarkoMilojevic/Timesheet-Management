@@ -33,6 +33,13 @@ namespace TimesheetManagement.Business.Managers
             return employeeRepository.Remove(employeeDto);
         }
 
+        public bool Update(Employee employee)
+        {
+            EmployeeDTO employeeDto = CoreBoMapper.CreateEmployeeDto(employee);
+
+            return employeeRepository.Update(employeeDto);
+        }
+
         public Employee Find(params int[] keys)
         {
             EmployeeDTO employeeDto = employeeRepository.Find(keys);

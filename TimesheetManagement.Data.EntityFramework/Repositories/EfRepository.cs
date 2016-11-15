@@ -19,6 +19,8 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public abstract bool Remove(T obj);
 
+        public abstract bool Update(T obj);
+
         public abstract T Find(params TKey[] keys);
 
         public abstract IEnumerable<T> Find(Expression<Func<T, bool>> predicate);

@@ -10,6 +10,8 @@ namespace TimesheetManagement.Business.Interfaces
 
         bool Remove(T obj);
 
+        bool Update(T obj);
+
         T Find(params TKey[] keys);
 
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);

@@ -33,6 +33,13 @@ namespace TimesheetManagement.Business.Tasks.Managers
             return projectRepository.Remove(projectDto);
         }
 
+        public bool Update(Project project)
+        {
+            ProjectDTO projectDto = TasksBoMapper.CreateProjectDto(project);
+
+            return projectRepository.Update(projectDto);
+        }
+
         public Project Find(params int[] keys)
         {
             ProjectDTO projectDto = projectRepository.Find(keys);

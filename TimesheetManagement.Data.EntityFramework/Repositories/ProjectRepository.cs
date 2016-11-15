@@ -30,6 +30,23 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
             return context.SaveChanges() != 0;
         }
 
+        public override bool Update(ProjectDTO projectDto)
+        {
+            Project existingProject = context.Projects.FirstOrDefault(p => p.ProjectId == projectDto.ProjectId);
+            if (existingProject == null)
+            {
+                return false;
+            }
+
+            context.Entry(existingProject).State = EntityState.Detached;
+
+            Project updatedProject = EfDtoMapper.CreateProject(projectDto);
+            context.Projects.Attach(updatedProject);
+            context.Entry(updatedProject).State = EntityState.Modified;
+
+            return context.SaveChanges() != 0;
+        }
+
         public override ProjectDTO Find(params int[] keys)
         {
             int projectId = keys[0];

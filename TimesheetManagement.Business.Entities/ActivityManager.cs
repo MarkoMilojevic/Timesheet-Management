@@ -33,6 +33,13 @@ namespace TimesheetManagement.Business.Managers
             return activityRepository.Remove(activityDto);
         }
 
+        public bool Update(Activity activity)
+        {
+            ActivityDTO activityDto = CoreBoMapper.CreateActivityDto(activity);
+
+            return activityRepository.Update(activityDto);
+        }
+
         public Activity Find(params int[] keys)
         {
             ActivityDTO activityDto = activityRepository.Find(keys);

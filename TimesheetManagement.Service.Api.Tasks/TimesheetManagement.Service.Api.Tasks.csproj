@@ -50,12 +50,6 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Service.Api.Common\TimesheetManagement.Service.Api.Common.csproj">
-      <Project>{46cb408f-9721-423f-84d7-844328e08731}</Project>
-      <Name>TimesheetManagement.Service.Api.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

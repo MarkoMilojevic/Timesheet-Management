@@ -30,6 +30,23 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
             return context.SaveChanges() != 0;
         }
 
+        public override bool Update(ActivityDTO activityDto)
+        {
+            Activity existingActivity = context.Activities.FirstOrDefault(a => a.ActivityId == activityDto.ActivityId);
+            if (existingActivity == null)
+            {
+                return false;
+            }
+
+            context.Entry(existingActivity).State = EntityState.Detached;
+
+            Activity updatedActivity = EfDtoMapper.CreateActivity(activityDto);
+            context.Activities.Attach(updatedActivity);
+            context.Entry(updatedActivity).State = EntityState.Modified;
+
+            return context.SaveChanges() != 0;
+        }
+
         public override ActivityDTO Find(params int[] keys)
         {
             int activityId = keys[0];

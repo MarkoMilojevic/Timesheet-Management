@@ -33,6 +33,13 @@ namespace TimesheetManagement.Business.Tasks.Managers
             return clientRepository.Remove(clientDto);
         }
 
+        public bool Update(Client client)
+        {
+            ClientDTO clientDto = TasksBoMapper.CreateClientDto(client);
+
+            return clientRepository.Update(clientDto);
+        }
+
         public Client Find(params string[] keys)
         {
             ClientDTO clientDto = clientRepository.Find(keys);

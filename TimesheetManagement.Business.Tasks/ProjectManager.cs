@@ -19,11 +19,13 @@ namespace TimesheetManagement.Business.Tasks.Managers
             this.projectRepository = projectRepository;
         }
 
-        public int Add(Project project)
+        public Project Add(Project project)
         {
             ProjectDTO projectDto = TasksBoMapper.CreateProjectDto(project);
 
-            return projectRepository.Add(projectDto);
+            projectDto = projectRepository.Add(projectDto);
+
+            return TasksBoMapper.CreateProject(projectDto);
         }
 
         public bool Remove(Project project)

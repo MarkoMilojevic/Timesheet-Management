@@ -82,14 +82,13 @@ namespace TimesheetManagement.Service.Api.Controllers
                     return BadRequest();
                 }
 
-                int activityId = activityManager.Add(activity);
-                if (activityId == 0)
+                activity = activityManager.Add(activity);
+                if (activity.ActivityId == 0)
                 {
                     return BadRequest();
                 }
-
-                activity.ActivityId = activityId;
-                return Created(Request.RequestUri + "/" + activityId, activity);
+                
+                return Created(Request.RequestUri + "/" + activity.ActivityId, activity);
             }
             catch (Exception)
             {

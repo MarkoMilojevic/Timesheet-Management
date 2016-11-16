@@ -19,11 +19,13 @@ namespace TimesheetManagement.Business.Managers
             this.employeeRepository = employeeRepository;
         }
 
-        public int Add(Employee employee)
+        public Employee Add(Employee employee)
         {
             EmployeeDTO employeeDto = CoreBoMapper.CreateEmployeeDto(employee);
 
-            return employeeRepository.Add(employeeDto);
+            employeeDto = employeeRepository.Add(employeeDto);
+
+            return CoreBoMapper.CreateEmployee(employeeDto);
         }
 
         public bool Remove(Employee employee)

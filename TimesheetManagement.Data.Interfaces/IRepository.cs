@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 
 namespace TimesheetManagement.Data.Interfaces
 {
-    public interface IRepository<T, TKey> where T : class
+    public interface IRepository<T, in TKey> where T : class
     {
-        TKey Add(T obj);
+        T Add(T obj);
 
         bool Remove(T obj);
 

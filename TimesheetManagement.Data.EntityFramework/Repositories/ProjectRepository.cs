@@ -11,14 +11,14 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
     public class ProjectRepository : EfRepository<ProjectDTO, int>
     {
-        public override int Add(ProjectDTO projectDto)
+        public override ProjectDTO Add(ProjectDTO projectDto)
         {
             Project project = EfDtoMapper.CreateProject(projectDto);
 
             project = context.Projects.Add(project);
             context.SaveChanges();
 
-            return project.ProjectId;
+            return EfDtoMapper.CreateProjectDto(project);
         }
 
         public override bool Remove(ProjectDTO projectDto)

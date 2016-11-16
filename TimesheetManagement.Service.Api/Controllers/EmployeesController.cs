@@ -82,14 +82,13 @@ namespace TimesheetManagement.Service.Api.Controllers
                     return BadRequest();
                 }
                 
-                int employeeId = employeeManager.Add(employee);
-                if (employeeId == 0)
+                employee = employeeManager.Add(employee);
+                if (employee.EmployeeId == 0)
                 {
                     return BadRequest();
                 }
-
-                employee.EmployeeId = employeeId;
-                return Created(Request.RequestUri + "/" + employeeId, employee);
+                
+                return Created(Request.RequestUri + "/" + employee.EmployeeId, employee);
             }
             catch (Exception)
             {

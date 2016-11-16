@@ -82,14 +82,13 @@ namespace TimesheetManagement.Service.Api.Controllers
                     return BadRequest();
                 }
 
-                string clientId = clientManager.Add(client);
-                if (clientId == null)
+                client = clientManager.Add(client);
+                if (client.TaxpayerIdentificationNumber == null)
                 {
                     return BadRequest();
                 }
-
-                client.TaxpayerIdentificationNumber = clientId;
-                return Created(Request.RequestUri + "/" + clientId, client);
+                
+                return Created(Request.RequestUri + "/" + client.TaxpayerIdentificationNumber, client);
             }
             catch (Exception)
             {

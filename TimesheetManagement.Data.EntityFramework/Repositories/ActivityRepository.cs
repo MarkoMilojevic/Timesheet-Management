@@ -11,14 +11,14 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
     public class ActivityRepository : EfRepository<ActivityDTO, int>
     {
-        public override int Add(ActivityDTO activityDto)
+        public override ActivityDTO Add(ActivityDTO activityDto)
         {
             Activity activity = EfDtoMapper.CreateActivity(activityDto);
 
             activity = context.Activities.Add(activity);
             context.SaveChanges();
 
-            return activity.ActivityId;
+            return EfDtoMapper.CreateActivityDto(activity);
         }
 
         public override bool Remove(ActivityDTO activityDto)

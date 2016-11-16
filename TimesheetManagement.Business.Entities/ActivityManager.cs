@@ -19,11 +19,13 @@ namespace TimesheetManagement.Business.Managers
             this.activityRepository = activityRepository;
         }
 
-        public int Add(Activity activity)
+        public Activity Add(Activity activity)
         {
             ActivityDTO activityDto = CoreBoMapper.CreateActivityDto(activity);
 
-            return activityRepository.Add(activityDto);
+            activityDto = activityRepository.Add(activityDto);
+
+            return CoreBoMapper.CreateActivity(activityDto);
         }
 
         public bool Remove(Activity activity)

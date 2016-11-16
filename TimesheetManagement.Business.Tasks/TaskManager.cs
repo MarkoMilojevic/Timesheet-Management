@@ -19,11 +19,13 @@ namespace TimesheetManagement.Business.Tasks.Managers
             this.taskRepository = taskRepository;
         }
 
-        public int Add(Task task)
+        public Task Add(Task task)
         {
             TaskDTO taskDto = TasksBoMapper.CreateTaskDto(task);
 
-            return taskRepository.Add(taskDto);
+            taskDto = taskRepository.Add(taskDto);
+
+            return TasksBoMapper.CreateTask(taskDto);
         }
 
         public bool Remove(Task task)

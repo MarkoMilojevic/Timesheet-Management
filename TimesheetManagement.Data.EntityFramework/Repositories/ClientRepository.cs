@@ -11,14 +11,14 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
     public class ClientRepository : EfRepository<ClientDTO, string>
     {
-        public override string Add(ClientDTO clientDto)
+        public override ClientDTO Add(ClientDTO clientDto)
         {
             Client client = EfDtoMapper.CreateClient(clientDto);
 
             client = context.Clients.Add(client);
             context.SaveChanges();
 
-            return client.TaxpayerIdentificationNumber;
+            return EfDtoMapper.CreateClientDto(client);
         }
 
         public override bool Remove(ClientDTO clientDto)

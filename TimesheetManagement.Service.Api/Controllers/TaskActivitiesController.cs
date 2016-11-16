@@ -93,18 +93,18 @@ namespace TimesheetManagement.Service.Api.Controllers
         {
             try
             {
-                if (taskActivity == null)
+                if (taskActivity == null || taskActivity.Task == null || taskActivity.Activity == null)
                 {
                     return BadRequest();
                 }
 
-                int taskActivityId = taskActivityManager.Add(taskActivity);
-                if (taskActivityId == 0)
+                taskActivity = taskActivityManager.Add(taskActivity);
+                if (taskActivity.Task.TaskId == 0 || taskActivity.Activity.ActivityId == 0)
                 {
                     return BadRequest();
                 }
                 
-                return Created(Request.RequestUri + "/" + taskActivityId, taskActivity);
+                return Created(Request.RequestUri + "/" + taskActivity.Task.TaskId + "/" + taskActivity.Activity.ActivityId, taskActivity);
             }
             catch (Exception)
             {

@@ -19,11 +19,13 @@ namespace TimesheetManagement.Business.Tasks.Managers
             this.clientRepository = clientRepository;
         }
 
-        public string Add(Client client)
+        public Client Add(Client client)
         {
             ClientDTO clientDto = TasksBoMapper.CreateClientDto(client);
 
-            return clientRepository.Add(clientDto);
+            clientDto = clientRepository.Add(clientDto);
+
+            return TasksBoMapper.CreateClient(clientDto);
         }
 
         public bool Remove(Client client)

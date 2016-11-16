@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 
 namespace TimesheetManagement.Business.Interfaces
 {
-    public interface IManager<T, TKey> where T : class
+    public interface IManager<T, in TKey> where T : class
     {
-        TKey Add(T obj);
+        T Add(T obj);
 
         bool Remove(T obj);
 

@@ -15,7 +15,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
             context = new TimesheetContext();
         }
 
-        public abstract TKey Add(T obj);
+        public abstract T Add(T obj);
 
         public abstract bool Remove(T obj);
 

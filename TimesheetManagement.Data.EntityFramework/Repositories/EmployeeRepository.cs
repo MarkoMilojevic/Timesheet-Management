@@ -11,14 +11,14 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
     public class EmployeeRepository : EfRepository<EmployeeDTO, int>
     {
-        public override int Add(EmployeeDTO employeeDto)
+        public override EmployeeDTO Add(EmployeeDTO employeeDto)
         {
             Employee employee = EfDtoMapper.CreateEmployee(employeeDto);
 
             employee = context.Employees.Add(employee);
             context.SaveChanges();
 
-            return employee.EmployeeId;
+            return EfDtoMapper.CreateEmployeeDto(employee);
         }
 
         public override bool Remove(EmployeeDTO employeeDto)

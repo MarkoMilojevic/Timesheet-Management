@@ -97,14 +97,13 @@ namespace TimesheetManagement.Service.Api.Controllers
                     return BadRequest();
                 }
 
-                int projectId = projectManager.Add(project);
-                if (projectId == 0)
+                project = projectManager.Add(project);
+                if (project.ProjectId == 0)
                 {
                     return BadRequest();
                 }
-
-                project.ProjectId = projectId;
-                return Created(Request.RequestUri + "/" + projectId, project);
+                
+                return Created(Request.RequestUri + "/" + project.ProjectId, project);
             }
             catch (Exception)
             {

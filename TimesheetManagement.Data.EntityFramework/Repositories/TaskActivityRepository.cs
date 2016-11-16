@@ -11,17 +11,20 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 {
     public class TaskActivityRepository : EfRepository<TaskActivityDTO, int>
     {
-        public override int Add(TaskActivityDTO taskActivityDto)
+        public override TaskActivityDTO Add(TaskActivityDTO taskActivityDto)
         {
             TaskActivity taskActivity = EfDtoMapper.CreateTaskActivity(taskActivityDto);
+
             taskActivity = context.TaskActivities.Add(taskActivity);
             context.SaveChanges();
-            return taskActivity.ActivityId;
+
+            return EfDtoMapper.CreateTaskActivityDto(taskActivity);
         }
 
         public override bool Remove(TaskActivityDTO taskActivityDto)
         {
             TaskActivity taskActivity = EfDtoMapper.CreateTaskActivity(taskActivityDto);
+
             context.TaskActivities.Remove(taskActivity);
 
             return context.SaveChanges() != 0;

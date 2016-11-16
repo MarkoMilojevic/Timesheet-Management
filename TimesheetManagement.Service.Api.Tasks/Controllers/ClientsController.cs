@@ -5,25 +5,24 @@ using System.Web.Http;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
 
-namespace TimesheetManagement.Service.Api.Controllers
+namespace TimesheetManagement.Service.Api.Tasks.Controllers
 {
-    [RoutePrefix("api")]
-    public class TasksController : ApiController
+    public class ClientsController : ApiController
     {
-        private readonly IManager<Task, int> taskManager;
+        private readonly IManager<Client, string> clientManager;
 
-        public TasksController(IManager<Task, int> taskManager)
+        public ClientsController(IManager<Client, string> clientManager)
         {
-            this.taskManager = taskManager;
+            this.clientManager = clientManager;
         }
 
         public IHttpActionResult Get()
         {
             try
             {
-                IEnumerable<Task> tasks = taskManager.FindAll();
+                IEnumerable<Client> clients = clientManager.FindAll();
 
-                return Ok(tasks);
+                return Ok(clients);
             }
             catch (Exception)
             {
@@ -31,17 +30,17 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(string id)
         {
             try
             {
-                Task task = taskManager.Find(id);
-                if (task == null)
+                Client client = clientManager.Find(id);
+                if (client == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(task);
+                return Ok(client);
             }
             catch (Exception)
             {
@@ -49,32 +48,17 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        [Route("projects/{projectId}/tasks")]
-        public IHttpActionResult GetTasks(int projectId)
+        public IHttpActionResult Delete(string id)
         {
             try
             {
-                IEnumerable<Task> tasks = taskManager.Find(t => t.Project != null && t.Project.ProjectId == projectId);
-                
-                return Ok(tasks);
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
-
-        public IHttpActionResult Delete(int id)
-        {
-            try
-            {
-                Task task = taskManager.Find(id);
-                if (task == null)
+                Client client = clientManager.Find(id);
+                if (client == null)
                 {
                     return NotFound();
                 }
 
-                bool isDeleted = taskManager.Remove(task);
+                bool isDeleted = clientManager.Remove(client);
                 if (isDeleted)
                 {
                     return StatusCode(HttpStatusCode.NoContent);
@@ -88,22 +72,22 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        public IHttpActionResult Post([FromBody]Task task)
+        public IHttpActionResult Post([FromBody]Client client)
         {
             try
             {
-                if (task == null)
+                if (client == null)
                 {
                     return BadRequest();
                 }
 
-                task = taskManager.Add(task);
-                if (task.TaskId == 0)
+                client = clientManager.Add(client);
+                if (client.TaxpayerIdentificationNumber == null)
                 {
                     return BadRequest();
                 }
                 
-                return Created(Request.RequestUri + "/" + task.TaskId, task);
+                return Created(Request.RequestUri + "/" + client.TaxpayerIdentificationNumber, client);
             }
             catch (Exception)
             {
@@ -111,25 +95,25 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]Task task)
+        public IHttpActionResult Put(string id, [FromBody]Client client)
         {
             try
             {
-                if (task == null)
+                if (client == null)
                 {
                     return BadRequest();
                 }
 
-                Task existingTask = taskManager.Find(id);
-                if (existingTask == null)
+                Client existingClient = clientManager.Find(id);
+                if (existingClient == null)
                 {
                     return NotFound();
                 }
 
-                bool isUpdated = taskManager.Update(task);
+                bool isUpdated = clientManager.Update(client);
                 if (isUpdated)
                 {
-                    return Ok(task);
+                    return Ok(client);
                 }
 
                 return BadRequest();

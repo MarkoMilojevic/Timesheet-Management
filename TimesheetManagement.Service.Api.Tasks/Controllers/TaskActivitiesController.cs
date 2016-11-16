@@ -4,9 +4,8 @@ using System.Net;
 using System.Web.Http;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
-using TimesheetManagement.Service.Api.Models;
 
-namespace TimesheetManagement.Service.Api.Controllers
+namespace TimesheetManagement.Service.Api.Tasks.Controllers
 {
     [RoutePrefix("api")]
     public class TaskActivitiesController : ApiController
@@ -17,7 +16,7 @@ namespace TimesheetManagement.Service.Api.Controllers
         {
             this.taskActivityManager = taskActivityManager;
         }
-
+        
         public IHttpActionResult Get()
         {
             try
@@ -31,12 +30,13 @@ namespace TimesheetManagement.Service.Api.Controllers
                 return InternalServerError();
             }
         }
-        
-        public IHttpActionResult Get([FromUri] TaskActivityId location)
+
+        [Route("taskactivities/{taskId}/{activityId}")]
+        public IHttpActionResult Get(int taskId, int activityId)
         {
             try
             {
-                TaskActivity taskActivity = taskActivityManager.Find(location.TaskId, location.ActivityId);
+                TaskActivity taskActivity = taskActivityManager.Find(taskId, activityId);
                 if (taskActivity == null)
                 {
                     return NotFound();
@@ -50,8 +50,38 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        [Route("taskactivities/{employeeId}")]
-        public IHttpActionResult GetTaskActivites(int employeeId)
+        [Route("tasks/{taskId}/taskactivities")]
+        public IHttpActionResult GetByTask(int taskId)
+        {
+            try
+            {
+                IEnumerable<TaskActivity> taskActivities = taskActivityManager.Find(ta => ta.Task != null && ta.Task.TaskId == taskId);
+
+                return Ok(taskActivities);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [Route("activities/{activityId}/taskactivities")]
+        public IHttpActionResult GetByActivity(int activityId)
+        {
+            try
+            {
+                IEnumerable<TaskActivity> taskActivities = taskActivityManager.Find(ta => ta.Activity != null && ta.Activity.ActivityId == activityId);
+
+                return Ok(taskActivities);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [Route("employees/{employeeId}/taskactivities")]
+        public IHttpActionResult GetByEmployee(int employeeId)
         {
             try
             {

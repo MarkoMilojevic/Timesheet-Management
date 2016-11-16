@@ -49,6 +49,21 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
+        [Route("employees/{employeeId}/activities")]
+        public IHttpActionResult GetByEmployee(int employeeId)
+        {
+            try
+            {
+                IEnumerable<Activity> activities = activityManager.Find(a => a.Employee != null && a.Employee.EmployeeId == employeeId);
+
+                return Ok(activities);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
         public IHttpActionResult Delete(int id)
         {
             try

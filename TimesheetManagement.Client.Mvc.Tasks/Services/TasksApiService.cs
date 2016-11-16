@@ -4,14 +4,13 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TimesheetManagement.Client.Mvc.Common.Helpers;
 using TimesheetManagement.Client.Mvc.Tasks.Entities;
-using TimesheetManagement.Client.Mvc.Tasks.Models;
 using Task = TimesheetManagement.Client.Mvc.Tasks.Entities.Task;
 
 namespace TimesheetManagement.Client.Mvc.Tasks.Services
 {
 	public class TasksApiService
 	{
-        public async Task<ICollection<Account>> GetAccountsAsync()
+        public async Task<ICollection<Entities.Client>> GetAccountsAsync()
         {
             HttpClient httpClient = TimesheetHttpClient.GetHttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("api/clients");
@@ -21,7 +20,7 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Services
             }
 
             string responseContent = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<ICollection<Account>>(responseContent);
+            return JsonConvert.DeserializeObject<ICollection<Entities.Client>>(responseContent);
         }
 
         public async Task<ICollection<Project>> GetProjectsAsync(string clientId)
@@ -50,17 +49,17 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Services
             return JsonConvert.DeserializeObject<ICollection<Task>>(responseContent);
         }
 
-        public async Task<ICollection<TaskActivityViewModel>> GetTaskActivitiesAsync(int employeeId)
+        public async Task<ICollection<TaskActivity>> GetTaskActivitiesAsync(int employeeId)
 		{
 			HttpClient httpClient = TimesheetHttpClient.GetHttpClient();
-			HttpResponseMessage response = await httpClient.GetAsync($"api/taskactivities/{employeeId}");
+			HttpResponseMessage response = await httpClient.GetAsync($"api/employees/{employeeId}/taskactivities");
 			if (!response.IsSuccessStatusCode)
 			{
 				return null;
 			}
 
 			string responseContent = await response.Content.ReadAsStringAsync();
-			return JsonConvert.DeserializeObject<ICollection<TaskActivityViewModel>>(responseContent);
+			return JsonConvert.DeserializeObject<ICollection<TaskActivity>>(responseContent);
 		}
 
 	    public async Task<HttpResponseMessage> CreateTaskActivityAsync(TaskActivity taskActivity)

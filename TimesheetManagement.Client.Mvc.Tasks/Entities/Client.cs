@@ -1,6 +1,6 @@
 ﻿namespace TimesheetManagement.Client.Mvc.Tasks.Entities
 {
-	public class Account
+	public class Client
 	{
 		public string Name { get; set; }
 

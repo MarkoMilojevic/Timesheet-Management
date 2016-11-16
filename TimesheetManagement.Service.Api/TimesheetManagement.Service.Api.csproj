@@ -167,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -202,16 +203,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
-    <Compile Include="Controllers\TaskActivitiesController.cs" />
-    <Compile Include="Controllers\TasksController.cs" />
-    <Compile Include="Controllers\ProjectsController.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\UnityResolver.cs" />
-    <Compile Include="Models\TaskActivityId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -318,6 +314,10 @@
     <ProjectReference Include="..\TimesheetManagement.Data\TimesheetManagement.Data.csproj">
       <Project>{566450bb-65af-40cd-8654-e525c16b2408}</Project>
       <Name>TimesheetManagement.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Service.Api.Tasks\TimesheetManagement.Service.Api.Tasks.csproj">
+      <Project>{bf247438-bec6-4459-9cf8-b16c27b833e7}</Project>
+      <Name>TimesheetManagement.Service.Api.Tasks</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

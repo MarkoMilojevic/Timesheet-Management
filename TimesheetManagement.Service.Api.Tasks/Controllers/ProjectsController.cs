@@ -5,7 +5,7 @@ using System.Web.Http;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
 
-namespace TimesheetManagement.Service.Api.Controllers
+namespace TimesheetManagement.Service.Api.Tasks.Controllers
 {
     [RoutePrefix("api")]
     public class ProjectsController : ApiController
@@ -50,7 +50,7 @@ namespace TimesheetManagement.Service.Api.Controllers
         }
 
         [Route("clients/{clientId}/projects")]
-        public IHttpActionResult GetProjects(string clientId)
+        public IHttpActionResult GetByClient(string clientId)
         {
             try
             {

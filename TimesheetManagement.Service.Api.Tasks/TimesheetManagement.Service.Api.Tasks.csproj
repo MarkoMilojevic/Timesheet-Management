@@ -45,10 +45,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TaskActivitiesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\TimesheetManagement.Business.Interfaces\TimesheetManagement.Business.Interfaces.csproj">
+      <Project>{9E0BF7F3-748E-4657-B3A1-095463BD48E1}</Project>
+      <Name>TimesheetManagement.Business.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business.Tasks.Entities\TimesheetManagement.Business.Tasks.csproj">
+      <Project>{F140B1BA-BDBE-492C-A523-119C13E657B8}</Project>
+      <Name>TimesheetManagement.Business.Tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimesheetManagement.Business\TimesheetManagement.Business.csproj">
+      <Project>{8720F651-01D3-4659-8EE8-4FD933DAEE94}</Project>
+      <Name>TimesheetManagement.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

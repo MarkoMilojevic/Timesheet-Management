@@ -9,6 +9,6 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Entities
 
         public string Name { get; set; }
 
-		public int ProjectId { get; set; }
+		public Project Project { get; set; }
 	}
 }

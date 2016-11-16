@@ -12,6 +12,6 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Entities
 
 		public DateTime EndDate { get; set; }
 
-		public string AccountId { get; set; }
+		public Client Client { get; set; }
 	}
 }

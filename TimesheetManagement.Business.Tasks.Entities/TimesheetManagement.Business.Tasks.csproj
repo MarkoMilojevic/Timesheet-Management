@@ -58,7 +58,6 @@
     <Compile Include="Helpers\TasksBoMapper.cs" />
     <Compile Include="Helpers\TasksBoMapperProfile.cs" />
     <Compile Include="Entities\Client.cs" />
-    <Compile Include="Models\TaskActivityViewModel.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

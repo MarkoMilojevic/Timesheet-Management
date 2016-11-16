@@ -7,7 +7,6 @@ using TimesheetManagement.Business.Interfaces;
 
 namespace TimesheetManagement.Service.Api.Controllers
 {
-    [RoutePrefix("api")]
     public class EmployeesController : ApiController
 	{
         private readonly IManager<Employee, int> employeeManager;

@@ -26,8 +26,8 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
         public async Task<ActionResult> Index(int page = 1)
         {
             TaskActivitiesViewModel model = new TaskActivitiesViewModel();
-            ICollection<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
-            model.TaskActivityViewModels =  new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
+            ICollection<TaskActivity> taskActivities = await service.GetTaskActivitiesAsync(1);
+            model.TaskActivityViewModels =  new StaticPagedList<TaskActivity>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
             model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / pageSize), page, pageSize, "", "");
             return View("Index", model);
         }
@@ -35,7 +35,7 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
         [HttpGet]
         public async Task<ActionResult> AddTaskActivity()
         {
-            ICollection<Account> accounts = await service.GetAccountsAsync();
+            ICollection<Entities.Client> accounts = await service.GetAccountsAsync();
             ViewBag.Accounts = new SelectList(accounts.Select(account => new { Value = account.TaxpayerIdentificationNumber, Text = account.Name }), "Value", "Text");
 
             return View("_TaskActivity");
@@ -49,14 +49,15 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
             }
 
             TaskActivitiesViewModel model = new TaskActivitiesViewModel();
-            ICollection<TaskActivityViewModel> taskActivities = await service.GetTaskActivitiesAsync(1);
-            model.TaskActivityViewModels = new StaticPagedList<TaskActivityViewModel>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
+            ICollection<TaskActivity> taskActivities = await service.GetTaskActivitiesAsync(1);
+            model.TaskActivityViewModels = new StaticPagedList<TaskActivity>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
             model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / pageSize), page, pageSize, "", "");
+
             return PartialView("_TaskActivitiesTable", model);
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddTaskActivity(TaskActivityViewModel model)
+        public async Task<ActionResult> AddTaskActivity(TaskActivity model)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +81,7 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
 
         public async Task<ActionResult> GetAccounts()
         {
-            ICollection<Account> accounts = await service.GetAccountsAsync();
+            ICollection<Entities.Client> accounts = await service.GetAccountsAsync();
 
             return Json(
                 accounts.Select(account => new { Value = account.TaxpayerIdentificationNumber, Text = account.Name }), 

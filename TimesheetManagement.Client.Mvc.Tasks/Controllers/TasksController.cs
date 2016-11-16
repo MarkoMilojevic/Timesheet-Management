@@ -15,28 +15,25 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
 {
     public class TasksController : Controller
     {
-        private readonly TasksApiService service;
         private const int pageSize = 5;
-
-        public TasksController()
-        {
-            this.service = new TasksApiService();
-        }
-
+        
         public async Task<ActionResult> Index(int page = 1)
         {
+            List<TaskActivity> taskActivities = (await TaskActivitiesApiService.GetByEmployeeAsync(1)).ToList();
+
             TaskActivitiesViewModel model = new TaskActivitiesViewModel();
-            ICollection<TaskActivity> taskActivities = await service.GetTaskActivitiesAsync(1);
             model.TaskActivityViewModels =  new StaticPagedList<TaskActivity>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
             model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / pageSize), page, pageSize, "", "");
+
             return View("Index", model);
         }
 
         [HttpGet]
         public async Task<ActionResult> AddTaskActivity()
         {
-            ICollection<Entities.Client> accounts = await service.GetAccountsAsync();
-            ViewBag.Accounts = new SelectList(accounts.Select(account => new { Value = account.TaxpayerIdentificationNumber, Text = account.Name }), "Value", "Text");
+            List<Entities.Client> clients = (await ClientsApiService.GetAsync()).ToList();
+
+            ViewBag.Accounts = new SelectList(clients.Select(account => new { Value = account.TaxpayerIdentificationNumber, Text = account.Name }), "Value", "Text");
 
             return View("_TaskActivity");
         }
@@ -48,8 +45,9 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
                 
             }
 
+            List<TaskActivity> taskActivities = (await TaskActivitiesApiService.GetByEmployeeAsync(1)).ToList();
+
             TaskActivitiesViewModel model = new TaskActivitiesViewModel();
-            ICollection<TaskActivity> taskActivities = await service.GetTaskActivitiesAsync(1);
             model.TaskActivityViewModels = new StaticPagedList<TaskActivity>(taskActivities.Skip((page - 1) * pageSize).Take(pageSize), page, pageSize, taskActivities.Count);
             model.PagingInfo = new PagingInfo(taskActivities.Count, (int)Math.Ceiling((double)taskActivities.Count / pageSize), page, pageSize, "", "");
 
@@ -75,23 +73,24 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
                 Activity = model.Activity
             };
 
-            await service.CreateTaskActivityAsync(taskActivity);
+            await TaskActivitiesApiService.PostAsync(taskActivity);
+
             return RedirectToAction("Index", "Timesheets");
         }
 
         public async Task<ActionResult> GetAccounts()
         {
-            ICollection<Entities.Client> accounts = await service.GetAccountsAsync();
+            List<Entities.Client> clients = (await ClientsApiService.GetAsync()).ToList();
 
             return Json(
-                accounts.Select(account => new { Value = account.TaxpayerIdentificationNumber, Text = account.Name }), 
+                clients.Select(c => new { Value = c.TaxpayerIdentificationNumber, Text = c.Name }), 
                 JsonRequestBehavior.AllowGet
             );
         }
         
-        public async Task<ActionResult> GetProjects(string accountId)
+        public async Task<ActionResult> GetProjects(string clientId)
         {
-            ICollection<Project> projects = await service.GetProjectsAsync(accountId);
+            List<Project> projects = (await ProjectsApiService.GetByClientAsync(clientId)).ToList();
 
             return Json(
                 projects.Select(project => new { Value = project.ProjectId, Text = project.Name }),
@@ -101,7 +100,7 @@ namespace TimesheetManagement.Client.Mvc.Tasks.Controllers
         
         public async Task<ActionResult> GetTasks(int projectId)
         {
-            ICollection<Task> tasks = await service.GetTasksAsync(projectId);
+            List<Task> tasks = (await TasksApiService.GetByProjectAsync(projectId)).ToList();
 
             return Json(
                 tasks.Select(task => new { Value = task.TaskId, Text = task.Name }),

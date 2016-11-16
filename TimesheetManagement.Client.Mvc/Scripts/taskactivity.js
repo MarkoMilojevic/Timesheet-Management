@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $("#accounts-dropdown").change(function () {
-        Utility.LoadDropdown("#" + this.id, "#projects-dropdown", "/tasks/getprojects?accountId=");
+        Utility.LoadDropdown("#" + this.id, "#projects-dropdown", "/tasks/getprojects?clientId=");
     });
 
     $("#projects-dropdown").change(function () {

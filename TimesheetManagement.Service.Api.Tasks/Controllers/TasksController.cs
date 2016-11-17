@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
+using Marvin.JsonPatch;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
 
@@ -64,20 +65,56 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Patch(int id, [FromBody]JsonPatchDocument<Task> patchDocument)
         {
             try
             {
+                if (patchDocument == null)
+                {
+                    return BadRequest();
+                }
+
                 Task task = taskManager.Find(id);
                 if (task == null)
                 {
                     return NotFound();
                 }
 
-                bool isDeleted = taskManager.Remove(task);
-                if (isDeleted)
+                patchDocument.ApplyTo(task);
+
+                bool isUpdated = taskManager.Update(task);
+                if (isUpdated)
                 {
-                    return StatusCode(HttpStatusCode.NoContent);
+                    return Ok(task);
+                }
+
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        public IHttpActionResult Put(int id, [FromBody]Task task)
+        {
+            try
+            {
+                if (task == null)
+                {
+                    return BadRequest();
+                }
+
+                Task existingTask = taskManager.Find(id);
+                if (existingTask == null)
+                {
+                    return Post(task);
+                }
+
+                bool isUpdated = taskManager.Update(task);
+                if (isUpdated)
+                {
+                    return Ok(task);
                 }
 
                 return BadRequest();
@@ -111,25 +148,20 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]Task task)
+        public IHttpActionResult Delete(int id)
         {
             try
             {
+                Task task = taskManager.Find(id);
                 if (task == null)
-                {
-                    return BadRequest();
-                }
-
-                Task existingTask = taskManager.Find(id);
-                if (existingTask == null)
                 {
                     return NotFound();
                 }
 
-                bool isUpdated = taskManager.Update(task);
-                if (isUpdated)
+                bool isDeleted = taskManager.Remove(task);
+                if (isDeleted)
                 {
-                    return Ok(task);
+                    return StatusCode(HttpStatusCode.NoContent);
                 }
 
                 return BadRequest();

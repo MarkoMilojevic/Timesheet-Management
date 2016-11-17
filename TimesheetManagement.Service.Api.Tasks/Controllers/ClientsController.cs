@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
+using Marvin.JsonPatch;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
 
@@ -48,20 +49,56 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Delete(string id)
+        public IHttpActionResult Patch(string id, [FromBody]JsonPatchDocument<Client> patchDocument)
         {
             try
             {
+                if (patchDocument == null)
+                {
+                    return BadRequest();
+                }
+
                 Client client = clientManager.Find(id);
                 if (client == null)
                 {
                     return NotFound();
                 }
 
-                bool isDeleted = clientManager.Remove(client);
-                if (isDeleted)
+                patchDocument.ApplyTo(client);
+
+                bool isUpdated = clientManager.Update(client);
+                if (isUpdated)
                 {
-                    return StatusCode(HttpStatusCode.NoContent);
+                    return Ok(client);
+                }
+
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        public IHttpActionResult Put(string id, [FromBody]Client client)
+        {
+            try
+            {
+                if (client == null)
+                {
+                    return BadRequest();
+                }
+
+                Client existingClient = clientManager.Find(id);
+                if (existingClient == null)
+                {
+                    return Post(client);
+                }
+
+                bool isUpdated = clientManager.Update(client);
+                if (isUpdated)
+                {
+                    return Ok(client);
                 }
 
                 return BadRequest();
@@ -95,25 +132,20 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Put(string id, [FromBody]Client client)
+        public IHttpActionResult Delete(string id)
         {
             try
             {
+                Client client = clientManager.Find(id);
                 if (client == null)
-                {
-                    return BadRequest();
-                }
-
-                Client existingClient = clientManager.Find(id);
-                if (existingClient == null)
                 {
                     return NotFound();
                 }
 
-                bool isUpdated = clientManager.Update(client);
-                if (isUpdated)
+                bool isDeleted = clientManager.Remove(client);
+                if (isDeleted)
                 {
-                    return Ok(client);
+                    return StatusCode(HttpStatusCode.NoContent);
                 }
 
                 return BadRequest();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
+using Marvin.JsonPatch;
 using TimesheetManagement.Business.Entities;
 using TimesheetManagement.Business.Interfaces;
 
@@ -64,20 +65,56 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Patch(int id, [FromBody]JsonPatchDocument<Activity> patchDocument)
         {
             try
             {
+                if (patchDocument == null)
+                {
+                    return BadRequest();
+                }
+
                 Activity activity = activityManager.Find(id);
                 if (activity == null)
                 {
                     return NotFound();
                 }
 
-                bool isDeleted = activityManager.Remove(activity);
-                if (isDeleted)
+                patchDocument.ApplyTo(activity);
+
+                bool isUpdated = activityManager.Update(activity);
+                if (isUpdated)
                 {
-                    return StatusCode(HttpStatusCode.NoContent);
+                    return Ok(activity);
+                }
+
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        public IHttpActionResult Put(int id, [FromBody]Activity activity)
+        {
+            try
+            {
+                if (activity == null)
+                {
+                    return BadRequest();
+                }
+
+                Activity existingActivity = activityManager.Find(id);
+                if (existingActivity == null)
+                {
+                    return Post(activity);
+                }
+
+                bool isUpdated = activityManager.Update(activity);
+                if (isUpdated)
+                {
+                    return Ok(activity);
                 }
 
                 return BadRequest();
@@ -111,25 +148,20 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]Activity activity)
+        public IHttpActionResult Delete(int id)
         {
             try
             {
+                Activity activity = activityManager.Find(id);
                 if (activity == null)
-                {
-                    return BadRequest();
-                }
-
-                Activity existingActivity = activityManager.Find(id);
-                if (existingActivity == null)
                 {
                     return NotFound();
                 }
 
-                bool isUpdated = activityManager.Update(activity);
-                if (isUpdated)
+                bool isDeleted = activityManager.Remove(activity);
+                if (isDeleted)
                 {
-                    return Ok(activity);
+                    return StatusCode(HttpStatusCode.NoContent);
                 }
 
                 return BadRequest();

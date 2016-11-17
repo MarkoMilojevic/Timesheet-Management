@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
+using Marvin.JsonPatch;
 using TimesheetManagement.Business.Entities;
 using TimesheetManagement.Business.Interfaces;
 
@@ -48,20 +49,27 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Patch(int id, [FromBody]JsonPatchDocument<Employee> patchDocument)
         {
             try
             {
+                if (patchDocument == null)
+                {
+                    return BadRequest();
+                }
+
                 Employee employee = employeeManager.Find(id);
                 if (employee == null)
                 {
                     return NotFound();
                 }
 
-                bool isDeleted = employeeManager.Remove(employee);
-                if (isDeleted)
+                patchDocument.ApplyTo(employee);
+
+                bool isUpdated = employeeManager.Update(employee);
+                if (isUpdated)
                 {
-                    return StatusCode(HttpStatusCode.NoContent);
+                    return Ok(employee);
                 }
 
                 return BadRequest();
@@ -71,7 +79,36 @@ namespace TimesheetManagement.Service.Api.Controllers
                 return InternalServerError();
             }
         }
-        
+
+        public IHttpActionResult Put(int id, [FromBody]Employee employee)
+        {
+            try
+            {
+                if (employee == null)
+                {
+                    return BadRequest();
+                }
+
+                Employee existingEmployee = employeeManager.Find(id);
+                if (existingEmployee == null)
+                {
+                    return Post(employee);
+                }
+
+                bool isUpdated = employeeManager.Update(employee);
+                if (isUpdated)
+                {
+                    return Ok(employee);
+                }
+
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
         public IHttpActionResult Post([FromBody]Employee employee)
         {
             try
@@ -95,25 +132,20 @@ namespace TimesheetManagement.Service.Api.Controllers
             }
         }
         
-        public IHttpActionResult Put(int id, [FromBody]Employee employee)
+        public IHttpActionResult Delete(int id)
         {
             try
             {
+                Employee employee = employeeManager.Find(id);
                 if (employee == null)
-                {
-                    return BadRequest();
-                }
-
-                Employee existingEmployee = employeeManager.Find(id);
-                if (existingEmployee == null)
                 {
                     return NotFound();
                 }
 
-                bool isUpdated = employeeManager.Update(employee);
-                if (isUpdated)
+                bool isDeleted = employeeManager.Remove(employee);
+                if (isDeleted)
                 {
-                    return Ok(employee);
+                    return StatusCode(HttpStatusCode.NoContent);
                 }
 
                 return BadRequest();

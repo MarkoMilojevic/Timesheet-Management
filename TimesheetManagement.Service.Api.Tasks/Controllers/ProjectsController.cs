@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
+using Marvin.JsonPatch;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
 
@@ -64,20 +65,56 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Patch(int id, [FromBody]JsonPatchDocument<Project> patchDocument)
         {
             try
             {
+                if (patchDocument == null)
+                {
+                    return BadRequest();
+                }
+
                 Project project = projectManager.Find(id);
                 if (project == null)
                 {
                     return NotFound();
                 }
 
-                bool isDeleted = projectManager.Remove(project);
-                if (isDeleted)
+                patchDocument.ApplyTo(project);
+
+                bool isUpdated = projectManager.Update(project);
+                if (isUpdated)
                 {
-                    return StatusCode(HttpStatusCode.NoContent);
+                    return Ok(project);
+                }
+
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        public IHttpActionResult Put(int id, [FromBody]Project project)
+        {
+            try
+            {
+                if (project == null)
+                {
+                    return BadRequest();
+                }
+
+                Project existingProject = projectManager.Find(id);
+                if (existingProject == null)
+                {
+                    return Post(project);
+                }
+
+                bool isUpdated = projectManager.Update(project);
+                if (isUpdated)
+                {
+                    return Ok(project);
                 }
 
                 return BadRequest();
@@ -111,25 +148,20 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]Project project)
+        public IHttpActionResult Delete(int id)
         {
             try
             {
+                Project project = projectManager.Find(id);
                 if (project == null)
-                {
-                    return BadRequest();
-                }
-
-                Project existingProject = projectManager.Find(id);
-                if (existingProject == null)
                 {
                     return NotFound();
                 }
 
-                bool isUpdated = projectManager.Update(project);
-                if (isUpdated)
+                bool isDeleted = projectManager.Remove(project);
+                if (isDeleted)
                 {
-                    return Ok(project);
+                    return StatusCode(HttpStatusCode.NoContent);
                 }
 
                 return BadRequest();

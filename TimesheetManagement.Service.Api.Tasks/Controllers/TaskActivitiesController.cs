@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
+using Marvin.JsonPatch;
 using TimesheetManagement.Business.Interfaces;
 using TimesheetManagement.Business.Tasks.Entities;
 
@@ -95,20 +96,56 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Patch(int id, [FromBody]JsonPatchDocument<TaskActivity> patchDocument)
         {
             try
             {
+                if (patchDocument == null)
+                {
+                    return BadRequest();
+                }
+
                 TaskActivity taskActivity = taskActivityManager.Find(id);
                 if (taskActivity == null)
                 {
                     return NotFound();
                 }
 
-                bool isDeleted = taskActivityManager.Remove(taskActivity);
-                if (isDeleted)
+                patchDocument.ApplyTo(taskActivity);
+
+                bool isUpdated = taskActivityManager.Update(taskActivity);
+                if (isUpdated)
                 {
-                    return StatusCode(HttpStatusCode.NoContent);
+                    return Ok(taskActivity);
+                }
+
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        public IHttpActionResult Put(int id, [FromBody]TaskActivity taskActivity)
+        {
+            try
+            {
+                if (taskActivity == null)
+                {
+                    return BadRequest();
+                }
+
+                TaskActivity existingTaskActivity = taskActivityManager.Find(id);
+                if (existingTaskActivity == null)
+                {
+                    return Post(taskActivity);
+                }
+
+                bool isUpdated = taskActivityManager.Update(taskActivity);
+                if (isUpdated)
+                {
+                    return Ok(taskActivity);
                 }
 
                 return BadRequest();
@@ -142,25 +179,20 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]TaskActivity taskActivity)
+        public IHttpActionResult Delete(int id)
         {
             try
             {
+                TaskActivity taskActivity = taskActivityManager.Find(id);
                 if (taskActivity == null)
-                {
-                    return BadRequest();
-                }
-
-                TaskActivity existingTaskActivity = taskActivityManager.Find(id);
-                if (existingTaskActivity == null)
                 {
                     return NotFound();
                 }
 
-                bool isUpdated = taskActivityManager.Update(taskActivity);
-                if (isUpdated)
+                bool isDeleted = taskActivityManager.Remove(taskActivity);
+                if (isDeleted)
                 {
-                    return Ok(taskActivity);
+                    return StatusCode(HttpStatusCode.NoContent);
                 }
 
                 return BadRequest();

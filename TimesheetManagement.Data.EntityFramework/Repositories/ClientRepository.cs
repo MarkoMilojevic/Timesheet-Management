@@ -23,7 +23,12 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override bool Remove(ClientDTO clientDto)
         {
-            Client client = EfDtoMapper.CreateClient(clientDto);
+            Client client = context.Clients.Local.FirstOrDefault(c => c.TaxpayerIdentificationNumber == clientDto.TaxpayerIdentificationNumber);
+            if (client == null)
+            {
+                client = EfDtoMapper.CreateClient(clientDto);
+                context.Clients.Attach(client);
+            }
 
             context.Clients.Remove(client);
 

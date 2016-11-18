@@ -23,16 +23,21 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override bool Remove(TaskActivityDTO taskActivityDto)
         {
-            TaskActivity taskActivity = EfDtoMapper.CreateTaskActivity(taskActivityDto);
+            TaskActivity taskActivity = context.TaskActivities.Local.FirstOrDefault(ta => ta.TaskId == taskActivityDto.Task.TaskId && ta.ActivityId == taskActivityDto.Activity.ActivityId);
+            if (taskActivity == null)
+            {
+                taskActivity = EfDtoMapper.CreateTaskActivity(taskActivityDto);
+                context.TaskActivities.Attach(taskActivity);
+            }
 
             context.TaskActivities.Remove(taskActivity);
 
             return context.SaveChanges() != 0;
         }
 
-        public override bool Update(TaskActivityDTO taskDto)
+        public override bool Update(TaskActivityDTO taskActivityDto)
         {
-            TaskActivity existingTaskActivity = context.TaskActivities.FirstOrDefault(ta => ta.TaskId == taskDto.Task.TaskId && ta.ActivityId == taskDto.Activity.ActivityId);
+            TaskActivity existingTaskActivity = context.TaskActivities.FirstOrDefault(ta => ta.TaskId == taskActivityDto.Task.TaskId && ta.ActivityId == taskActivityDto.Activity.ActivityId);
             if (existingTaskActivity == null)
             {
                 return false;
@@ -40,7 +45,7 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
             context.Entry(existingTaskActivity).State = EntityState.Detached;
 
-            TaskActivity updatedTaskActivity = EfDtoMapper.CreateTaskActivity(taskDto);
+            TaskActivity updatedTaskActivity = EfDtoMapper.CreateTaskActivity(taskActivityDto);
             context.TaskActivities.Attach(updatedTaskActivity);
             context.Entry(updatedTaskActivity).State = EntityState.Modified;
 

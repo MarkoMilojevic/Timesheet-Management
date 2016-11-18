@@ -111,6 +111,7 @@ namespace TimesheetManagement.Service.Api.Controllers
                     return Post(activity);
                 }
 
+                activity.ActivityId = id;
                 bool isUpdated = activityManager.Update(activity);
                 if (isUpdated)
                 {

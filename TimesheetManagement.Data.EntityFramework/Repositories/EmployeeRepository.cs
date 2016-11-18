@@ -23,7 +23,12 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override bool Remove(EmployeeDTO employeeDto)
         {
-            Employee employee = EfDtoMapper.CreateEmployee(employeeDto);
+            Employee employee = context.Employees.Local.FirstOrDefault(e => e.EmployeeId == employeeDto.EmployeeId);
+            if (employee == null)
+            {
+                employee = EfDtoMapper.CreateEmployee(employeeDto);
+                context.Employees.Attach(employee);
+            }
 
             context.Employees.Remove(employee);
 

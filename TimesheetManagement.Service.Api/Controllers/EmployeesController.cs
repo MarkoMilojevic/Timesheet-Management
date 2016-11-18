@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 using Marvin.JsonPatch;
+using Newtonsoft.Json;
 using TimesheetManagement.Business.Entities;
 using TimesheetManagement.Business.Interfaces;
 
@@ -95,6 +96,7 @@ namespace TimesheetManagement.Service.Api.Controllers
                     return Post(employee);
                 }
 
+                employee.EmployeeId = id;
                 bool isUpdated = employeeManager.Update(employee);
                 if (isUpdated)
                 {

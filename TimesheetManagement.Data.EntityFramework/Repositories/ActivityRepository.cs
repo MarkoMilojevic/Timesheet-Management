@@ -23,7 +23,12 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override bool Remove(ActivityDTO activityDto)
         {
-            Activity activity = EfDtoMapper.CreateActivity(activityDto);
+            Activity activity = context.Activities.Local.FirstOrDefault(e => e.ActivityId == activityDto.ActivityId);
+            if (activity == null)
+            {
+                activity = EfDtoMapper.CreateActivity(activityDto);
+                context.Activities.Attach(activity);
+            }
 
             context.Activities.Remove(activity);
 

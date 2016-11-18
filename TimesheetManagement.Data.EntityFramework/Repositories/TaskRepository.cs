@@ -23,7 +23,12 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override bool Remove(TaskDTO taskDto)
         {
-            Task task = EfDtoMapper.CreateTask(taskDto);
+            Task task = context.Tasks.Local.FirstOrDefault(t => t.TaskId == taskDto.TaskId);
+            if (task == null)
+            {
+                task = EfDtoMapper.CreateTask(taskDto);
+                context.Tasks.Attach(task);
+            }
 
             context.Tasks.Remove(task);
 

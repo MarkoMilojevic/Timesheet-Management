@@ -95,6 +95,7 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
                     return Post(client);
                 }
 
+                client.TaxpayerIdentificationNumber = id;
                 bool isUpdated = clientManager.Update(client);
                 if (isUpdated)
                 {

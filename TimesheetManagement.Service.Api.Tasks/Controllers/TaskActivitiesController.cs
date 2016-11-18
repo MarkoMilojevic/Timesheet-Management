@@ -96,7 +96,8 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Patch(int id, [FromBody]JsonPatchDocument<TaskActivity> patchDocument)
+        [Route("taskactivities/{taskId}/{activityId}")]
+        public IHttpActionResult Patch(int taskId, int activityId, [FromBody]JsonPatchDocument<TaskActivity> patchDocument)
         {
             try
             {
@@ -105,7 +106,7 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
                     return BadRequest();
                 }
 
-                TaskActivity taskActivity = taskActivityManager.Find(id);
+                TaskActivity taskActivity = taskActivityManager.Find(taskId, activityId);
                 if (taskActivity == null)
                 {
                     return NotFound();
@@ -127,21 +128,24 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]TaskActivity taskActivity)
+        [Route("taskactivities/{taskId}/{activityId}")]
+        public IHttpActionResult Put(int taskId, int activityId, [FromBody]TaskActivity taskActivity)
         {
             try
             {
-                if (taskActivity == null)
+                if (taskActivity == null || taskActivity.Task == null || taskActivity.Activity == null)
                 {
                     return BadRequest();
                 }
 
-                TaskActivity existingTaskActivity = taskActivityManager.Find(id);
+                TaskActivity existingTaskActivity = taskActivityManager.Find(taskId, activityId);
                 if (existingTaskActivity == null)
                 {
                     return Post(taskActivity);
                 }
 
+                taskActivity.Task.TaskId = taskId;
+                taskActivity.Activity.ActivityId = activityId;
                 bool isUpdated = taskActivityManager.Update(taskActivity);
                 if (isUpdated)
                 {
@@ -179,11 +183,12 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int id)
+        [Route("taskactivities/{taskId}/{activityId}")]
+        public IHttpActionResult Delete(int taskId, int activityId)
         {
             try
             {
-                TaskActivity taskActivity = taskActivityManager.Find(id);
+                TaskActivity taskActivity = taskActivityManager.Find(taskId, activityId);
                 if (taskActivity == null)
                 {
                     return NotFound();

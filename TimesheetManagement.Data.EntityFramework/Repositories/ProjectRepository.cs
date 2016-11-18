@@ -23,7 +23,12 @@ namespace TimesheetManagement.Data.EntityFramework.Repositories
 
         public override bool Remove(ProjectDTO projectDto)
         {
-            Project project = EfDtoMapper.CreateProject(projectDto);
+            Project project = context.Projects.Local.FirstOrDefault(p => p.ProjectId == projectDto.ProjectId);
+            if (project == null)
+            {
+                project = EfDtoMapper.CreateProject(projectDto);
+                context.Projects.Attach(project);
+            }
 
             context.Projects.Remove(project);
 

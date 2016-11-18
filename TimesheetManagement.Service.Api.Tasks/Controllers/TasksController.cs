@@ -111,6 +111,7 @@ namespace TimesheetManagement.Service.Api.Tasks.Controllers
                     return Post(task);
                 }
 
+                task.TaskId = id;
                 bool isUpdated = taskManager.Update(task);
                 if (isUpdated)
                 {

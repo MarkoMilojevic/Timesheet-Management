@@ -3,8 +3,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Marvin.JsonPatch;
 using TimesheetManagement.Client.Mvc.Common.Entities;
+using TimesheetManagement.Client.Mvc.Common.Services;
 
-namespace TimesheetManagement.Client.Mvc.Common.Services
+namespace TimesheetManagement.Client.Mvc.Services
 {
     public static class EmployeeApiService
     {

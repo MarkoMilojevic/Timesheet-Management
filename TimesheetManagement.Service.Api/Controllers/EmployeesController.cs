@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 using Marvin.JsonPatch;
-using Newtonsoft.Json;
 using TimesheetManagement.Business.Entities;
 using TimesheetManagement.Business.Interfaces;
 

@@ -40,11 +40,15 @@ namespace TimesheetManagement.Service.Api.Common.Helpers
 
 		private int? GetVersionFromCustomContentType(HttpRequestMessage request)
 		{
-			string versionAsString;
+			string versionAsString = null;
 			IEnumerable<string> headerValues;
-			if (request.Headers.TryGetValues("api-version", out headerValues) && (headerValues.Count() == 1))
+		    if (request.Headers.TryGetValues("api-version", out headerValues))
 			{
-				versionAsString = headerValues.First();
+		        List<string> values = headerValues.ToList();
+			    if (values.Count == 1)
+			    {
+				    versionAsString = values.First();
+			    }
 			}
 			else
 			{
@@ -62,35 +66,20 @@ namespace TimesheetManagement.Service.Api.Common.Helpers
 
 		private int? GetVersionFromCustomRequestHeader(HttpRequestMessage request)
 		{
-			string versionAsString;
+		    Regex regex = new Regex(@"application\/vnd\.timesheetmanagement\.v([\d])\+json");
 
-			//get the accept header.
-			IEnumerable<string> mediaTypes = request.Headers.Accept.Select(a => a.MediaType);
-			string matchingMediaType = null;
-
-			Regex regEx = new Regex(@"application\/vnd\.timesheetmanagement\.v([\d])\+json");
-
-			foreach (string type in mediaTypes)
-			{
-				if (regEx.IsMatch(type))
-				{
-					matchingMediaType = type;
-					break;
-				}
-			}
-
-			if (matchingMediaType == null)
+            IEnumerable<string> mediaTypes = request.Headers.Accept.Select(a => a.MediaType);
+		    string matchingMediaType = mediaTypes.FirstOrDefault(type => regex.IsMatch(type));
+		    if (matchingMediaType == null)
 			{
 				return null;
 			}
-
-			//extract version number
-			Match m = regEx.Match(matchingMediaType);
-			versionAsString = m.Groups[1].Value;
+            
+			Match match = regex.Match(matchingMediaType);
+            string versionAsString = match.Groups[1].Value;
 
 			int version;
-
-			if ((versionAsString != null) && int.TryParse(versionAsString, out version))
+			if (int.TryParse(versionAsString, out version))
 			{
 				return version;
 			}

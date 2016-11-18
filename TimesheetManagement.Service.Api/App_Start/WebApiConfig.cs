@@ -49,7 +49,7 @@ namespace TimesheetManagement.Service.Api
             config.Routes.MapHttpRoute(
                 "DefaultApi",
                 "api/{controller}/{id}",
-                new {id = RouteParameter.Optional}
+                new { id = RouteParameter.Optional }
             );
 
             //Don't support XML

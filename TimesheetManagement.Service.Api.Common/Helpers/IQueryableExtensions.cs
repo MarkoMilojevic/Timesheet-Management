@@ -26,8 +26,7 @@ namespace TimesheetManagement.Service.Api.Common.Helpers
 			{
 				return source;
 			}
-
-			//split the sort string
+            
 			string[] listSort = sort.Split(',');
 
 			string completeSortExpression = "";
@@ -45,7 +44,7 @@ namespace TimesheetManagement.Service.Api.Common.Helpers
 
 			if (!string.IsNullOrEmpty(completeSortExpression))
 			{
-				source.OrderBy(completeSortExpression.Remove(completeSortExpression.Count() - 1));
+				source.OrderBy(completeSortExpression.Remove(completeSortExpression.Length - 1));
 			}
 
 			return source;
